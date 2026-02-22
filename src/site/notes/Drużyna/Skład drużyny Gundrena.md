@@ -2,9 +2,9 @@
 {"dg-publish":true,"permalink":"/druzyna/sklad-druzyny-gundrena/"}
 ---
 
-[[Drużyna/Liora\|Liora]] - aasimar wojownik
-[[Drużyna/Hurotah\|Hurotah]]- pólorczyca mnich
-[[Drużyna/Nabzif, the aram\|Nabzif, the aram]] - Człowiek, kleryk bahamuta
-[[Drizith\|Drizith]] - drow czarnoksiężnik
-[[Drużyna/Gerwazy\|Gerwazy]]- człowiek-łuk 
-[[Drużyna/Vebasto\|Vebasto]] - diablęcie sorcerer-malarz
+[[Drużyna/Liora, redheaded flying scissors\|Liora, redheaded flying scissors]] - aasimar wojownik
+[[Drużyna/Hurotah, chairthrower\|Hurotah, chairthrower]]- pólorczyca mnich
+[[Drużyna/Nabzif, the fokin tank\|Nabzif, the fokin tank]] - Człowiek, kleryk bahamuta
+[[Drizith, fokin negroelfo\|Drizith, fokin negroelfo]] - drow czarnoksiężnik
+[[Drużyna/Gerwazy, Owlbear enjoyer\|Gerwazy, Owlbear enjoyer]]- człowiek-łuk 
+[[Drużyna/Vebasto, RandomFireGenerator\|Vebasto, RandomFireGenerator]] - diablęcie sorcerer-malarz

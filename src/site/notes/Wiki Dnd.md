@@ -3,5 +3,5 @@
 ---
 
 [[Phandalin/NPC/Galanthe\|Galanthe]]
-[[Nyra\|Nyra]]
+[[Phandalin/NPC/Nyravelle\|Nyravelle]]
 [[Drużyna/Skład drużyny Gundrena\|Skład drużyny Gundrena]]
