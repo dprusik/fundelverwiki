@@ -15,7 +15,10 @@ Nie lubie jak zwą mnie czempionem, szczególnie obcy, Nie czułem sie jeszcze g
 
 Zgodziłem się jednak odzyskać relkwie. Nie dla tytułu, ale dlatego, że okradanie przydrożnych świątyń jest szczególnie podłym rodzajem występku. Zabiera się nie bogom, lecz ludziom, którzy przychodzą do nich z ostatnią nadzieją.
 
-Ślady prowadziły do skalnej groty niedaleko traktu. Ukradkiem dostałem się do niej, znajdując w niej koboldy - siedem dorosłych, dwoje młodych i jednego starca, który trzymał włócznię tak mocno, że drżały mu dłonie. Srebrny znak wisiał nad posłaniem najmniejszego z nich. Mimo odległości i koboldów oddzielających mnie i mój cel widać było jak płytko młody oddychał. Jego łuski pociemniały, a każdy oddech wydawał dźwięk podobny do przesuwania kamienia po kamieniu. Wokół relikwii leżały zwiędłe zioła, kostne talizmany i naczynia z wodą. Próbując rozmawiać z najstarszym z nich strzegącym przejścia szybko zrozumiałem, że nie wiedzieli nawet imienia owego bóstwa. Wiedziały tylko że ludzie przechodzący koło tej kaplicy klękają przed wielkim smokiem, prosząc o zdrowie, przychylne plony i zadośćuczynienie za przecierpiane krzywdy. Stary kobold rzekł
+
+Ślady prowadziły do skalnej groty niedaleko traktu. Ukradkiem dostałem się do niej, znajdując w niej koboldy - siedem dorosłych, dwoje młodych i jednego starca, który trzymał włócznię tak mocno, że drżały mu dłonie. Srebrny znak wisiał nad posłaniem najmniejszego z nich. Mimo odległości i koboldów oddzielających mnie i mój cel widać było jak płytko młody oddychał. Jego łuski pociemniały, a każdy oddech wydawał dźwięk podobny do przesuwania kamienia po kamieniu. Wokół relikwii leżały zwiędłe zioła, kostne talizmany i naczynia z wodą. Próbując rozmawiać z najstarszym z nich strzegącym przejścia szybko zrozumiałem, że nie wiedzieli nawet imienia owego bóstwa. Wiedziały tylko że ludzie przechodzący koło tej kaplicy klękają przed wielkim smokiem, prosząc o zdrowie, przychylne plony i zadośćuczynienie za przecierpiane krzywdy. 
+
+Stary kobold rzekł
 	"Skoro miękkoskórych słucha to tym bardziej nas"
 Powiedziałem dobywając mego młota że symbol został skradziony i musi wrócic na swoje miejsce. Bardziej zaparł się o swą stara włócznie:
 	"Jak młodemu się polepszy - oddamy"
@@ -23,7 +26,7 @@ Ich przywódca zażądał, abym odszedł. Mogłem ich wytłuc, większe grupy ju
 
 Zamiast tego uklęknąłem przy chorym.
 
-Gorączka nie pochodziła od klątwy ani jadu. Widziałem podobną przypadłość wśród dzieci uchodźców spod Luskanu. Oczyściłem jego płuca, podałem wodę z solą i gorzkimi liśćmi, a potem modliłem się, choć nie wiedziałem, czy Bahamut zechce wysłuchać modlitwy wypowiedzianej nad stworzeniem, które ukradło Jego wizerunek. Czułem ciepło i pogłębiający się oddech na klatce młodego gdy nalożyłem na niego ręce.
+	Gorączka nie pochodziła od klątwy ani jadu. Widziałem podobną przypadłość wśród dzieci uchodźców spod Luskanu. Oczyściłem jego płuca, podałem wodę z solą i gorzkimi liśćmi, a potem modliłem się, choć nie wiedziałem, czy Bahamut zechce wysłuchać modlitwy wypowiedzianej nad stworzeniem, które ukradło Jego wizerunek. Czułem ciepło i pogłębiający się oddech na klatce młodego gdy nalożyłem na niego ręce.
 
 Młodzieniec przeżyje, czuje to
 
