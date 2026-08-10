@@ -26,7 +26,7 @@
 <div class="campaign-map-marker" data-name="Koszary straży w dzielnicy Wież" data-x="1998" data-y="1562" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Kwatera strażników "></div>
 <div class="campaign-map-marker" data-name="Dom Antares" data-x="1756" data-y="1448" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Jedna z kamienic w dzielnicy wież, zamieszkiwana przez Antares"></div>
 <div class="campaign-map-marker" data-name="Dom Wiedzy" data-x=" 1424" data-y="1202" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Świątynia Oghmy i Wielka Biblioteka Neverwinter w Enklawie Protektora"></div>
-<div class="campaign-map-marker" data-name="Dom Wiedzy" data-x=" 722" data-y="938" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Świątynia Oghmy i Wielka Biblioteka Neverwinter w Enklawie Protektora"></div>
+<div class="campaign-map-marker" data-name="Hol sprawiedliwości" data-x=" 722" data-y="938" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Dawna świątnia Tyra, obecna siedziba rządu Dagulta Neverembera"></div>
 
 
 
