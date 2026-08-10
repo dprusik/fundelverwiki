@@ -8,7 +8,7 @@
 
 If this image renders on the published site, the attachment is being published correctly:
 
-![NeverwinterMapClean.jpg](/img/user/DND/Lokacje/NeverwinterMapClean.jpg)
+
 
 ## Interactive map
 
@@ -17,8 +17,8 @@ The frame below is used by the Digital Garden custom Leaflet script.
 <div
   id="campaign-map"
   data-map-image="NeverwinterMapClean.jpg"
-  data-map-width="3000"
-  data-map-height="2000"
+  data-map-width="4250"
+  data-map-height="3264"
   style="height: 650px; width: 100%; border: 1px solid #555; border-radius: 8px;"
 ></div>
 
