@@ -7,3 +7,4 @@
 [[DND/Wiki/Dzienniki, notatki, itp\|Dzienniki, notatki, itp]]
 [[Przedmioty\|Przedmioty]]
 [[DND/Wiki/Postacie\|Postacie]]
+[[DND/Wiki/Lokacje\|Lokacje]]
