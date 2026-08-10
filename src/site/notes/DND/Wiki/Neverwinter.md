@@ -26,9 +26,9 @@ The frame below is used by the Digital Garden custom Leaflet script.
 ## Map markers
 
 Add new markers below using the same format. The Digital Garden script reads these automatically.
-
+<div class="campaign-map-marker" data-name="Zamek Never" data-x="896" data-y="1280" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
 <div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
-
+<div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
 <div class="campaign-map-marker" data-name="Neverwinter" data-x="1450" data-y="500" data-url="/dnd/wiki/neverwinter/" data-description="The Jewel of the North."></div>
 
 <div class="campaign-map-marker" data-name="Forge of Spells" data-x="1000" data-y="1100" data-url="/dnd/wiki/lokacje/forge-of-spells/" data-description="Recovered by the party after Lost Mine of Phandelver."></div>
