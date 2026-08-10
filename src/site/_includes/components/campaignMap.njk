@@ -50,8 +50,8 @@
 
       const map = L.map(container, {
         crs: L.CRS.Simple,
-        minZoom: -4,
-        maxZoom: 5,
+        minZoom: -5,
+        maxZoom: 4,
         zoomControl: true,
         maxBoundsViscosity: 0.5
       });
@@ -80,29 +80,17 @@
 
       image.src = mapImageUrl;
 
-      const markers = [
-        {
-          name: "Phandalin",
-          x: 1200,
-          y: 900,
-          url: "/dnd/wiki/lokacje/phandalin/",
-          description: "Frontier town near the Triboar Trail."
-        },
-        {
-          name: "Neverwinter",
-          x: 1450,
-          y: 500,
-          url: "/dnd/wiki/neverwinter/",
-          description: "The Jewel of the North."
-        },
-        {
-          name: "Forge of Spells",
-          x: 1000,
-          y: 1100,
-          url: "/dnd/wiki/lokacje/forge-of-spells/",
-          description: "Recovered by the party after Lost Mine of Phandelver."
-        }
-      ];
+      const markers = Array.from(document.querySelectorAll(".campaign-map-marker")).map(function (markerElement) {
+        return {
+          name: markerElement.dataset.name,
+          x: Number(markerElement.dataset.x),
+          y: Number(markerElement.dataset.y),
+          url: markerElement.dataset.url,
+          description: markerElement.dataset.description || ""
+        };
+      }).filter(function (marker) {
+        return marker.name && !Number.isNaN(marker.x) && !Number.isNaN(marker.y);
+      });
 
       markers.forEach(function (marker) {
         L.marker([marker.y, marker.x])
