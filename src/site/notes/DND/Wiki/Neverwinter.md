@@ -6,6 +6,14 @@
 
 This is a starter page for an interactive fantasy map using Leaflet. Replace the image path later with your uploaded map graphic.
 
+## Image link test
+
+If this image renders on the published site, the attachment is being published correctly:
+
+![NeverwinterMapClean.jpg](/img/user/DND/Lokacje/NeverwinterMapClean.jpg)
+
+If this test image works but the Leaflet map is empty, the problem is the JavaScript image URL, not the file itself.
+
 <div id="campaign-map" style="height: 650px; width: 100%; border: 1px solid #555; border-radius: 8px;"></div>
 
 <link
