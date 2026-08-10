@@ -20,7 +20,7 @@ The frame below is used by the Digital Garden custom Leaflet script.
   data-map-image="NeverwinterMapClean.jpg"
   data-map-width="4250"
   data-map-height="3264"
-  style="height: 650px; width: 100%; border: 1px solid #555; border-radius: 8px;"
+  style="height: 700px; width: min(95vw, 1200px); max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
 ></div>
 
 ## Markers
