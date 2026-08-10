@@ -23,13 +23,12 @@ The frame below is used by the Digital Garden custom Leaflet script.
   style="height: 700px; width: min(95vw, 1200px); max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
 ></div>
 
-## Map markers
 
-Add new markers below using the same format. The Digital Garden script reads these automatically.
-<div class="campaign-map-marker" data-name="Zamek Never" data-x="896" data-y="1280" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
-<div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
-<div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
-<div class="campaign-map-marker" data-name="Neverwinter" data-x="1450" data-y="500" data-url="/dnd/wiki/neverwinter/" data-description="The Jewel of the North."></div>
-<div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
-<div class="campaign-map-marker" data-name="Forge of Spells" data-x="1000" data-y="1100" data-url="/dnd/wiki/lokacje/forge-of-spells/" data-description="Recovered by the party after Lost Mine of Phandelver."></div>
-<div class="campaign-map-marker" data-name="Zamek Never" data-x="890" data-y="1225" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Dawny zamek władców Neverwinter"></div>
+<div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
+<div class="campaign-map-marker" data-name="Rozjebany Lewiatan" data-x="444" data-y="1230" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Przybrzeżna taverna należąca do Harraga"></div>
+<div class="campaign-map-marker" data-name="Wieża Płaszcza" data-x="2493" data-y="1660" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Siedziba magów z zakonu Płaszcza Wielu gwiazd"></div>
+<div class="campaign-map-marker" data-name="Koszary straży w dzielnicy Wież" data-x="1998" data-y="1562" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Kwatera strażników "></div>
+<div class="campaign-map-marker" data-name="Dom Antares" data-x="1756" data-y="1448" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Jedna z kamienic w dzielnicy wież, zamieszkiwana przez Antares"></div>
+<div class="campaign-map-marker" data-name="Dom Wiedzy" data-x=" 1402" data-y="1240" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Świątynia Oghmy i Wielka Biblioteka Neverwinter w Enklawie Protektora"></div>
+
+
