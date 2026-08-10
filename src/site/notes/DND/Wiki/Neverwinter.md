@@ -2,17 +2,13 @@
 {"dg-publish":true,"permalink":"/dnd/wiki/neverwinter/"}
 ---
 
-## Leaflet interactive campaign map
-
-## Image link test
-
-If this image renders on the published site, the attachment is being published correctly:
+##:
 
 
 
-## Interactive map
+## Interaktywna mapa Neverwinter
 
-The frame below is used by the Digital Garden custom Leaflet script.
+
 
 <div
   id="campaign-map"
