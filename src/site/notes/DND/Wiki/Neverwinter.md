@@ -30,5 +30,6 @@ Add new markers below using the same format. The Digital Garden script reads the
 <div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
 <div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
 <div class="campaign-map-marker" data-name="Neverwinter" data-x="1450" data-y="500" data-url="/dnd/wiki/neverwinter/" data-description="The Jewel of the North."></div>
-
+<div class="campaign-map-marker" data-name="Phandalin" data-x="1200" data-y="900" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Frontier town near the Triboar Trail."></div>
 <div class="campaign-map-marker" data-name="Forge of Spells" data-x="1000" data-y="1100" data-url="/dnd/wiki/lokacje/forge-of-spells/" data-description="Recovered by the party after Lost Mine of Phandelver."></div>
+<div class="campaign-map-marker" data-name="Zamek Never" data-x="890" data-y="1225" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Dawny zamek władców Neverwinter"></div>
