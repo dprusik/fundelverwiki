@@ -3,4 +3,4 @@
 ---
 
 [[DND/Listy,Notatki/Dziennik Terogona - wpis I\|Dziennik Terogona - wpis I]]
-[[Dziennik Terogona - wpis II\|Dziennik Terogona - wpis II]]
+[[DND/Listy,Notatki/Dziennik Terogona - wpis II\|Dziennik Terogona - wpis II]]
