@@ -16,9 +16,13 @@ This is a starter page for an interactive fantasy map using Leaflet. Replace the
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-  // Change this after uploading your map image to the Digital Garden / Vercel assets folder.
-  // Example: /img/sword-coast-map.jpg or /assets/maps/world-map.png
-  const mapImageUrl = "/DND/Lokacje/NeverwinterMapClean.jpg";
+  // Digital Garden usually publishes local images under /img/user/...
+  // The fallback paths help test where the file actually appears on Vercel.
+  const mapImageUrls = [
+    "/img/user/DND/Lokacje/NeverwinterMapClean.jpg",
+    "/DND/Lokacje/NeverwinterMapClean.jpg",
+    "/NeverwinterMapClean.jpg"
+  ];
 
   // Set this to the pixel size of your map image.
   // Example: if your image is 3000x2000, use width = 3000 and height = 2000.
@@ -34,8 +38,31 @@ This is a starter page for an interactive fantasy map using Leaflet. Replace the
     zoomControl: true
   });
 
-  L.imageOverlay(mapImageUrl, bounds).addTo(map);
-  map.fitBounds(bounds);
+  function loadMapImage(urls) {
+    if (!urls.length) {
+      document.getElementById("campaign-map").innerHTML =
+        "<div style='padding: 1rem; color: #ff6666;'>Map image failed to load. Check whether NeverwinterMapClean.jpg is published by Digital Garden.</div>";
+      return;
+    }
+
+    const url = urls.shift();
+    const testImage = new Image();
+
+    testImage.onload = function () {
+      L.imageOverlay(url, bounds).addTo(map);
+      map.fitBounds(bounds);
+      console.log("Loaded map image:", url);
+    };
+
+    testImage.onerror = function () {
+      console.warn("Failed map image path:", url);
+      loadMapImage(urls);
+    };
+
+    testImage.src = url;
+  }
+
+  loadMapImage([...mapImageUrls]);
 
   // Helper for placing markers using image pixel coordinates.
   // x = distance from left edge of image
