@@ -1,0 +1,120 @@
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script>
+(function () {
+  function loadScript(src, callback) {
+    if (window.L) {
+      callback();
+      return;
+    }
+
+    const existingScript = document.querySelector('script[src="' + src + '"]');
+    if (existingScript) {
+      existingScript.addEventListener("load", callback);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = callback;
+    script.onerror = function () {
+      document.querySelectorAll(".campaign-map").forEach(function (container) {
+        container.innerHTML = "<div style='padding: 1rem; color: #ff6666;'>Leaflet failed to load.</div>";
+      });
+    };
+    document.head.appendChild(script);
+  }
+
+  function initCampaignMaps() {
+    document.querySelectorAll("#campaign-map, .campaign-map").forEach(function (container) {
+      if (container.dataset.initialized === "true") return;
+      container.dataset.initialized = "true";
+
+      const mapWidth = Number(container.dataset.mapWidth || 3000);
+      const mapHeight = Number(container.dataset.mapHeight || 2000);
+      const explicitSrc = container.dataset.mapSrc;
+      const imageName = container.dataset.mapImage;
+      const renderedImage = imageName
+        ? document.querySelector('img[src*="' + imageName + '"]')
+        : null;
+
+      const mapImageUrl = explicitSrc || renderedImage?.src;
+
+      if (!mapImageUrl) {
+        container.innerHTML = "<div style='padding: 1rem; color: #ff6666;'>Map image URL not found. Add data-map-src to the map container.</div>";
+        return;
+      }
+
+      const bounds = [[0, 0], [mapHeight, mapWidth]];
+
+      const map = L.map(container, {
+        crs: L.CRS.Simple,
+        minZoom: -2,
+        maxZoom: 2,
+        zoomControl: true
+      });
+
+      L.imageOverlay(mapImageUrl, bounds).addTo(map);
+      map.fitBounds(bounds);
+
+      const markers = [
+        {
+          name: "Phandalin",
+          x: 1200,
+          y: 900,
+          url: "/dnd/wiki/lokacje/phandalin/",
+          description: "Frontier town near the Triboar Trail."
+        },
+        {
+          name: "Neverwinter",
+          x: 1450,
+          y: 500,
+          url: "/dnd/wiki/neverwinter/",
+          description: "The Jewel of the North."
+        },
+        {
+          name: "Forge of Spells",
+          x: 1000,
+          y: 1100,
+          url: "/dnd/wiki/lokacje/forge-of-spells/",
+          description: "Recovered by the party after Lost Mine of Phandelver."
+        }
+      ];
+
+      markers.forEach(function (marker) {
+        L.marker([marker.y, marker.x])
+          .addTo(map)
+          .bindPopup(
+            "<strong>" + marker.name + "</strong><br>" +
+            marker.description + "<br>" +
+            "<a href='" + marker.url + "'>Open note</a>"
+          );
+      });
+
+      map.on("click", function (event) {
+        const x = Math.round(event.latlng.lng);
+        const y = Math.round(event.latlng.lat);
+        console.log("Map coordinates: x=" + x + ", y=" + y);
+
+        L.popup()
+          .setLatLng(event.latlng)
+          .setContent("x: " + x + "<br>y: " + y)
+          .openOn(map);
+      });
+    });
+  }
+
+  function start() {
+    loadScript("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js", initCampaignMaps);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+</script>
