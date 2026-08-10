@@ -16,7 +16,8 @@ The frame below is used by the Digital Garden custom Leaflet script.
 
 <div
   id="campaign-map"
-  data-map-image="/img/user/DND/Lokacje/NeverwinterMapClean.jpg"
+  data-map-src="/img/user/DND/Lokacje/NeverwinterMapClean.jpg"
+  data-map-image="NeverwinterMapClean.jpg"
   data-map-width="4250"
   data-map-height="3264"
   style="height: 650px; width: 100%; border: 1px solid #555; border-radius: 8px;"
