@@ -16,7 +16,8 @@
   data-map-image="NeverwinterMapClean.jpg"
   data-map-width="3250"
   data-map-height="2264"
-  style="height: 700px; width: min(95vw, 1200px); max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
+  data-initial-zoom-offset="2"
+  style="width: min(99vw, 1800px); aspect-ratio: 3250 / 2264; max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
 ></div>
 
 
