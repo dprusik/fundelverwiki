@@ -23,7 +23,7 @@
 
 <div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-url="/dnd/wiki/lokacje/phandalin/" data-type="castle" data-description="Zamek dawnych władców Neverwinter."></div>
 <div class="campaign-map-marker" data-name="Rozjebany Lewiatan" data-x="444" data-y="1230" data-type="tavern" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Przybrzeżna taverna należąca do Harraga"></div>
-<div class="campaign-map-marker" data-name="Wieża Płaszcza" data-x="2493" data-y="1660" data-url="/dnd/wiki/lokacje/phandalin/" data-type="magic" data"-description="Siedziba magów z zakonu Płaszcza Wielu gwiazd"></div>
+<div class="campaign-map-marker" data-name="Wieża Płaszcza" data-x="2493" data-y="1660" data-url="/dnd/wiki/lokacje/phandalin/" data-type="magic" data-description="Siedziba magów z zakonu Płaszcza Wielu gwiazd"></div>
 <div class="campaign-map-marker" data-name="Koszary straży w dzielnicy Wież" data-x="1998" data-y="1562" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Kwatera strażników "></div>
 <div class="campaign-map-marker" data-name="Dom Antares" data-x="1756" data-y="1448" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Jedna z kamienic w dzielnicy wież, zamieszkiwana przez Antares"></div>
 <div class="campaign-map-marker" data-name="Dom Wiedzy" data-x=" 1424" data-y="1202" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Świątynia Oghmy i Wielka Biblioteka Neverwinter w Enklawie Protektora"></div>
