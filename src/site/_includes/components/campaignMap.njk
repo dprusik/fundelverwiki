@@ -28,6 +28,27 @@
     document.head.appendChild(script);
   }
 
+  function createMarkerIcon(color) {
+    const markerColor = color || "#2f80ed";
+
+    return L.divIcon({
+      className: "campaign-map-pin",
+      html:
+        "<div style='" +
+        "width: 18px; " +
+        "height: 18px; " +
+        "background: " + markerColor + "; " +
+        "border: 2px solid white; " +
+        "border-radius: 50% 50% 50% 0; " +
+        "transform: rotate(-45deg); " +
+        "box-shadow: 0 2px 6px rgba(0,0,0,0.45);" +
+        "'></div>",
+      iconSize: [22, 22],
+      iconAnchor: [11, 22],
+      popupAnchor: [0, -22]
+    });
+  }
+
   function initCampaignMaps() {
     document.querySelectorAll("#campaign-map, .campaign-map").forEach(function (container) {
       if (container.dataset.initialized === "true") return;
@@ -86,14 +107,15 @@
           x: Number(markerElement.dataset.x),
           y: Number(markerElement.dataset.y),
           url: markerElement.dataset.url,
-          description: markerElement.dataset.description || ""
+          description: markerElement.dataset.description || "",
+          color: markerElement.dataset.color || "#2f80ed"
         };
       }).filter(function (marker) {
         return marker.name && !Number.isNaN(marker.x) && !Number.isNaN(marker.y);
       });
 
       markers.forEach(function (marker) {
-        L.marker([marker.y, marker.x])
+        L.marker([marker.y, marker.x], { icon: createMarkerIcon(marker.color) })
           .addTo(map)
           .bindPopup(
             "<strong>" + marker.name + "</strong><br>" +
