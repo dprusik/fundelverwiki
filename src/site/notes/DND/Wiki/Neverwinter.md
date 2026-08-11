@@ -14,8 +14,8 @@
   id="campaign-map"
   data-map-src="/img/user/DND/Lokacje/NeverwinterMapClean.jpg"
   data-map-image="NeverwinterMapClean.jpg"
-  data-map-width="3250"
-  data-map-height="2264"
+  data-map-width="4250"
+  data-map-height="3064"
   style="height: 700px; width: min(95vw, 1200px); max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
 ></div>
 
