@@ -14,14 +14,14 @@
   id="campaign-map"
   data-map-src="/img/user/DND/Lokacje/NeverwinterMapClean.jpg"
   data-map-image="NeverwinterMapClean.jpg"
-  data-map-width="4250"
-  data-map-height="3064"
+  data-map-width="3250"
+  data-map-height="2264"
   style="height: 700px; width: min(95vw, 1200px); max-width: none; margin-left: 50%; transform: translateX(-50%); border: 1px solid #555; border-radius: 8px;"
 ></div>
 
 
-<div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-color="#e74c3c" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
-<div class="campaign-map-marker" data-name="Rozjebany Lewiatan" data-x="444" data-y="1230" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Przybrzeżna taverna należąca do Harraga"></div>
+<div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
+<div class="campaign-map-marker" data-name="Rozjebany Lewiatan" data-x="444" data-y="1230" data-type="tavern" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Przybrzeżna taverna należąca do Harraga"></div>
 <div class="campaign-map-marker" data-name="Wieża Płaszcza" data-x="2493" data-y="1660" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Siedziba magów z zakonu Płaszcza Wielu gwiazd"></div>
 <div class="campaign-map-marker" data-name="Koszary straży w dzielnicy Wież" data-x="1998" data-y="1562" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Kwatera strażników "></div>
 <div class="campaign-map-marker" data-name="Dom Antares" data-x="1756" data-y="1448" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Jedna z kamienic w dzielnicy wież, zamieszkiwana przez Antares"></div>
