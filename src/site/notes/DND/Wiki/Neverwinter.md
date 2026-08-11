@@ -20,7 +20,7 @@
 ></div>
 
 
-<div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
+<div class="campaign-map-marker" data-name="Zamek Never" data-x="870" data-y="1210" data-color="#e74c3c" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Zamek dawnych władców Neverwinter."></div>
 <div class="campaign-map-marker" data-name="Rozjebany Lewiatan" data-x="444" data-y="1230" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Przybrzeżna taverna należąca do Harraga"></div>
 <div class="campaign-map-marker" data-name="Wieża Płaszcza" data-x="2493" data-y="1660" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Siedziba magów z zakonu Płaszcza Wielu gwiazd"></div>
 <div class="campaign-map-marker" data-name="Koszary straży w dzielnicy Wież" data-x="1998" data-y="1562" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Kwatera strażników "></div>
