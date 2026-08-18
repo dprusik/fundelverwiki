@@ -29,7 +29,7 @@
 <div class="campaign-map-marker" data-name="Dom Wiedzy" data-x=" 1424" data-y="1202" data-url="/dnd/wiki/lokacje/phandalin/" data-type="temple" data-description="Świątynia Oghmy i Wielka Biblioteka Neverwinter w Enklawie Protektora"></div>
 <div class="campaign-map-marker" data-name="Hol sprawiedliwości" data-x=" 722" data-y="938" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Dawna świątnia Tyra, obecna siedziba rządu Dagulta Neverembera"></div>
 <div class="campaign-map-marker" data-name="Mikstury i zioła Featherfallówi" data-x=" 2104" data-y="1842" data-url="/dnd/wiki/lokacje/phandalin/" data-type="merchant" data-description="Sklep alchemiczny rodziny Featherfall"></div>
-<div class="campaign-map-marker" data-name="Mikstury i zioła Featherfallówi" data-x=" 726" data-y="1477" data-url="/dnd/wiki/lokacje/phandalin/" data-type="danger" data-description="miejsce spotkania z Bregan d'arthe"></div>
+<div class="campaign-map-marker" data-name="Stare kamienice w Bluelake" data-x=" 726" data-y="1477" data-url="/dnd/wiki/lokacje/phandalin/" data-type="danger" data-description="miejsce spotkania z Bregan d'arthe"></div>
 
 
 
