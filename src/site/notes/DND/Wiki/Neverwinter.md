@@ -30,6 +30,7 @@
 <div class="campaign-map-marker" data-name="Hol sprawiedliwości" data-x=" 722" data-y="938" data-url="/dnd/wiki/lokacje/phandalin/" data-description="Dawna świątnia Tyra, obecna siedziba rządu Dagulta Neverembera"></div>
 <div class="campaign-map-marker" data-name="Mikstury i zioła Featherfallówi" data-x=" 2104" data-y="1842" data-url="/dnd/wiki/lokacje/phandalin/" data-type="merchant" data-description="Sklep alchemiczny rodziny Featherfall"></div>
 <div class="campaign-map-marker" data-name="Stare kamienice w Bluelake" data-x=" 726" data-y="1477" data-url="/dnd/wiki/lokacje/phandalin/" data-type="danger" data-description="miejsce spotkania z Bregan d'arthe"></div>
-
+<div class="campaign-map-marker" data-name="Opuszczony posterunek wojskowy" data-x=" 2295" data-y="1062" data-url="/dnd/wiki/lokacje/phandalin/" data-type="danger" data-description="miejsce spotkania z Noszącym Purpurę"></div>
+<div class="campaign-map-marker" data-name="Odłamek księżyca" data-x=" 1559" data-y="1864" data-url="/dnd/wiki/lokacje/phandalin/" data-type="temple" data-description="Lewitująca świątynia Selune"></div>
 
 
