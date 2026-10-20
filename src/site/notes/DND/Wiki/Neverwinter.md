@@ -12,7 +12,7 @@
 
 <div
   id="campaign-map"
-  data-map-src="/img/user/DND/Lokacje/NeverwinterMapClean.jpg"
+  data-map-src="DND/Lokacje/Phandalin/NeverwinterMapClean.jpg"
   data-map-image="NeverwinterMapClean.jpg"
   data-map-width="3250"
   data-map-height="2264"
