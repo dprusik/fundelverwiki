@@ -34,4 +34,4 @@
 <div class="campaign-map-marker" data-name="Odłamek księżyca" data-x=" 1559" data-y="1864" data-url="/dnd/wiki/lokacje/phandalin/" data-type="temple" data-description="Lewitująca świątynia Selune"></div>
 
 
-![NeverwinterMapClean.jpg](/img/user/DND/Lokacje/Phandalin/NeverwinterMapClean.jpg)
+![DND/Lokacje/Phandalin/NeverwinterMapClean.jpg](/img/user/DND/Lokacje/Phandalin/NeverwinterMapClean.jpg)
