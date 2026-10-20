@@ -33,5 +33,8 @@
 <div class="campaign-map-marker" data-name="Opuszczony posterunek wojskowy" data-x=" 2295" data-y="1062" data-url="/dnd/wiki/lokacje/phandalin/" data-type="danger" data-description="miejsce spotkania z Noszącym Purpurę"></div>
 <div class="campaign-map-marker" data-name="Odłamek księżyca" data-x=" 1559" data-y="1864" data-url="/dnd/wiki/lokacje/phandalin/" data-type="temple" data-description="Lewitująca świątynia Selune"></div>
 
+<div style="display: none;">
 
 ![DND/Lokacje/Phandalin/NeverwinterMapClean.jpg](/img/user/DND/Lokacje/Phandalin/NeverwinterMapClean.jpg)
+
+</div>
