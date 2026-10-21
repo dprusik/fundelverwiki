@@ -1,5 +1,9 @@
 ---
-{"dg-publish":true,"permalink":"/przedmioty/"}
+{"dg-publish":true,"permalink":"/przedmioty/","title":"Przedmioty"}
 ---
 
-[[DND/Magic items/rolling-thunder\|rolling-thunder]]
+# Przedmioty
+
+- [[DND/Magic items/rolling-thunder|Rolling Thunder]]
+- [[Przedmioty/Bracers of the Red Brood|Bracers of the Red Brood]]
+- [[Przedmioty/Bekrit's Mask|Bekrit's Mask]]

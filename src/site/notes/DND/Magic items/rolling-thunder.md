@@ -6,7 +6,7 @@
 
 # Rolling Thunder
 
-![Item card](/img/user/DND/Magic%20items/assets/rolling-thunder-card.png)
+![Item card](/img/user/lorekeeper/rolling-thunder-card.png)
 
 Weapon (Longbow), rare
 
