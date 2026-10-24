@@ -82,3 +82,9 @@ Updated the sidebar rail note to the requested campaign line: "To kiedy level up
 Po końcowym odbiorze zaktualizowano wpis Bekrita (ten sam permalink i zatwierdzony portret). Na polecenie DM wycofano z publicznej projekcji wpis Gerwazego oraz jego nieużywany gdzie indziej portret; notatka źródłowa i plik obrazu pozostały w repozytorium. Wynikowy kandydat zawiera 27 artykułów, 18 oryginalnych publicznych zasobów, 33 zoptymalizowane warianty, 6 miniatur przedmiotów i 11 znaczników atlasu. Bramka legacy nie została zmieniona.
 
 Weryfikacja lokalna bieżącego kandydata: `wiki:build` PASS, `wiki:test` 20/20 PASS, `publication:build` PASS (105 plików, 37 tras), `publication:test` 75/75 PASS i `publication:test:browser` PASS (108 kontroli artykułów, wyszukiwanie na 3 viewportach, 44 przejścia atlasu, widoki mobilne, obrazy). Te wyniki dotyczą lokalnego artefaktu; zdalny Preview wymaga potwierdzenia po utworzeniu deploymentu z finalnego commita.
+
+## Finalny Preview i wdrożenie Production — 2026-10-24
+
+Kandydat Preview z gałęzi `feat/wiki-layout-2` został zaakceptowany przez DM i scalony jako PR #7. Commit merge `9daa026425a25783f93e397c4c6a01737baffcd3` jest kodem wdrożonym na Production. Vercel deployment `GgfhHU3AJ61DJVXQRVbTLTkBusb8` w projekcie `dprusiks-projects/fundelverwiki` uzyskał Ready; domena `https://fundelverwiki.vercel.app/` odpowiada wdrożeniem.
+
+Po wdrożeniu sprawdzono HTTP 200 na stronie głównej, katalogach, atlasie i artykułach; nieistniejąca ścieżka zwróciła HTTP 404. Publiczna projekcja ma 27 artykułów, 18 oryginalnych zasobów i 11 znaczników Neverwinter. Gerwazy i portret są nieobecni w zatwierdzonej wyszukiwarce i grafie. Robots.txt zezwala na indeksowanie, sitemap wskazuje produkcyjną domenę i brak noindex w odpowiedzi Production. Pozostałe wyniki testów opisano w `PROJECT_STATUS.md`.

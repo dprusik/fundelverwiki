@@ -479,3 +479,13 @@ The visible section labels are Polish. Their section URLs remain `/catalog/<id>/
 ## Final sidebar copy
 
 Updated the sidebar rail note to the requested campaign line: "To kiedy level up?". This is included in the follow-up commit for the final Preview.
+
+# Wiki Layout 2.0 i Dark Archive — Production zakończone (2026-10-24)
+
+Migracja została scalona do `main` przez PR #7. Commit wdrożenia aplikacji: `9daa026425a25783f93e397c4c6a01737baffcd3`. Vercel deployment `GgfhHU3AJ61DJVXQRVbTLTkBusb8` (`https://fundelverwiki-iwyl28rc1-dprusiks-projects.vercel.app/`) uzyskał status Ready w istniejącym projekcie `dprusiks-projects/fundelverwiki`; domena `https://fundelverwiki.vercel.app/` odpowiada nową wersją.
+
+Zakres publiczny wydania: 27 artykułów, 18 oryginalnych zasobów i atlas Neverwinter z 11 zatwierdzonymi znacznikami. Gerwazy i jego portret pozostają wycofane z publicznej projekcji. Produkcyjny artefakt zawierał 105 plików/37 tras, 27 wpisów wyszukiwania i grafu, 33 zoptymalizowane obrazy oraz 6 miniaturek przedmiotów. Zachowano permalinki i źródłowy vault Obsidiana; rejestry decyzji pozostały bez zmian. Nie wdrożono procesu publikacji ani Map Maker 2.0.
+
+Kontrole lokalne przed merge: `wiki:build` (57 wyjść), `wiki:test` 20/20, test organizacji 3/3, `publication:test` 75/75 i `publication:test:browser` PASS; produkcyjny `publication:build` PASS. Zdalny smoke test domeny: strona główna, katalogi postaci/organizacji/lokacji/przedmiotów, atlas, artykuł Neverwinter, Bekrit, Staff of War, approved-search, graph, sitemap i robots zwróciły HTTP 200; losowa nieistniejąca ścieżka zwróciła HTTP 404. Atlas zawierał 11 danych znaczników i 11 celów lokacji; katalogi zwróciły karty z miniaturami. W HTML strony głównej potwierdzono „To kiedy level up?”, w Bekricie pisownię „Fulmareth”; wyszukiwarka i graf nie zawierają Gerwazego. Sitemap używa kanonicznej domeny produkcyjnej, robots.txt zezwala na indeksowanie, a HTML produkcyjny nie zawiera `noindex`/`nofollow`. Nagłówki produkcji nie zawierają `X-Robots-Tag: noindex`.
+
+Dark Archive, sidebar i menu, katalogi, obrazy i nawigacja sprawdzone zdalnie lub w testach przeglądarkowych. Nie wystąpił błąd blokujący.

@@ -107,3 +107,11 @@ The visible section labels are Polish. Their section URLs remain `/catalog/<id>/
 ## Final sidebar copy
 
 Updated the sidebar rail note to the requested campaign line: "To kiedy level up?". This is included in the follow-up commit for the final Preview.
+
+## Wynik przełączenia Production — 2026-10-24
+
+Przełączenie zakończono po akceptacji DM. PR #7 scalono do `main`; kod wydania: `9daa026425a25783f93e397c4c6a01737baffcd3`. Projekt Vercel `dprusiks-projects/fundelverwiki` wdrożył commit w Production, deployment `GgfhHU3AJ61DJVXQRVbTLTkBusb8` uzyskał Ready. Domena `https://fundelverwiki.vercel.app/` pozostała bez zmian i serwuje nową wiki. Użyto istniejącego `vercel.json`, Node 24.x i `npm run publication:build`; nie uruchamiano starego `npm run build`.
+
+Weryfikacja produkcji: strony główna, katalogi, atlas, kluczowe artykuły, approved-search, graph, sitemap i robots odpowiadały HTTP 200; losowa nieistniejąca strona zwróciła HTTP 404. Potwierdzono kanoniczne URL w sitemap, indeksowanie Production bez noindex, tekst „To kiedy level up?”, 11 znaczników atlasu i brak Gerwazego w wyszukiwarce/grafie. Szczegółowe wyniki i zestaw testów są w `PROJECT_STATUS.md`.
+
+Migracja Wiki Layout 2.0 i motyw Dark Archive są zakończone. Nie zmieniano DNS, źródłowego vaulta ani rejestrów decyzji. Nie uruchomiono procesu publikacji ani Map Maker 2.0.
