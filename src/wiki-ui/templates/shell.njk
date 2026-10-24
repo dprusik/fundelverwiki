@@ -45,7 +45,7 @@
     {% if page.url != homeUrl %}<nav class="breadcrumbs" aria-label="Ścieżka nawigacji"><a href="{{ homeUrl }}">Start</a><span aria-hidden="true">/</span>{% if breadcrumbLabel %}<a href="{{ breadcrumbUrl | escape }}">{{ breadcrumbLabel | escape }}</a><span aria-hidden="true">/</span>{% endif %}{% if breadcrumbParentLabel and breadcrumbParentUrl %}<a href="{{ breadcrumbParentUrl | escape }}">{{ breadcrumbParentLabel | escape }}</a><span aria-hidden="true">/</span>{% endif %}<span aria-current="page">{{ title | escape }}</span></nav>{% endif %}
     {{ content | safe }}
   </main>
-  <footer>{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Wiki kampanii{% endif %} <span>{% if isDemo %}Dane demonstracyjne{% elif publicationPreview %}Zatwierdzone treści · podgląd lokalny{% elif publicationProduction %}Wydanie publiczne · zatwierdzone treści{% else %}Lokalny podgląd · brak wdrożenia{% endif %}</span></footer>
+  <footer>{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Wiki kampanii{% endif %} <span>{% if isDemo %}Dane demonstracyjne{% elif publicationPreview %}Zatwierdzone treści · wersja podglądowa{% elif publicationProduction %}Wydanie publiczne · zatwierdzone treści{% else %}Lokalny podgląd · brak wdrożenia{% endif %}</span></footer>
 </div>
 <dialog id="search-dialog" data-search-scope="{% if isDemo %}demo{% else %}approved{% endif %}" aria-labelledby="search-heading" aria-describedby="search-hint">
   <div class="dialog-heading"><h2 id="search-heading">{% if isDemo %}Szukaj w demonstracyjnej wiki{% else %}Szukaj w wiki kampanii{% endif %}</h2><button id="search-close" aria-label="Zamknij wyszukiwanie">✕</button></div>

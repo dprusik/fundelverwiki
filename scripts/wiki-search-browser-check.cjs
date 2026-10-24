@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const base = process.env.WIKI_PREVIEW_URL || 'http://127.0.0.1:8081';
+const publication = process.argv.includes('--publication');
 const fixture = { schema_version: 1, demonstration: false, entries: [
   { id: 'one', title: 'Łódź', aliases: ['Przeprawa'], body: 'Wstęp. '.repeat(60) + 'Bursztynowy sekret mostu.', summary: 'Inny opis', url: '/test/lodz/' },
   { id: 'two', title: '<img src=x onerror=alert(1)>', body: 'Łódź w opisie', url: '/test/html/' },
@@ -90,10 +91,11 @@ const fixture = { schema_version: 1, demonstration: false, entries: [
       await context.close();
       checks++;
     }
-    // Real approved index and demo stay separate on fresh pages.
+    // Publication checks the real approved index and missing-page behavior.
+    // The separate prototype mode retains its approved/demo isolation scenario.
     const context = await browser.newContext();
     const page = await context.newPage();
-    const index = JSON.parse(fs.readFileSync('.wiki-preview/approved-search.json', 'utf8'));
+    const index = JSON.parse(fs.readFileSync(path.join(publication ? '.publication-build/production' : '.wiki-preview', 'approved-search.json'), 'utf8'));
     assert.ok(index.entries.length > 0);
     const requests = [];
     page.on('request', request => requests.push(new URL(request.url()).pathname));
@@ -104,14 +106,31 @@ const fixture = { schema_version: 1, demonstration: false, entries: [
     assert.ok((await page.locator('#search-results a').allTextContents()).includes(index.entries[0].title));
     assert.ok(!requests.includes('/demo-search.json'));
     requests.length = 0;
-    await page.goto(base + '/demo/');
-    await page.keyboard.press('Control+k');
-    await page.locator('#search-term').fill('rysowniczka map');
-    await page.waitForSelector('#search-results a');
-    assert.equal(await page.locator('#search-results a').first().textContent(), 'Mira Wędrowna');
-    assert.ok(requests.includes('/demo-search.json') && !requests.includes('/approved-search.json'));
+    if (publication) {
+      for (const missing of ['/__wiki_missing_page__/', '/__wiki_missing_page__.html']) {
+        const response = await page.goto(base + missing);
+        assert.equal(response.status(), 404, 'Missing pages must return HTTP 404');
+        assert.equal(await page.locator('h1').textContent(), 'Nie znaleziono strony');
+        assert.equal((await context.request.head(base + missing)).status(), 404);
+      }
+      await page.keyboard.press('Control+k');
+      await page.locator('#search-term').fill(index.entries[0].title);
+      await page.waitForSelector('#search-results a');
+      assert.ok((await page.locator('#search-results a').allTextContents()).includes(index.entries[0].title));
+      assert.ok(requests.includes('/approved-search.json') && !requests.includes('/demo-search.json'));
+      await page.keyboard.press('Escape');
+      await page.getByRole('link', { name: 'Wróć na stronę główną' }).click();
+      assert.equal(new URL(page.url()).pathname, '/');
+    } else {
+      await page.goto(base + '/demo/');
+      await page.keyboard.press('Control+k');
+      await page.locator('#search-term').fill('rysowniczka map');
+      await page.waitForSelector('#search-results a');
+      assert.equal(await page.locator('#search-results a').first().textContent(), 'Mira Wędrowna');
+      assert.ok(requests.includes('/demo-search.json') && !requests.includes('/approved-search.json'));
+    }
     await context.close();
     assert.deepEqual(errors, []);
-    console.log(`SEARCH_BROWSER_PASS: ${checks} viewports, title/alias/body/snippet, retry, URL/XSS isolation, delayed close/reopen, real approved/demo scopes`);
+    console.log(`SEARCH_BROWSER_PASS: ${checks} viewports, title/alias/body/snippet, retry, URL/XSS isolation, delayed close/reopen, ${publication ? 'approved index and HTTP 404 GET/HEAD' : 'real approved/demo scopes'}`);
   } finally { await browser.close(); }
 })().catch(error => { console.error(error.name, error instanceof assert.AssertionError ? error.message : 'Search browser check failed'); if (process.env.WIKI_BROWSER_DEBUG) console.error(error); process.exitCode = 1; });

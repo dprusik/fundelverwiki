@@ -16,6 +16,8 @@ const fs = require('node:fs');
       const data = JSON.parse(await page.locator('#map-data').textContent());
       assert.equal(data.unresolved_links, 0);
       assert.equal(data.map.markers.length, 11);
+      await page.waitForFunction(() => document.getElementById('status').textContent.startsWith('Zatwierdzona mapa'));
+      assert.ok(!(await page.locator('#status').textContent()).includes('build pozostaje zablokowany'));
       const destinations = new Set();
       for (const marker of data.map.markers) {
         assert.ok(marker.url.startsWith('/dnd/wiki/lokacje/neverwinter/'));

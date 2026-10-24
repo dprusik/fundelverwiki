@@ -7,10 +7,12 @@ import * as sass from 'sass';
 import localArticles from '../src/helpers/wiki/local-articles.cjs';
 import outputGuard from '../src/helpers/wiki/production-output.cjs';
 import imageVariants from '../src/helpers/wiki/image-variants.cjs';
+import catalogThumbnails from '../src/helpers/wiki/catalog-thumbnails.cjs';
 import { organizeApprovedCatalog } from '../src/wiki-ui/catalog.cjs';
 import { projectApprovedSearch } from '../src/helpers/wiki/approved-search.cjs';
 
 const require = createRequire(import.meta.url);
+const sharp = require('sharp');
 
 const root = process.cwd();
 const stagingRoot = resolve(root, '.publication-build');
@@ -39,7 +41,8 @@ const reserved = ['/', '/approved/', '/organizations/', '/404.html', '/approved-
   '/catalog/documents/', '/catalog/characters/', '/catalog/locations/', '/catalog/items/', '/catalog/maps/', '/catalog/chronicle/', ...atlasReservations];
 const local = localArticles.prepareLocalArticles(root, reserved);
 const variants = await imageVariants.buildImageVariants(local, ['/img/user/lorekeeper/dark-archive-dragon-banner.png']);
-for (const file of variants.files) {
+const thumbnails = await catalogThumbnails.buildCatalogThumbnails(local, variants.sources);
+for (const file of [...variants.files, ...thumbnails.files]) {
   const target = join(output, outputGuard.assetFile(file.url));
   mkdirSync(join(target, '..'), { recursive: true });
   writeFileSync(target, file.bytes, { flag: 'wx' });
@@ -49,9 +52,9 @@ const siteUrl = new URL(process.env.PUBLICATION_SITE_URL || 'https://fundelverwi
 if (siteUrl.origin !== 'https://fundelverwiki.vercel.app' || siteUrl.pathname !== '/' || siteUrl.search || siteUrl.hash || siteUrl.username || siteUrl.password) throw Error('PUBLICATION_SITE_ORIGIN_NOT_ALLOWLISTED');
 const model = {
   sections: catalog.sections,
-  catalog: catalog.entries.map(entry => ({ ...entry, ...(local.catalog.find(item => item.id === entry.id)?.published_at ? { published_at: local.catalog.find(item => item.id === entry.id).published_at } : {}) })),
+  catalog: catalog.entries.map(entry => ({ ...entry, ...(thumbnails.byId[entry.id] ? { thumbnail: thumbnails.byId[entry.id] } : {}), ...(local.catalog.find(item => item.id === entry.id)?.published_at ? { published_at: local.catalog.find(item => item.id === entry.id).published_at } : {}) })),
   maps: [],
-  assets: [...local.files, ...variants.files].map(file => ({ url: file.url, sha256: createHash('sha256').update(file.bytes).digest('hex') })),
+  assets: [...local.files, ...variants.files, ...thumbnails.files].map(file => ({ url: file.url, sha256: createHash('sha256').update(file.bytes).digest('hex') })),
   relations: [],
   siteOrigin: siteUrl.origin
 };
@@ -62,13 +65,23 @@ model.maps = maps;
 
 mkdirSync(join(output, 'assets'), { recursive: true });
 writeFileSync(join(output, 'assets/wiki.css'), sass.compile('src/wiki-ui/wiki.scss', { style: 'compressed' }).css);
+const sidebarCompass = readFileSync('src/wiki-ui/assets/rosedim.webp');
+// This theme-only PNG is deliberately outside the approved publication adapter.
+// Its checked-in WebP derivative is the sole public runtime asset.
+const generatedSidebarCompass = await sharp(readFileSync('src/wiki-ui/assets/rosedim.png'))
+  .resize({ width: 320, height: 320, fit: 'inside', withoutEnlargement: true })
+  .webp({ quality: 82 })
+  .toBuffer();
+if (!generatedSidebarCompass.equals(sidebarCompass)) throw Error('THEME_WINDROSE_DERIVATIVE_MISMATCH');
+writeFileSync(join(output, 'assets/rosedim.webp'), sidebarCompass, { flag: 'wx' });
 model.runtimeHashes = {
   'assets/wiki.css': createHash('sha256').update(readFileSync(join(output, 'assets/wiki.css'))).digest('hex'),
+  'assets/rosedim.webp': createHash('sha256').update(sidebarCompass).digest('hex'),
   'assets/wiki.js': createHash('sha256').update(readFileSync('src/wiki-ui/client.js')).digest('hex'),
   'assets/search.mjs': createHash('sha256').update(readFileSync('src/wiki-ui/search.mjs')).digest('hex'),
   ...(maps.length ? { 'assets/map-viewer.js': createHash('sha256').update(readFileSync('tools/publication-review/map.js')).digest('hex') } : {})
 };
-const env = { ...process.env, WIKI_PUBLICATION_OUTPUT: output, WIKI_PUBLICATION_MODE: production ? 'production' : 'preview', WIKI_PUBLICATION_IMAGE_VARIANTS: JSON.stringify(variants.sources) };
+const env = { ...process.env, WIKI_PUBLICATION_OUTPUT: output, WIKI_PUBLICATION_MODE: production ? 'production' : 'preview', WIKI_PUBLICATION_IMAGE_VARIANTS: JSON.stringify(variants.sources), WIKI_PUBLICATION_CATALOG_THUMBNAILS: JSON.stringify(thumbnails.byId) };
 delete env.ELEVENTY_ENV;
 const result = spawnSync(process.execPath, ['node_modules/@11ty/eleventy/cmd.cjs', '--config=wiki-production.config.cjs', '--quiet'], { cwd: root, env, stdio: 'inherit' });
 if (result.error) throw result.error;
@@ -108,4 +121,4 @@ const manifest = outputGuard.listOutputFiles(output).sort().map(file => ({ path:
 const manifestMode = vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview';
 const manifestName = fixedOutput ? `${manifestMode}-${randomUUID()}.manifest.json` : `${output.split(/[\\/]/).at(-1)}.manifest.json`;
 writeFileSync(join(stagingRoot, manifestName), JSON.stringify({ mode: manifestMode, generated_at: new Date().toISOString(), summary: report, files: manifest }, null, 2), { flag: 'wx' });
-console.log(JSON.stringify({ status: 'PASS', mode: vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview', output: output.slice(root.length + 1), approvedAssets: local.files.length, optimizedImages: variants.files.length, ...report, legacyProductionGate: 'unchanged', deployable: production }, null, 2));
+console.log(JSON.stringify({ status: 'PASS', mode: vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview', output: output.slice(root.length + 1), approvedAssets: local.files.length, optimizedImages: variants.files.length, catalogThumbnails: thumbnails.files.length, ...report, legacyProductionGate: 'unchanged', deployable: production }, null, 2));

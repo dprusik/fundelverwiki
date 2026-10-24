@@ -38,6 +38,28 @@ const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
         assert.ok(await page.locator('[data-search]').count() > 0);
         assert.equal(await page.locator('#search-dialog').getAttribute('data-search-scope'), 'approved');
         if (route.count !== null) assert.equal(await page.locator('main [data-approved-id]').count(), route.count);
+        if (route.url === '/catalog/items/') {
+          const thumbnails = page.locator('.entry-card-thumb--item');
+          assert.equal(await thumbnails.count(), route.count, 'Every visible item card should have an artwork-only thumbnail');
+          for (const image of await thumbnails.all()) { await image.evaluate(element => element.decode()); assert.ok(await image.evaluate(element => element.naturalWidth === 720 && element.naturalHeight === 360)); }
+        }
+        if (route.url === '/catalog/characters/') {
+          const thumbnails = page.locator('.entry-card-thumb--character');
+          assert.ok(await thumbnails.count() > 0, 'Character catalog should include available portraits');
+          for (const image of await thumbnails.all()) { await image.evaluate(element => element.decode()); assert.ok(await image.evaluate(element => element.naturalWidth > 0)); }
+          const portraitBox = await page.locator('.entry-card-character-portrait').first().boundingBox();
+          assert.equal(portraitBox.width, 96);
+          assert.equal(portraitBox.height, 116);
+          assert.equal(await thumbnails.first().evaluate(element => getComputedStyle(element).objectFit), 'cover');
+          assert.equal(await thumbnails.first().evaluate(element => getComputedStyle(element).objectPosition), '50% 25%');
+        }
+        if (route.url === '/catalog/locations/') {
+          for (const image of await page.locator('.entry-card-thumb--location').all()) { await image.evaluate(element => element.decode()); assert.ok(await image.evaluate(element => element.naturalWidth > 0)); }
+        }
+        if (route.url === '/') {
+          assert.match(await page.locator('.rail-note').evaluate(element => getComputedStyle(element, '::after').backgroundImage), /rosedim\.webp/);
+          assert.equal((await context.request.get('http://127.0.0.1:8081/assets/rosedim.webp')).status(), 200);
+        }
         if (route.atlasMaps) assert.deepEqual(await page.locator('main [data-map-view-id]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href'))), route.atlasMaps.map(view => view.atlasUrl));
         if (route.locationGroups) {
           assert.deepEqual(await page.locator('main [data-location-group]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href'))), route.locationGroups.map(group => group.url));

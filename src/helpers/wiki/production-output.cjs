@@ -53,7 +53,7 @@ function expectedOutputFiles(model) {
     ...model.maps.map(map => map.atlasUrl)
   ];
   const files = new Set([...routes.map(routeFile), 'approved-search.json', 'graph.json', 'sitemap.xml', 'feed.xml', 'robots.txt',
-    'assets/wiki.css', 'assets/wiki.js', 'assets/search.mjs']);
+    'assets/wiki.css', 'assets/wiki.js', 'assets/search.mjs', 'assets/rosedim.webp']);
   if (model.maps.length) files.add('assets/map-viewer.js');
   for (const asset of model.assets) files.add(assetFile(asset.url));
   return files;

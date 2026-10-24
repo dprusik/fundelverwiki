@@ -33,11 +33,14 @@ module.exports = function (config) {
   const reserved = ['/', '/approved/', '/organizations/', '/404.html', '/approved-search.json', '/graph.json', '/sitemap.xml', '/feed.xml', '/robots.txt', '/catalog/documents/', '/catalog/characters/', '/catalog/locations/', '/catalog/items/', '/catalog/maps/', '/catalog/chronicle/', ...activeMaps];
   const local = prepareLocalArticles(root, reserved);
   const catalog = applyCatalogVisibility(organizeApprovedCatalog(local.catalog));
+  const catalogThumbnails = JSON.parse(process.env.WIKI_PUBLICATION_CATALOG_THUMBNAILS || '{}');
+  for (const entry of catalog.entries) if (catalogThumbnails[entry.id]) entry.thumbnail = catalogThumbnails[entry.id];
   const locationNavigation = organizeLocationNavigation(catalog.entries, [...local.articles, ...local.maps.map(map => map.entry)], require('./src/wiki-ui/location-navigation.json'));
   for (const article of [...local.articles, ...local.maps.map(map => map.entry)]) Object.assign(article, catalog.entries.find(entry => entry.id === article.id));
   for (const group of locationNavigation.groups) {
     const parent = [...local.articles, ...local.maps.map(map => map.entry)].find(article => article.id === group.id);
     parent.locationDirectory = true;
+    if (catalogThumbnails[group.id]) group.thumbnail = catalogThumbnails[group.id];
     for (const article of local.articles.filter(article => group.entries.some(entry => entry.id === article.id))) article.locationParent ||= { title: group.title, url: group.url };
   }
   const maps = buildAtlasViews(local.maps, atlasConfig, local.catalog.map(entry => entry.url));

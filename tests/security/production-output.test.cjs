@@ -20,12 +20,18 @@ function cleanModel() {
   const model = {
     sections: [{ id: 'characters' }],
     catalog: [{ id: 'approved-one', url: '/known/', title: 'Known', category: 'characters', kind: 'character', aliases: [], body: '', summary: '' }],
-    maps: [], assets: [{ url: '/img/approved/picture.png', sha256: crypto.createHash('sha256').update('static').digest('hex') }], relations: [], siteOrigin: 'https://example.test', runtimeHashes: Object.fromEntries(['assets/wiki.css', 'assets/wiki.js', 'assets/search.mjs'].map(file => [file, crypto.createHash('sha256').update('static').digest('hex')]))
+    maps: [], assets: [{ url: '/img/approved/picture.png', sha256: crypto.createHash('sha256').update('static').digest('hex') }], relations: [], siteOrigin: 'https://example.test', runtimeHashes: Object.fromEntries(['assets/wiki.css', 'assets/rosedim.webp', 'assets/wiki.js', 'assets/search.mjs'].map(file => [file, crypto.createHash('sha256').update('static').digest('hex')]))
   };
   model.search = { schema_version: 1, demonstration: false, entries: [{ id: 'approved-one', url: '/known/', title: 'Known', category: 'characters', aliases: [], body: '', summary: '' }] };
   model.graph = { schema_version: 1, nodes: [{ id: 'approved-one', url: '/known/', title: 'Known', category: 'characters', kind: 'character' }], edges: [] };
   return model;
 }
+
+test('theme windrose derivative is explicitly allowed while its PNG source stays out of public output', () => {
+  const files = expectedOutputFiles(cleanModel());
+  assert.ok(files.has('assets/rosedim.webp'));
+  assert.equal(files.has('src/wiki-ui/assets/rosedim.png'), false);
+});
 function populateValidOutput(root, model) {
   for (const file of expectedOutputFiles(model)) {
     if (file.endsWith('.html')) write(root, file, '<!doctype html><html><head><meta name="robots" content="noindex,nofollow"></head><body></body></html>');

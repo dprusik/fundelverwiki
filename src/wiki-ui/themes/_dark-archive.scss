@@ -1,6 +1,7 @@
 // Presentation only. Campaign tokens live in the theme configuration; layout,
 // content imagery and interaction behaviour remain in the shared UI.
 $archive-compass: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23B69A66' stroke-width='.8'%3E%3Ccircle cx='120' cy='120' r='94'/%3E%3Ccircle cx='120' cy='120' r='86'/%3E%3Ccircle cx='120' cy='120' r='48'/%3E%3Cpath d='M120 3v234M3 120h234M36 36l168 168M36 204L204 36M120 12l14 94 94 14-94 14-14 94-14-94-94-14 94-14Z M120 45l-9 66-66 9 66 9 9 66 9-66 66-9-66-9Z M120 12v108h108M120 228V120H12'/%3E%3Ccircle cx='120' cy='120' r='6'/%3E%3Cpath d='M65 39l5 8M39 65l8 5M175 39l-5 8M201 65l-8 5M39 175l8-5M65 201l5-8M175 201l-5-8M201 175l-8-5'/%3E%3C/svg%3E");
+$archive-rail-compass: url("/assets/rosedim.webp");
 $archive-rule: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' fill='none' stroke='%23B69A66' stroke-width='.8'%3E%3Cpath d='M1 6h43l7-4 9 4-9 4-7-4M60 6l9-4 7 4-7 4-9-4h59M4 3v6M116 3v6'/%3E%3C/svg%3E");
 html[data-theme="dark-archive"] {
   color-scheme: dark;
@@ -48,7 +49,7 @@ html[data-theme="dark-archive"] {
   .submenu-toggle { background: transparent; }
   .rail-note {
     color: var(--lk-muted);
-    &::after { content: ''; display: block; width: 140px; height: 140px; margin: 28px auto 0; background: $archive-compass center / contain no-repeat; opacity: .18; pointer-events: none; }
+    &::after { content: ''; display: block; width: 140px; height: 140px; margin: 28px auto 0; background: $archive-rail-compass center / contain no-repeat; opacity: .34; pointer-events: none; }
   }
   .topbar { background: var(--lk-sidebar); }
   .top-search { background: transparent; }

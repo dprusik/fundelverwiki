@@ -33,6 +33,7 @@ const server = http.createServer((req, res) => {
         page.on('pageerror', error => errors.push(error.message));
         await page.goto(base + entry.permalink);
         await page.waitForSelector('body.js');
+        assert.ok(!(await page.locator('footer').textContent()).includes('podgląd lokalny'));
         const trigger = page.locator(entry === character ? '.profile-portrait [data-image-viewer]' : '.approved-prose [data-image-viewer]').first();
         const image = trigger.locator('img');
         const original = await trigger.getAttribute('href');

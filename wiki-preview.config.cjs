@@ -53,6 +53,7 @@ module.exports = function (config) {
     .filter(item => item.character?.kind === 'character'));
   config.addPassthroughCopy({ 'src/wiki-ui/client.js': 'assets/wiki.js' });
   config.addPassthroughCopy({ 'src/wiki-ui/search.mjs': 'assets/search.mjs' });
+  config.addPassthroughCopy({ 'src/wiki-ui/assets/rosedim.webp': 'assets/rosedim.webp' });
   config.addPassthroughCopy({ 'tools/publication-review/map.js': 'assets/map-viewer.js' });
   config.addPassthroughCopy({ 'src/wiki-ui/themes/assets/dragon-banner.png': 'assets/branding/dragon-banner.png' });
   config.addPassthroughCopy({ 'src/wiki-ui/themes/assets/bekrit-mask.png': 'assets/branding/bekrit-mask.png' });

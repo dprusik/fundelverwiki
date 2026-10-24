@@ -430,3 +430,47 @@ Generator kontrolowany zapisuje 38 pochodnych pod URL zawierającymi pełny SHA-
 `publication:test` 74/74, `wiki:test` 19/19 PASS. Build Preview PASS: 105 plików, 38 tras, 28 search/graph, 19 oryginalnych assetów i 38 pochodnych. Nowy `wiki-image-performance-browser-check.cjs` PASS w Edge headless przy 1440/390/320 px: dobór wariantu, brak pobrania oryginału przed kliknięciem, modal z oryginałem, Escape/fokus, brak overflow i błędów JS oraz oryginał bez JS. Bekrit pobiera 30 518 B zamiast 3 076 810 B; ilustracja dziennika 116 760 B na desktopie, 53 820 B przy 390 px i 15 002 B przy 320 px zamiast 3 036 921 B. To pomiar wybranego pliku/transferu, nie gwarancja czasu ładowania na Vercel. Zrzuty portretu i ilustracji na telefonie sprawdzono wizualnie; są w ignorowanym `.publication-review/image-performance`. Mapa 6,3 MB oraz karty nadal używają pełnych oryginałów.
 
 Optymalizacja jest lokalna; nie wykonano commita, pushu ani nowego deploymentu. Rzeczywista wydajność zdalnego Preview pozostaje do sprawdzenia po publikacji.
+
+### Publikacja optymalizacji w Preview — 2026-10-24
+
+Po jawnej zgodzie DM zapisano i wypchnięto commit `5e5e3ca` na `feat/wiki-layout-2`. Vercel zakończył deployment `CEp9nPQaXoJv5kQurKjMFg2e1Cdy` statusem Ready jako Preview: https://fundelverwiki-2nru95b0l-dprusiks-projects.vercel.app/ . W zalogowanej przeglądarce sprawdzono wygląd portretu Bekrita, działanie modalu i odnośnik do oryginalnego PNG. Odczyt źródła zdalnego HTML potwierdził `/img/optimized/`, WebP, `srcset` i `noindex,nofollow`. Nie mierzono zdalnego czasu pobierania ani prędkości na fizycznym telefonie. Nie zmieniano Production, nie scalano gałęzi. Ten wpis wynikowy jest lokalną aktualizacją dokumentacji po wdrożeniu.
+
+## Weryfikacja aktualnego Preview — 2026-10-24
+
+DM pozostawił dalszą ocenę szybkości portretów do feedbacku graczy i polecił wrócić do przeglądu Preview. Zdalnie sprawdzono katalog przedmiotów, panel desktop i Ctrl+K, wyszukiwanie i brak wyników, organizację i linki do postaci, pustą Kronikę, atlas/11 znaczników i obustronne przejście do artykułu lokacji oraz własną stronę błędu z globalnym szukaniem i linkiem do Start. Lokalny bieżący artefakt przeszedł build, 111 kontroli stron/viewportów oraz testy wyszukiwarki na 3 szerokościach. Oryginalny test wyszukiwarki oczekiwał demo; dla wydania publikacyjnego jawnie sprawdzono jego brak i działające szukanie na 404, bez zmiany testu prototypu.
+
+Szczegóły, rozdzielenie wyników lokalnych/zdalnych, timeout historycznego scenariusza i ograniczenia: [PREVIEW_VERIFICATION.md](PREVIEW_VERIFICATION.md). Nie wykryto błędu blokującego w sprawdzonym zakresie; odnotowano nieaktualne etykiety „podgląd lokalny” i komunikat o zablokowanym buildzie w atlasie. Szablonów, zgód i produkcji nie zmieniano. Raport pozostaje lokalny, bez commita/pushu/deploymentu.
+
+## Końcowe poprawki i przygotowanie przejścia na Production — 2026-10-24
+
+Na polecenie DM poprawiono stopkę Preview na „Zatwierdzone treści · wersja podglądowa” i status atlasu na „Zatwierdzona mapa · 11 znaczników.”. Zmiany dotyczą tekstów, nie walidacji ani reguł dostępu. `vercel.json`, legacy guard, rejestry DM, notatki, permalinki, oryginalne assety i vault pozostały bez zmian.
+
+Na działającym Preview `5e5e3ca` potwierdzono w panelu Network rzeczywiste **HTTP 404 Not Found** dla dokumentu `/preview-verification-not-found/`. Nie trzeba naprawiać routingu. Nowy zwykły runner `npm run publication:test:browser` obsługuje artefakt publikacyjny i uruchamia istniejące kontrole, w tym `wiki-search-browser-check.cjs --publication` bez zależności od `/demo/` i ignorowanych adapterów. Dodano Playwright 1.64.1 do devDependencies i lockfile; nie aktualizowano pozostałych zależności. Lokalna kontrola GET/HEAD obejmuje brakującą trasę katalogową i `.html`, szablon wiki, szukanie oraz powrót do Start.
+
+Buildy Preview i Production PASS (105 plików, 38 tras, 28 rekordów search/graph, 19 oryginalnych assetów i 38 pochodnych, atlas z 11 znacznikami). Oryginały w output porównano bajt po bajcie. Końcowe kontrole wykonano na Node 22.23.4: wiki + organizacje 22/22, publikacja 74/74; przeglądarka Edge/Playwright: 111 kombinacji stron/viewportów, 3 szerokości wyszukiwania, 44 przejścia atlas–lokacja–atlas, mobilny panel/obrót/dotyk, 6 widoków ilustracji i oryginały bez JS PASS. Wcześniejszy przebieg npm na Node 24.22.0 również przeszedł. Nie testowano fizycznych telefonów.
+
+Procedura uruchomienia testów, zakres zmian, wynik 404 i instrukcja finalne Preview → istniejący projekt Vercel → `main`/Production: [PRODUCTION_SWITCHOVER.md](PRODUCTION_SWITCHOVER.md). Odbiór wskazanych poprawek jest domknięty lokalnie; do wydania pozostaje zapis/wysłanie końcowego commita, finalne Preview i jawna decyzja o Production. Nie wykonano commita, pushu, scalenia ani deploymentu tej iteracji. Nowego audytu całego projektu nie rozpoczynano.
+
+## Dodatkowe poprawki graficzne przed finalnym Preview - 2026-10-24
+
+Menu boczne używa teraz grafiki `rosedim.png` jako róży wiatrów. Asset zoptymalizowano do WebP 320 px (37 612 B); dekoracja hero zachowała dotychczasowy SVG. Kafle katalogu postaci pokazują miniatury zatwierdzonych portretów, a sześć kafli przedmiotów używa kadrów samej ilustracji bez tekstu karty. Oryginalne obrazy artykułów i notatki nie zostały zmienione.
+
+Build kandydata Production PASS: 112 plików, 38 tras, 28 search/graph, 19 oryginalnych zasobów, 38 wcześniejszych wariantów, 6 miniatur przedmiotów i 11 znaczników. `wiki:build` PASS; wiki i organizacje 22/22; publikacja 74/74. Playwright PASS: 111 kontroli stron/viewportów, miniatury i asset róży, wyszukiwanie na 3 szerokościach z HTTP 404 GET/HEAD, 44 przejścia atlas-lokacja, mapa mobilna i sześć testów obrazów.
+
+Zmiany pozostają lokalne względem Preview `5e5e3ca`. Nie wykonano commita, pushu ani wdrożenia; decyzje DM, permalinki i vault pozostały bez zmian. Końcowy Preview powinien powstać z nowego commita przed decyzją o Production.
+
+## Location tile images
+
+`src/wiki-ui/templates/approved-card.njk` reuses the same approved illustration as a thumbnail on location tiles. Parent location directory tiles use that illustration too. The current approved publication data contains no location illustration asset, so there are currently 0 location thumbnails; unapproved or inferred images are not used.
+
+
+## Portrait catalog sizing and section routes
+
+Character catalog portraits now use the faction-card footprint (96 x 116 px), object-fit cover, and the same top-biased crop/scale as portraits in article headers. The Playwright check asserts dimensions and crop settings.
+
+The visible section labels are Polish. Their section URLs remain `/catalog/<id>/`: `catalog.cjs` defines English technical IDs (for example `characters`) and the page/navigation templates build the URL from that ID. Article URLs come separately from `src/wiki/public-entries.json` and preserve the existing Obsidian permalinks such as `/postacie/bekrit/`. Localizing section routes later should keep the current `/catalog/...` URLs resolvable, for example through redirects.
+
+
+## Dependency advisory snapshot
+
+`npm audit` checked against the npm registry on 2026-10-24: 16 findings (2 moderate, 13 high, 1 critical), with no dependency changes made. Main groups: critical `shell-quote` via `npm-run-all`; high `axios`/`follow-redirects`, `brace-expansion`, `js-yaml`, `markdown-it`, `sharp`, `image-size`, `picomatch`, `source-map-js`, `nanoid`, and Vite; moderate `@vitest/mocker`. The static Vercel build command invokes the publication generator directly and does not run `npm-run-all`, the legacy `axios` theme-fetch script, Vite, or Vitest. `markdown-it`, `js-yaml`, and `sharp` do execute in the build on approved content/assets, so malformed or hostile reviewed inputs could affect build availability. The generated site is static; these findings do not imply those package code paths run for visitor requests. npm reported no available fix for the current sharp/libvips advisory set. Full auto-fix was intentionally not run.

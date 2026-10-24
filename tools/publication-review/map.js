@@ -29,7 +29,7 @@ const palette = { tavern: ['#F57C00', '🍺'], home: ['#27ae60', '⌂'], safe: [
       });
     }
     $('title').textContent = data.title || data.entry?.title || 'Mapa kampanii';
-    $('status').textContent = data.unresolved_links ? `Podgląd: ${model.markers.length} znaczników. ${data.unresolved_links} odnośników nie ma zatwierdzonego celu — pozostają nieaktywne. Publikacja nadal podlega walidacji.` : 'Podgląd zatwierdzonych danych mapy. Produkcyjny build pozostaje zablokowany.';
+    $('status').textContent = data.unresolved_links ? `Zatwierdzona mapa: ${model.markers.length} znaczników. ${data.unresolved_links} odnośników nie ma zatwierdzonego celu — pozostają nieaktywne.` : `Zatwierdzona mapa · ${model.markers.length} znaczników.`;
     $('count').textContent = '(' + model.markers.length + ')'; $('content').hidden = false;
     svg.setAttribute('width', model.width); svg.setAttribute('height', model.height);
     const image = node('image', { x: 0, y: 0, width: model.width, height: model.height, preserveAspectRatio: 'none', href: model.image.src });
