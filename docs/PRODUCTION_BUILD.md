@@ -36,7 +36,13 @@ Ostatni lokalny wynik miał 65 plików: 38 tras, 28 rekordów wyszukiwarki, 28 w
 
 Testy tej iteracji: `wiki:test` 19/19, `publication:test` 65/65, walidator katalogu 5/5, build preview PASS i przeglądarkowy smoke test desktop/mobile PASS. Pełna `publication:validate` pozostaje zablokowana (65 pending, 5 denied). Nie uruchamiano legacy production build, pushu ani deploymentu.
 
-Widok katalogu przedmiotów pomija wpis `entry-ea1ef23a3438fa49ba3d` (Bekrit’s Mask) wyłącznie na poziomie prezentacji. Artykuł, permalink, pełny zatwierdzony spis i wyszukiwarka pozostają dostępne. Rejestry decyzji i źródłowe bajty nie ulegają zmianie.
+Historycznie widok katalogu przedmiotów pomijał wpis `entry-ea1ef23a3438fa49ba3d` (Bekrit’s Mask) wyłącznie na poziomie prezentacji. Decyzję tę zastąpiło wycofanie publikacji opisane w aktualizacji z 2026-10-24 poniżej.
+
+## Wycofanie Bekrit’s Mask — 2026-10-24
+
+Na prośbę DM cofnięto aktywne zgody dla artykułu Bekrit’s Mask i używanej wyłącznie przez niego karty. Wpis oraz asset mają jawny status `denied`; źródłowe pliki pozostały w repozytorium. Generator publikacyjny nie tworzy permalinku `/przedmioty/bekrits-mask/`, wpisu wyszukiwarki ani pliku obrazu. Usunięto też nieaktualną regułę ukrywania tylko w katalogu przedmiotów.
+
+Weryfikacja lokalna: `publication:build` PASS (36 tras, 26 wpisów wyszukiwania/grafu, 17 assetów); kontrola artefaktu potwierdziła brak trasy, obrazu i referencji slug; `publication:test` 75/75 PASS, `wiki:build` PASS, `wiki:test` 20/20 PASS. Zmiana wymaga nowego deploymentu Vercel, aby wejść na Production.
 
 ## Audyt wydania Vercel — 2026-10-24
 

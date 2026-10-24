@@ -358,6 +358,8 @@ Szczegóły i pozostałe wymagania przed release: [PRODUCTION_BUILD.md](PRODUCTI
 
 Na prośbę DM Bekrit’s Mask została ukryta wyłącznie z listy `/catalog/items/` w preview prototypu i kontrolowanym preview publikacyjnym. Jej zatwierdzony artykuł, permalink `/przedmioty/bekrits-mask/`, wyszukiwarka i pełny spis zatwierdzonych wpisów pozostają bez zmian. Nie zmieniono notatki ani rejestru zgód. `wiki:test` 19/19 PASS; oba buildy preview PASS; kontrola HTML potwierdziła ukrycie na liście i zachowanie artykułu/search. Lokalny podgląd: http://127.0.0.1:8086/.
 
+Aktualizacja 2026-10-24: DM poprosił o całkowite wycofanie Bekrit’s Mask z Production po znalezieniu jej przez „Wszystkie wpisy”. Jawnie odmówiono publikacji artykułu oraz jego unikalnej karty, zachowując źródłowe pliki. Usunięto prezentacyjną regułę ukrywania z katalogu. Build produkcyjny nie zawiera permalinku, obrazu ani rekordu wyszukiwarki dla tego wpisu. `publication:build` PASS; `publication:test` 75/75; `wiki:test` 20/20. Wymagany deployment, by zmiana stała się widoczna na domenie.
+
 ## Przygotowanie wydania Vercel — 2026-10-24
 
 Przeprowadzono audyt nowego generatora i Vercel: [VERCEL_RELEASE_AUDIT.md](VERCEL_RELEASE_AUDIT.md). Wynik to **NO-GO dla wdrożenia**. `vercel.json` nadal uruchamia zablokowany legacy build do `dist`; generator tworzy wyłącznie lokalny preview z `noindex,nofollow` i `Disallow: /`. Nie zmieniono `assertProductionBuildAllowed()`, nie wykonano pushu ani deploymentu.

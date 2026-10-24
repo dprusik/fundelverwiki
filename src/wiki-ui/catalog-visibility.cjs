@@ -1,5 +1,5 @@
-// Presentation-only catalog suppression; it does not change approval or remove the canonical article.
-const exclusions = [{ entryId: 'entry-ea1ef23a3438fa49ba3d', sectionId: 'items' }];
+// Catalog visibility rules are empty; publication approval now determines which entries appear.
+const exclusions = [];
 
 function applyCatalogVisibility(catalog) {
   const entriesById = new Map(catalog.entries.map(entry => [entry.id, entry]));

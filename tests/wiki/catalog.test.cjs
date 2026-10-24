@@ -163,16 +163,12 @@ test('built approved index matches validated rendered articles and remains separ
   }
 });
 
-test('Bekrit’s Mask is hidden only from the items catalog, not from approved content or its route', () => {
+test('withdrawn Bekrit’s Mask is absent from approved catalogs and has no public route', () => {
   const local = prepareLocalArticles(process.cwd());
   const catalog = applyCatalogVisibility(organizeApprovedCatalog(local.catalog));
   const mask = catalog.entries.find(item => item.id === 'entry-ea1ef23a3438fa49ba3d');
-  const items = catalog.sections.find(section => section.id === 'items');
-  const allItems = catalog.groups.find(group => group.id === 'items');
-  assert.ok(mask);
-  assert.ok(items.entries.some(item => item.id === mask.id));
-  assert.ok(!items.catalogEntries.some(item => item.id === mask.id));
-  assert.equal(items.catalogCount, items.count - 1);
-  assert.ok(allItems.entries.some(item => item.id === mask.id));
-  assert.equal(mask.url, '/przedmioty/bekrits-mask/');
+  assert.equal(mask, undefined);
+  assert.ok(!catalog.sections.flatMap(section => section.entries).some(item => item.id === 'entry-ea1ef23a3438fa49ba3d'));
+  assert.ok(!local.catalog.some(item => item.url === '/przedmioty/bekrits-mask/'));
+  assert.ok(!local.files.some(asset => asset.url === '/img/user/lorekeeper/bekrits-mask-card.png'));
 });
