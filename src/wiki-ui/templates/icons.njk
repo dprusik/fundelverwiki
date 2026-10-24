@@ -1,0 +1,11 @@
+{% macro icon(name) %}<svg class="wiki-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{% if name == 'documents' %}<path d="M7 4h12v14a3 3 0 0 1-3 3H7a3 3 0 0 1 0-6h11M7 4a3 3 0 0 0-3 3v11M8 8h7M8 11h7"/>
+{% elif name == 'characters' %}<path d="M5 21v-3a7 7 0 0 1 14 0v3M9 4l3-2 3 2v4a3 3 0 0 1-6 0ZM8 16l4 3 4-3M12 19v3"/>
+{% elif name == 'locations' %}<path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/>
+{% elif name == 'items' %}<path d="m8 3-5 6 9 13 9-13-5-6Zm-5 6h18M8 3l4 6 4-6M12 9v13"/>
+{% elif name == 'maps' %}<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16M15 5v16M5 10l2-1M17 13l2-1"/>
+{% elif name == 'chronicle' %}<path d="M12 5c-3-2-6-2-10-1v16c4-1 7-1 10 1 3-2 6-2 10-1V4c-4-1-7-1-10 1Zm0 0v16M5 8h3M5 12h3M16 8h3M16 12h3"/>
+{% elif name == 'search' %}<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>
+{% elif name == 'home' %}<path d="m3 10 9-8 9 8M5 9v12h5v-7h4v7h5V9"/>
+{% else %}<path d="m12 2 7 10-7 10-7-10Z M2 12h20M12 2v20"/>
+{% endif %}</svg>{% endmacro %}

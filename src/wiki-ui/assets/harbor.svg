@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" aria-labelledby="title">
+<title id="title">Demonstracyjna ilustracja przystani nad rzeką</title>
+<rect width="1000" height="400" fill="#edf2ef"/>
+<circle cx="748" cy="85" r="43" fill="#e5dfd1"/>
+<path d="M0 196 145 124 288 209 415 137 624 211 788 146 1000 210v190H0" fill="#cbd8ce"/>
+<path d="M0 253q240-88 494-9t506 0v156H0" fill="#9ebbb5"/>
+<path d="M0 303q238-59 480-1t520-5m-905 58q210-36 430 0t415-9" fill="none" stroke="#edf2ef" stroke-width="3" opacity=".7"/>
+<path d="M98 181h157v98H98Z" fill="#d5cbb8"/><path d="m72 183 105-80 103 80Z" fill="#5f7773"/>
+<path d="M158 218h35v61h-35" fill="#77887b"/>
+<path d="M57 280h413v16H57m35 0v57m181-57v62m174-62v63" fill="#897f6d" stroke="#897f6d" stroke-width="7"/>
+<path d="M562 302h130l-29 29h-77Z" fill="#41696b"/><path d="M621 298V190l58 92h-58" fill="#f5f4ef" stroke="#5f7773" stroke-width="3"/>
+<path d="M855 261V113m0 4q-99 3-100 100m100-100q100 0 105 103m-105-99q-63-8-73 125m73-125q62-8 72 125" fill="none" stroke="#77887b" stroke-width="13" stroke-linecap="round"/>
+</svg>

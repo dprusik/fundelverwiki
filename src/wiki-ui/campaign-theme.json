@@ -1,0 +1,8 @@
+{
+  "themeId": "dark-archive",
+  "decorations": {
+    "texture": "cartography",
+    "banner": "/assets/branding/dragon-banner.png",
+    "logo": "/assets/branding/dragon-banner.png"
+  }
+}

@@ -11,3 +11,17 @@ src/site/styles/_theme.*.css
 .cache
 _site/
 **/.DS_Store
+.wiki-preview/
+.publication-prepared/
+.publication-review/
+src/wiki/.publication-import.lock
+src/wiki/.publication-import.pending
+src/wiki/.*.json.*
+# Local integration candidates, worktrees and private/generated review evidence.
+.worktrees/
+.integration-prepared/
+.integration-checks/
+docs/artifacts/
+docs/review/
+docs/DARK_ARCHIVE_BASELINE.json
+AUDYT_LOREKEEPER.md

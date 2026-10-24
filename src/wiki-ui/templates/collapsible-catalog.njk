@@ -1,0 +1,4 @@
+<details class="catalog-disclosure" id="{{ disclosureId | escape }}"{% if disclosureEntries.length <= 6 %} open{% endif %}>
+  <summary><h2 id="{{ disclosureId | escape }}-heading">{{ disclosureTitle | escape }}</h2><span class="catalog-disclosure-count">Wpisy: {{ disclosureEntries.length }}</span><span class="catalog-disclosure-action" aria-hidden="true"><span class="when-closed">Rozwiń</span><span class="when-open">Zwiń</span> <span class="catalog-disclosure-chevron">⌄</span></span></summary>
+  <div class="entry-grid" tabindex="0" role="region" aria-labelledby="{{ disclosureId | escape }}-heading">{% for entry in disclosureEntries %}{% include 'approved-card.njk' %}{% endfor %}</div>
+</details>

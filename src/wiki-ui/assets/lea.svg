@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-labelledby="title">
+<title id="title">Schematyczny portret demonstracyjny Lei</title>
+<rect width="400" height="480" rx="16" fill="#edf2ef"/>
+<circle cx="200" cy="190" r="122" fill="#dce2df"/>
+<path d="M61 480v-69c0-88 63-140 139-140s139 52 139 140v69" fill="#77887b"/>
+<path d="m148 284 52 57 52-57" fill="#f5f4ef"/>
+<path d="M120 178c-8-104 170-112 164 0l-5 96-163-4Z" fill="#786b5d"/>
+<ellipse cx="200" cy="199" rx="64" ry="79" fill="#d6bfa8"/>
+<path d="M133 173q-6-91 67-85 76 1 67 95l-44-55q-37 41-90 45Z" fill="#786b5d"/>
+<path d="M170 201h13m34 0h13m-43 37q14 10 28 0" fill="none" stroke="#5f5449" stroke-width="4" stroke-linecap="round"/>
+<path d="m252 437-15-77m7 32q-36-1-37-29 30-5 37 29Zm-4-15q29-5 27-33-29 2-27 33Z" fill="#b8c9af" stroke="#41696b" stroke-width="3"/>
+</svg>

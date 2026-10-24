@@ -1,0 +1,29 @@
+﻿{
+  "candidate": "candidate",
+  "base_head": "e65fcc0a513e6179b7cc3b27938614a91ef7327a",
+  "accepted_worktree_head": "994d1c3b1826f8a0909240ffa886c04ab0e03ae9",
+  "merge_or_commit_or_push_or_deployment": false,
+  "production_build": "not run; publication gate intentionally retained",
+  "archive_paths_utf8": "pass; 129 of 129 paths match target Git tree",
+  "main_workspace_files_unchanged": 210,
+  "git_indexes_unchanged": true,
+  "active_approval_hashes": "45 of 45 match",
+  "reviewed_note_set": { "count": 18, "approved_and_hash_matched": 13, "pending_without_active_approval": 5 },
+  "changed_notes": { "count": 3, "approved_and_hash_matched": 3 },
+  "przedmioty_md": { "byte_identical_to_main_workspace": true, "active_approval": false, "route_or_search_entry_in_preview": false },
+  "full_publication_validation": { "status": "blocked as designed", "UNAPPROVED_INPUT": 69 },
+  "preview_build": { "status": "pass", "pages": 58 },
+  "wiki_tests": { "status": "pass", "passed": 18 },
+  "publication_tests": { "status": "pass", "passed": 60 },
+  "organization_tests": { "status": "pass", "passed": 3 },
+  "pending_notes_exposed_by_preview": false,
+  "browser_regressions": {
+    "status": "pass",
+    "scenarios": 11,
+    "checks": ["wiki", "entity", "search", "approved articles (111 views)", "portraits (28)", "atlas-location round trips (44)", "mobile map", "sticky header", "catalog disclosures (24)", "organization (9 views)", "Dark Archive (24 views)"],
+    "server_port": 8084,
+    "stopped": true
+  },
+  "broken_documentation_links": 0,
+  "production_gate_removed": false
+}

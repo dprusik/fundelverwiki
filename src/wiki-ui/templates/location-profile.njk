@@ -1,0 +1,16 @@
+{% set profile = entity %}{% set profileDemo = true %}{% include 'entity-header.njk' %}
+<article class="prose">{{ entity.body | markdown | safe }}</article>
+<section aria-labelledby="related-characters-heading">
+  <div class="section-heading"><h2 id="related-characters-heading">Powiązane postacie</h2></div>
+  <p class="relation-context">Publicznie znane związki z tym miejscem — nie lista postaci aktualnie tu przebywających.</p>
+  <ul class="location-characters">
+  {% for item in entity.id | relatedCharacters %}
+    {% set character = item.character %}
+    <li><a class="location-character" href="{{ character.url }}">
+      {% if character.portrait %}<img src="{{ character.portrait.src | escape }}" alt="" width="64" height="77" loading="lazy">{% else %}<span class="portrait-fallback" aria-hidden="true">{{ character.title | first }}</span>{% endif %}
+      <span><strong>{{ character.title | escape }}</strong><span class="relation-description">{% if item.description %}{{ item.description | escape }}{% else %}Publicznie ujawnione powiązanie z lokacją.{% endif %}</span></span><span class="relation-arrow" aria-hidden="true">↗</span>
+    </a></li>
+  {% else %}<li class="empty-state">Brak publicznie ujawnionych powiązanych postaci.</li>{% endfor %}
+  </ul>
+</section>
+<section class="map-placeholder" aria-labelledby="location-map-heading"><div><h2 id="location-map-heading">Lokacja na mapie</h2><p id="location-map-help">Podgląd mapy będzie dostępny po integracji Maps 2.0. Prototyp nie zawiera powiązań z mapami.</p></div><button type="button" disabled aria-describedby="location-map-help">Pokaż na mapie</button></section>

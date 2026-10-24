@@ -1,0 +1,28 @@
+---
+pagination:
+  data: approvedArticles
+  size: 1
+  alias: article
+permalink: "{{ article.url }}index.html"
+layout: shell.njk
+localArticlePreview: true
+eleventyComputed:
+  title: "{{ article.title | safe }}"
+  activeSection: "{{ article.section }}"
+  breadcrumbLabel: "{{ article.sectionLabel }}"
+  breadcrumbUrl: "{{ article.sectionUrl }}"
+  breadcrumbParentLabel: "{{ article.locationParent.title }}"
+  breadcrumbParentUrl: "{{ article.locationParent.url }}"
+---
+{% if article.kind == 'character' or article.kind == 'location' %}{% set profile = article %}{% set profileDemo = false %}{% include 'entity-header.njk' %}
+{% else %}<p class="eyebrow">{{ article.kindLabel | escape }}</p>
+<h1>{{ article.title | escape }}</h1>
+{% if article.summary %}<p class="lead">{{ article.summary | escape }}</p>{% endif %}{% endif %}
+{% include 'article-map-links.njk' %}
+{% if article.kind == 'faction' or article.kind == 'organization' %}
+{% set organizationView = organizationViews[article.id] %}
+{% if organizationView.html %}<article class="prose approved-prose">{{ organizationView.html | safe }}</article>{% endif %}
+{% if organizationView.characters.length %}<section aria-labelledby="organization-mentions-heading"><div class="section-heading"><h2 id="organization-mentions-heading">Postacie wymienione we wpisie</h2></div><div class="entry-grid organization-characters">
+{% for character in organizationView.characters %}{% set membershipDescription = '' %}{% set showCharacterLocations = false %}{% include 'organization-character-card.njk' %}{% endfor %}
+</div></section>{% endif %}
+{% else %}<article class="prose approved-prose{% if article.category == 'items' %} item-rules-cards{% endif %}">{{ article.html | safe }}</article>{% endif %}

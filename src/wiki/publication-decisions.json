@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "decisions": [
+    {
+      "key": "entry-09d427745ba4337c3b2b",
+      "state": "denied"
+    },
+    {
+      "key": "entry-ef2bb9085a20e4df2e69",
+      "state": "denied"
+    },
+    {
+      "key": "entry-607aef782082b2dfc6bc",
+      "state": "denied"
+    },
+    {
+      "key": "entry-88b39ec00e9fd41ceaf6",
+      "state": "denied"
+    },
+    {
+      "key": "entry-ed9a91f9d63a91e75887",
+      "state": "denied"
+    }
+  ]
+}

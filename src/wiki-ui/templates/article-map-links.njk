@@ -1,0 +1,3 @@
+{% if article.atlasLinks.length %}<nav class="article-map-links" aria-label="Mapy powiązane z miejscem">
+{% for mapLink in article.atlasLinks %}<a class="map-open-link" data-atlas-link href="{{ mapLink.url | escape }}">Otwórz mapę{% if article.atlasLinks.length > 1 %}: {{ mapLink.title | escape }}{% endif %} <span aria-hidden="true">↗</span></a>{% endfor %}
+</nav>{% endif %}

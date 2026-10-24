@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-10-24",
+  "branch": "feat/wiki-layout-2",
+  "target_head": "e65fcc0a513e6179b7cc3b27938614a91ef7327a",
+  "integration_state": "applied to working tree; uncommitted",
+  "original_candidate_validation": "docs/reports/wiki-layout-2.0-integration/FINAL_VALIDATION.json",
+  "test_environment": {
+    "node": "v24.22.0",
+    "playwright": "1.64.1 installed only under ignored .integration-checks/playwright-env",
+    "project_package_json_changed_for_playwright": false,
+    "project_lockfile_changed_for_playwright": false,
+    "browser": "Microsoft Edge headless"
+  },
+  "preflight_reconciliation": {
+    "reported_mismatches": 84,
+    "new_candidate_paths": 49,
+    "new_path_groups": {
+      "content_notes": 11,
+      "documentation": 4,
+      "wiki_ui_and_assets": 21,
+      "build_and_verification": 13
+    },
+    "existing_path_differences": 35,
+    "existing_path_groups": {
+      "documentation": 9,
+      "wiki_ui": 12,
+      "publication_safety_and_review": 4,
+      "build_and_verification_including_gitignore": 6,
+      "approval_registry": 1,
+      "approved_note_content": 3
+    },
+    "unresolved_content_or_approval_conflicts": 0,
+    "parallel_project_status_resolution": "preserved the fuller candidate history; added current integration state"
+  },
+  "approval_integrity": {
+    "active_notes_and_assets": 45,
+    "active_hash_mismatches": 0,
+    "previously_active_entries_preserved": 17,
+    "previously_active_permalink_changes": 0,
+    "changed_note_approvals_hash_matched": 3,
+    "tracked_note_raw_git_differences": 29,
+    "tracked_note_line_ending_only_differences": 26,
+    "tracked_note_content_changes": 3,
+    "note_bytes_preserved_from_current_workspace": true,
+    "preserved_przedmioty_sha256": "c43b6d5d1aa278ee14914308a5e84ebe8fe69a09b3ec8428a0f9a73115cd312c",
+    "przedmioty_active_approval": false
+  },
+  "dm_decisions": {
+    "denied_count": 5,
+    "denied_keys": [
+      "entry-09d427745ba4337c3b2b",
+      "entry-ef2bb9085a20e4df2e69",
+      "entry-607aef782082b2dfc6bc",
+      "entry-88b39ec00e9fd41ceaf6",
+      "entry-ed9a91f9d63a91e75887"
+    ],
+    "superseded_history_preserved": true,
+    "other_pending_materials_approved": false,
+    "original_source_bytes_modified": false
+  },
+  "preview": {
+    "build": "PASS",
+    "pages": 58,
+    "wiki_tests": { "status": "PASS", "passed": 18 },
+    "publication_tests": { "status": "PASS", "passed": 60 },
+    "organization_tests": { "status": "PASS", "passed": 3 },
+    "publication_validation": {
+      "status": "BLOCKED as designed",
+      "UNAPPROVED_INPUT": 65,
+      "DENIED_INPUT": 5
+    },
+    "approved_projection": {
+      "entries": 28,
+      "assets": 17,
+      "relations": 0,
+      "maps": 1,
+      "search_entries": 28,
+      "catalog_pages": 6
+    },
+    "nonapproved_exposure": {
+      "denied_notes": 5,
+      "pending_notes": 9,
+      "routes": 0,
+      "catalog_links": 0,
+      "search_records": 0
+    },
+    "browser_regressions": {
+      "status": "PASS",
+      "count": 11,
+      "runtime": "Playwright 1.64.1 in ignored .integration-checks; Microsoft Edge headless",
+      "scenarios": [
+        "desktop/mobile navigation, drawer, search and no-JS",
+        "entity profiles and optional data",
+        "search across three viewports",
+        "111 approved article views",
+        "28 character portraits and image modals",
+        "44 atlas/location round trips",
+        "mobile map selection, scroll and rotation",
+        "sticky header, search, drawer, collapsed sidebar and anchors",
+        "24 catalog disclosure checks",
+        "organization and faction pages",
+        "24 Dark Archive views including DragonBanner, contrast and focus"
+      ],
+      "server_port": 8084,
+      "server_stopped": true
+    }
+  },
+  "production_gate_removed": false,
+  "production_build": "not run",
+  "original_vault_or_obsidian_modified": false,
+  "commit_push_deployment": false
+}

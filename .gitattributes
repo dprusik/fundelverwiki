@@ -1,0 +1,3 @@
+# Publication approvals bind exact source bytes, including line endings.
+# Do not apply core.autocrlf conversion when adding or checking out notes.
+src/site/notes/** -text

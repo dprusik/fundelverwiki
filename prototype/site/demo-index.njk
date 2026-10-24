@@ -1,0 +1,12 @@
+---
+layout: shell.njk
+title: Strona główna demo
+permalink: /demo/index.html
+---
+{% from 'icons.njk' import icon %}<section class="hero">{% set bannerPlacement = 'hero' %}{% include 'campaign-banner.njk' %}<p class="eyebrow">WASZA WSPÓLNA OPOWIEŚĆ</p><h1>{{ wiki.campaign.name | escape }}</h1><p class="lead">{{ wiki.campaign.description | escape }}</p>
+<form class="home-search enhanced" role="search"><label class="sr-only" for="home-query">Szukaj w demonstracyjnej wiki</label><span aria-hidden="true">{{ icon('search') }}</span><input id="home-query" type="search" placeholder="Kogo lub czego szukasz?"><button type="submit">Szukaj <span aria-hidden="true">↗</span></button></form>
+<p class="search-hint">Odkrywaj powiązania. Wracaj do ważnych chwil.</p></section>
+<section aria-labelledby="explore-heading"><div class="section-heading"><h2 id="explore-heading">Odkrywaj wiki</h2><span>Sześć dróg do wspólnej wiedzy</span></div><div class="category-grid">
+{% for section in wiki.sections %}<a class="category-card" href="/demo/catalog/{{ section.id }}/"><span class="category-icon" aria-hidden="true">{{ icon(section.id) }}</span><h3>{{ section.label }}</h3><p>{{ section.description }}</p><span class="card-arrow" aria-hidden="true">↗</span></a>{% endfor %}
+</div></section>
+<section aria-labelledby="recent-heading"><div class="section-heading"><h2 id="recent-heading">Ostatnio dodane <small>DEMO</small></h2><span>Nowe karty waszej historii</span></div><div class="recent-list">{% for entry in wiki.recent %}<a href="{{ entry.url }}"><span class="entry-icon" aria-hidden="true">◇</span><span><strong>{{ entry.title | escape }}</strong><small>{{ entry.summary | escape }}</small></span><time datetime="{{ entry.published_at }}">{{ entry.published_at }}</time><span aria-hidden="true">↗</span></a>{% else %}<p>Brak materiałów z potwierdzoną datą dodania.</p>{% endfor %}</div></section>

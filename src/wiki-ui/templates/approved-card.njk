@@ -1,0 +1,1 @@
+<a class="entry-card" data-approved-id="{{ entry.id | escape }}" href="{{ entry.url | escape }}"><p class="eyebrow">{{ entry.kindLabel | escape }}</p><h2>{{ entry.title | escape }}</h2>{% if entry.kind == 'map' %}<span class="text-link">Otwórz mapę →</span>{% else %}<span class="text-link">Czytaj wpis →</span>{% endif %}</a>

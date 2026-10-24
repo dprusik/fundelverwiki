@@ -1,0 +1,26 @@
+---
+pagination:
+  data: wiki.entries
+  size: 1
+  alias: entity
+permalink: "/demo/entities/{{ entity.id }}/index.html"
+layout: shell.njk
+eleventyComputed:
+  title: "{{ entity.title }}"
+  activeSection: "{{ entity.section }}"
+  breadcrumbLabel: "{% if entity.kind == 'organization' %}Organizacje{% else %}Katalog{% endif %}"
+  breadcrumbUrl: "{% if entity.kind == 'organization' %}/demo/organizations/{% else %}/demo/catalog/{{ entity.section }}/{% endif %}"
+---
+{% if entity.kind == 'character' %}
+  {% include 'character-profile.njk' %}
+{% elif entity.kind == 'location' %}
+  {% include 'location-profile.njk' %}
+{% else %}
+<p class="eyebrow">{% if entity.kind == 'organization' %}ORGANIZACJA{% else %}ARTYKUŁ WIKI{% endif %} · DEMO</p>
+<h1>{{ entity.title | escape }}</h1><p class="lead">{{ entity.summary | escape }}</p><article class="prose">{{ entity.body | markdown | safe }}</article>
+{% if entity.kind == 'organization' %}
+<div class="relation-grid"><section aria-labelledby="organization-members-heading"><div class="section-heading organization-members-header"><h2 id="organization-members-heading">Znani członkowie</h2><a class="text-link" href="/demo/catalog/characters/?faction={{ entity.id }}">Zobacz w katalogu postaci →</a></div>
+<div class="entry-grid organization-characters">{% set members = false %}{% for edge in entity.id | relationsTo %}{% if edge.type == 'member_of' %}{% set character = edge.source | entry %}{% if character.kind == 'character' %}{% set members = true %}{% set membershipDescription = edge.description %}{% set showCharacterLocations = true %}{% include 'organization-character-card.njk' %}{% endif %}{% endif %}{% endfor %}{% if not members %}<p class="empty-state">Brak publicznie ujawnionych członków.</p>{% endif %}</div></section>
+{% for relationType, heading in {located_in: 'Powiązane lokacje', document: 'Powiązane dokumenty'} %}<section><div class="section-heading"><h2>{{ heading }}</h2></div><ul class="related-list">{% set hasRelations = false %}{% for edge in entity.id | relationsFrom %}{% if edge.type == relationType %}{% set hasRelations = true %}{% set target = edge.target | entry %}<li><a href="{{ target.url }}">{{ target.title | escape }} <span aria-hidden="true">↗</span></a><p>{{ target.summary | escape }}</p></li>{% endif %}{% endfor %}{% if not hasRelations %}<li>Brak publicznie ujawnionych powiązań w tej sekcji.</li>{% endif %}</ul></section>{% endfor %}</div>
+{% else %}<section><div class="section-heading"><h2>Publiczne powiązania</h2></div><ul class="related-list">{% for edge in entity.id | relationsFrom %}{% set target = edge.target | entry %}<li><a href="{{ target.url }}">{{ target.title | escape }} →</a></li>{% else %}<li>Brak publicznie ujawnionych powiązań.</li>{% endfor %}</ul></section>{% endif %}
+{% endif %}

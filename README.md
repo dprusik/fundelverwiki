@@ -1,4 +1,17 @@
 # Digital Obsidian Garden
+
+Lokalny, odizolowany prototyp Wiki Layout 2.0: [uruchomienie, zakres i testy](docs/WIKI_UI_PROTOTYPE.md). Start: `npm run wiki:dev`, adres `http://127.0.0.1:8081`. Strona główna i katalogi pokazują rzeczywiste artykuły i mapę z aktywnych rejestrów zgód DM; pełny grupowany spis jest pod `/approved/`. Oddzielne demo interfejsu i jego wyszukiwarka są pod `/demo/`. [Zakres zatwierdzonych artykułów](docs/LOCAL_APPROVED_ARTICLES.md). Żadne dane nie są publikowane przez ten prototyp.
+
+M1A.2: produkcyjne `build/dev/get-theme` i generowanie stylów są celowo zablokowane do czasu kontroli kanałów publikacji. Prototyp `wiki:*` pozostaje dostępny. [Stan bezpieczeństwa, lista przeglądu DM i nowe polecenia](docs/PUBLICATION_READINESS.md).
+
+Lokalna wiki ma teraz [wyszukiwanie zatwierdzonych tytułów, aliasów i treści](docs/WIKI_SEARCH.md): przycisk Szukaj lub Ctrl+K / Cmd+K. Indeks demo pozostaje oddzielny. Tekst wewnątrz kart obrazkowych nie jest przeszukiwany.
+
+M1A.2B: wygodny lokalny przegląd nazw, obrazów, zależności i diffów: `npm run publication:review` → `http://127.0.0.1:8082`. [Instrukcja i proces aktualizacji](docs/PUBLICATION_WORKFLOW.md), [porównanie publicznej wiki](docs/ONLINE_COMPARISON.md). Nie zapisuje automatycznych zgód i nie zmienia aktywnych rejestrów.
+
+M1A.2C: lokalną propozycję można teraz świadomie scalić z aktywnymi rejestrami: `npm run publication:import -- preview "plik.json"`, następnie `npm run publication:import -- apply "plik.json" --confirm IDENTYFIKATOR-DIFFU`. `npm run publication:status` pokazuje aktualne zgody i zależności do przeglądu. Szczegóły i odzyskiwanie przerwanego importu: [PUBLICATION_WORKFLOW.md](docs/PUBLICATION_WORKFLOW.md#m1a2c--świadome-scalanie-z-aktywnymi-rejestrami). Produkcyjny build pozostaje zablokowany.
+
+Istniejąca mapa: parser rozpoznanego formatu, kontrola zgód/zasobów/linków i lokalny read-only viewer w panelu DM. [Uruchomienie, testy i ograniczenia](docs/LEGACY_MAP_MIGRATION.md). Bez produkcyjnego wdrożenia i bez backendu Maps 2.0.
+
 This is the template to be used together with the [Digital Garden Obsidian Plugin](https://github.com/oleeskild/Obsidian-Digital-Garden).
 See the README in the plugin repo for information on how to set it up.
 

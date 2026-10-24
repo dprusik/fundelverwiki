@@ -1,0 +1,22 @@
+---
+pagination:
+  data: wiki.sections
+  size: 1
+  alias: section
+permalink: "/demo/catalog/{{ section.id }}/index.html"
+layout: shell.njk
+eleventyComputed:
+  title: "{{ section.label }}"
+  activeSection: "{{ section.id }}"
+---
+<p class="eyebrow">KATALOG WIKI · DEMO</p><h1>{{ section.label }}</h1><p class="lead">{{ section.description }}</p>
+{% if section.id == 'characters' %}
+<form id="catalog-controls" class="filters enhanced"><div><label for="group">Przeglądaj</label><select id="group" name="group"><option value="all">Wszystkie postacie</option><option value="faction">Według frakcji</option><option value="location">Według lokacji</option></select></div><div><label for="faction">Frakcja</label><select id="faction" name="faction"><option value="">Wszystkie frakcje</option>{% for entry in wiki.entries %}{% if entry.kind == 'organization' %}<option value="{{ entry.id }}">{{ entry.title }}</option>{% endif %}{% endfor %}</select></div><div><label for="location">Lokacja</label><select id="location" name="location"><option value="">Wszystkie lokacje</option>{% for entry in wiki.entries %}{% if entry.kind == 'location' %}<option value="{{ entry.id }}">{{ entry.title }}</option>{% endif %}{% endfor %}</select></div><button type="reset">Wyczyść</button></form>
+<p id="catalog-status" role="status">3 postacie · wyłącznie przykładowe publiczne powiązania</p>
+{% for mode, groups in characterGroups %}<div data-group-mode="{{ mode }}" {% if mode != 'all' %}hidden{% endif %}>{% for group in groups %}<section class="character-group" data-group-id="{{ group.id }}"><div class="section-heading"><h2>{% if group.url %}<a href="{{ group.url }}">{{ group.title }}</a>{% else %}{{ group.title }}{% endif %}</h2></div><div class="entry-grid">{% for entry in group.entries %}{% include 'character-card.njk' %}{% endfor %}</div></section>{% endfor %}</div>{% endfor %}
+<p id="catalog-empty" class="empty-state" hidden>Brak wyników dla wybranych filtrów. Zmień filtry lub wybierz „Wyczyść”.</p>
+<aside class="callout"><h2>Organizacje to część świata</h2><p>Poznaj grupy, które łączą bohaterów, miejsca i odkrycia.</p><a href="/demo/organizations/">Przeglądaj organizacje →</a></aside>
+{% else %}
+<div class="entry-grid">{% for entry in section.id | inSection %}<a class="entry-card" href="{{ entry.url }}"><p class="eyebrow">{{ section.label }}</p><h2>{{ entry.title | escape }}</h2><p>{{ entry.summary | escape }}</p></a>{% else %}<div class="empty-state"><h2>Jeszcze pusta karta</h2><p>Brak demonstracyjnych materiałów w tej sekcji.</p><a href="/demo/">Wróć na stronę główną</a></div>{% endfor %}</div>
+
+{% endif %}

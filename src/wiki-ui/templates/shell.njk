@@ -1,0 +1,61 @@
+{% from 'icons.njk' import icon %}
+{% set isDemo = page.url.indexOf('/demo/') == 0 %}
+{% set homeUrl = '/' %}{% set navPrefix = '' %}{% if isDemo %}{% set homeUrl = '/demo/' %}{% set navPrefix = '/demo' %}{% endif %}
+<!doctype html>
+<html lang="pl" data-theme="{{ appearance.id | escape }}" data-texture="{{ appearance.decorations.texture | escape }}" data-banner="{% if appearance.decorations.banner %}present{% else %}absent{% endif %}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{ title | escape }} · {% if isDemo %}{{ wiki.campaign.name | escape }} — DEMO{% else %}Wiki kampanii — podgląd lokalny{% endif %}</title>
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <style>:root { {{ appearance.cssTokens | safe }} }</style>
+  <script type="module" src="/assets/wiki.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+<aside class="rail" id="navigation" aria-label="Nawigacja wiki">
+  <div class="brand"><a href="{{ homeUrl }}" aria-label="{% if isDemo %}Demo{% else %}Wiki kampanii{% endif %} — Start"><span class="brand-mark{% if appearance.decorations.logo %} brand-mark--image{% endif %}" aria-hidden="true">{% if appearance.decorations.logo %}<img src="{{ appearance.decorations.logo | escape }}" alt="" width="48" height="54" decoding="async">{% else %}{{ icon('archive') }}{% endif %}</span><span class="brand-label">{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Wiki kampanii{% endif %}<small>{% if isDemo %}DANE DEMONSTRACYJNE{% else %}BIBLIOTEKA KAMPANII{% endif %}</small></span></a></div>
+  <button class="panel-control enhanced" id="panel-toggle" aria-expanded="true" aria-controls="menu-links">Zwiń panel</button>
+  <button class="search-launch enhanced" data-search aria-label="{% if isDemo %}Szukaj w demo{% else %}Szukaj w wiki{% endif %}">{{ icon('search') }} <span>{% if isDemo %}Szukaj w demo{% else %}Szukaj w wiki{% endif %}</span><kbd>Ctrl K</kbd></button>
+  <nav id="menu-links" aria-label="Menu główne">
+    <a href="{{ homeUrl }}" {% if page.url == homeUrl %}aria-current="page"{% endif %}>{{ icon('home') }} Start</a>
+    {% if not isDemo %}<a href="/approved/" {% if page.url == '/approved/' %}aria-current="page"{% endif %}>Wszystkie wpisy</a>{% endif %}
+    {% for section in wiki.sections %}
+    <div class="nav-section">
+      <div class="nav-row"><a href="{{ navPrefix }}/catalog/{{ section.id }}/" {% if activeSection == section.id %}class="section-active"{% endif %} {% if page.url == navPrefix + '/catalog/' + section.id + '/' %}aria-current="page"{% endif %}>{{ icon(section.id) }} {{ section.label }}</a>
+      {% if section.id == 'characters' %}<button class="submenu-toggle enhanced" aria-expanded="{% if activeSection == 'characters' %}true{% else %}false{% endif %}" aria-controls="character-submenu" aria-label="Rozwiń podmenu Postacie">⌄</button>{% endif %}</div>
+      {% if section.id == 'characters' %}<div class="submenu" id="character-submenu">
+        <a href="{{ navPrefix }}/catalog/characters/">Wszystkie postacie</a>
+        {% if isDemo %}<a href="/demo/catalog/characters/?group=faction">Według frakcji</a><a href="/demo/catalog/characters/?group=location">Według lokacji</a>{% endif %}
+        <a href="{{ navPrefix }}/organizations/">{% if isDemo %}Organizacje{% else %}Frakcje i organizacje{% endif %}</a>
+      </div>{% endif %}
+    </div>
+    {% endfor %}
+    {% if isDemo %}<a class="mode-link" href="/">Przejdź do wiki kampanii →</a>{% else %}<a class="mode-link" href="/demo/">Otwórz demo interfejsu →</a>{% endif %}
+  </nav>
+  <p class="rail-note">Wspólna wiedza.<br>Jedno miejsce na waszą historię.</p>
+</aside>
+<button id="backdrop" class="backdrop" aria-label="Zamknij menu" hidden tabindex="-1"></button>
+<div class="workspace" id="workspace">
+  <header class="topbar"><button id="mobile-menu" class="enhanced" aria-controls="navigation" aria-expanded="false">☰ Menu</button><a href="{{ homeUrl }}" class="compact-brand">{% if isDemo %}Wiki · demo{% else %}Wiki kampanii{% endif %}</a><span class="topbar-caption">{% if isDemo %}DEMO INTERFEJSU{% else %}BIBLIOTEKA KAMPANII{% endif %}</span><button data-search class="enhanced top-search">{{ icon('search') }} Szukaj <kbd>Ctrl K</kbd></button></header>
+  <div class="demo-notice"><span class="demo-dot" aria-hidden="true"></span> {% if isDemo %}Prototyp demonstracyjny — przykładowe treści, nie fakty kampanii.{% else %}Lokalny podgląd zatwierdzonych treści kampanii. Ten widok nie publikuje zmian w publicznej wiki.{% endif %}</div>
+  <main id="main" tabindex="-1">
+    {% if page.url != homeUrl %}{% set bannerPlacement = 'header' %}{% include 'campaign-banner.njk' %}{% endif %}
+    {% if page.url != homeUrl %}<nav class="breadcrumbs" aria-label="Ścieżka nawigacji"><a href="{{ homeUrl }}">Start</a><span aria-hidden="true">/</span>{% if breadcrumbLabel %}<a href="{{ breadcrumbUrl | escape }}">{{ breadcrumbLabel | escape }}</a><span aria-hidden="true">/</span>{% endif %}{% if breadcrumbParentLabel and breadcrumbParentUrl %}<a href="{{ breadcrumbParentUrl | escape }}">{{ breadcrumbParentLabel | escape }}</a><span aria-hidden="true">/</span>{% endif %}<span aria-current="page">{{ title | escape }}</span></nav>{% endif %}
+    {{ content | safe }}
+  </main>
+  <footer>{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Wiki kampanii{% endif %} <span>{% if isDemo %}Dane demonstracyjne{% else %}Lokalny podgląd · brak wdrożenia{% endif %}</span></footer>
+</div>
+<dialog id="search-dialog" data-search-scope="{% if isDemo %}demo{% else %}approved{% endif %}" aria-labelledby="search-heading" aria-describedby="search-hint">
+  <div class="dialog-heading"><h2 id="search-heading">{% if isDemo %}Szukaj w demonstracyjnej wiki{% else %}Szukaj w wiki kampanii{% endif %}</h2><button id="search-close" aria-label="Zamknij wyszukiwanie">✕</button></div>
+  <label for="search-term">Tytu&#322;, tre&#347;&#263; lub alias</label><input id="search-term" type="search" placeholder="Wpisz szukane has&#322;o..." autocomplete="off" aria-describedby="search-hint">
+  <p id="search-hint" class="search-hint">{% if isDemo %}Wyłącznie dane demonstracyjne.{% else %}Wyłącznie zatwierdzone tytuły, aliasy i teksty. Treść na kartach obrazkowych nie jest przeszukiwana.{% endif %}</p>
+  <p id="search-status" role="status">Wpisz has&#322;o.</p><ul id="search-results" class="result-list"></ul>
+</dialog>
+<dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+  <div class="image-dialog-heading"><h2 id="image-dialog-title">Ilustracja</h2><button id="image-dialog-close" aria-label="Zamknij ilustrację">✕</button></div>
+  <div class="image-dialog-canvas"><img id="image-dialog-image" alt=""></div>
+  <a id="image-dialog-original" class="text-link" target="_blank" rel="noopener">Otwórz oryginał ↗</a>
+</dialog>
+<noscript><p class="noscript-note">Katalogi i linki dzia&#322;aj&#261; bez JavaScript. Wyszukiwanie wymaga JavaScript.</p></noscript>
+</body></html>

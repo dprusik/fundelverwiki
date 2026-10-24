@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/dnd/listy-notatki/dziennik-terogona-wpis-i/"}
+{"dg-publish":true,"permalink":"/dnd/listy-notatki/dziennik-terogona-wpis-i/","title":"Dziennik Tergona - wpis I"}
 ---
 
 Wpis I - Złote oczy i Platyna dla chorego

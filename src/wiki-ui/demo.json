@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "demonstration": true,
+  "campaign": {
+    "name": "Atlas kampanii",
+    "description": "Ludzie, miejsca i historie. Wszystko, co warto mieć pod ręką przy wspólnym stole.",
+    "logo": null,
+    "theme": {
+      "accent": "#275d60",
+      "background": "#f5f4ef",
+      "surface": "#ffffff",
+      "text": "#253437",
+      "fontBody": "system-ui, sans-serif",
+      "fontHeading": "Georgia, serif"
+    }
+  },
+  "sections": [
+    {
+      "id": "documents",
+      "label": "Dokumenty",
+      "symbol": "▤",
+      "description": "Listy, odkrycia i materiały drużyny."
+    },
+    {
+      "id": "characters",
+      "label": "Postacie",
+      "symbol": "♙",
+      "description": "Poznaj bohaterów i ich powiązania."
+    },
+    {
+      "id": "locations",
+      "label": "Lokacje",
+      "symbol": "⌖",
+      "description": "Miejsca, do których prowadzi historia."
+    },
+    {
+      "id": "items",
+      "label": "Przedmioty",
+      "symbol": "◇",
+      "description": "Znaleziska i niezwykłe przedmioty."
+    },
+    {
+      "id": "maps",
+      "label": "Mapy",
+      "symbol": "▧",
+      "description": "Spójrz na świat z szerszej perspektywy."
+    },
+    {
+      "id": "chronicle",
+      "label": "Kronika",
+      "symbol": "◷",
+      "description": "Wróć do wydarzeń z waszych sesji."
+    }
+  ],
+  "entries": [
+    {
+      "id": "mira",
+      "kind": "character",
+      "section": "characters",
+      "title": "Mira Wędrowna",
+      "summary": "Kartografka zbierająca opowieści o dawnych szlakach.",
+      "aliases": [
+        "rysowniczka map"
+      ],
+      "body": "Mira sporządza mapy szlaków wokół Przystani. Chętnie wymienia się opowieściami z podróżnymi.",
+      "published_at": "2026-10-20",
+      "portrait_asset_id": "portrait-mira",
+      "status": {
+        "value": "alive",
+        "approved": true
+      }
+    },
+    {
+      "id": "oskar",
+      "kind": "character",
+      "section": "characters",
+      "title": "Oskar Brzeg",
+      "summary": "Przewoźnik i opiekun rzecznej przystani.",
+      "aliases": [],
+      "body": "Oskar zna spokojne przeprawy przez rzekę i pomaga podróżnym dotrzeć na drugi brzeg.",
+      "published_at": "2026-10-18",
+      "status": {
+        "value": "unknown",
+        "approved": true
+      }
+    },
+    {
+      "id": "lea",
+      "kind": "character",
+      "section": "characters",
+      "title": "Lea z Ogrodów",
+      "summary": "Zielarka, którą często można spotkać na targu.",
+      "aliases": [
+        "zielarka"
+      ],
+      "body": "Lea prowadzi niewielki ogród. Wymienia nasiona z gośćmi przybywającymi do miasta.",
+      "portrait_asset_id": "portrait-lea"
+    },
+    {
+      "id": "guild",
+      "kind": "organization",
+      "section": "characters",
+      "title": "Gildia Szlaków",
+      "summary": "Organizacja łącząca podróżników, kartografów i przewodników.",
+      "aliases": [
+        "gildia kartografów"
+      ],
+      "body": "Gildia Szlaków gromadzi wiedzę o drogach i przeprawach. Jej członkowie dzielą się mapami oraz pomagają wędrowcom.\n\n## Wspólna droga\nSiedziba gildii służy jako miejsce spotkań. Na dużym stole rozłożone są mapy, a w bibliotece czekają dzienniki z wypraw.",
+      "published_at": "2026-10-19"
+    },
+    {
+      "id": "circle",
+      "kind": "organization",
+      "section": "characters",
+      "title": "Krąg Rzeki",
+      "summary": "Wspólnota dbająca o rzeczne szlaki.",
+      "aliases": [],
+      "body": "Krąg Rzeki pomaga utrzymywać przeprawy i wymienia informacje o stanie rzeki."
+    },
+    {
+      "id": "harbor",
+      "kind": "location",
+      "section": "locations",
+      "title": "Przystań pod Wierzbą",
+      "summary": "Niewielka przystań przy starym trakcie.",
+      "aliases": [
+        "port"
+      ],
+      "body": "Przy drewnianym pomoście cumują łodzie. Stąd zaczyna się droga do ogrodów.",
+      "illustration_asset_id": "illustration-harbor"
+    },
+    {
+      "id": "gardens",
+      "kind": "location",
+      "section": "locations",
+      "title": "Ogrody nad Rzeką",
+      "summary": "Zielone tarasy na południowym brzegu.",
+      "aliases": [],
+      "body": "Ogrody dostarczają ziół i nasion mieszkańcom przystani."
+    },
+    {
+      "id": "ridge",
+      "kind": "location",
+      "section": "locations",
+      "title": "Wzgórze Świateł",
+      "summary": "Punkt widokowy ponad doliną.",
+      "aliases": [],
+      "body": "Ze wzgórza widać wijącą się rzekę. Brak publicznie przypisanych postaci w demonstracji."
+    },
+    {
+      "id": "letter",
+      "kind": "document",
+      "section": "documents",
+      "title": "List o otwartym szlaku",
+      "summary": "Wiadomość o ponownym otwarciu rzecznej przeprawy.",
+      "aliases": [],
+      "body": "Droga przez przystań jest znów otwarta. Podróżni mogą korzystać z przeprawy od świtu do zmierzchu.",
+      "published_at": "2026-10-21"
+    }
+  ],
+  "relations": [
+    {
+      "source": "mira",
+      "type": "member_of",
+      "target": "guild",
+      "approved": true
+    },
+    {
+      "source": "mira",
+      "type": "member_of",
+      "target": "circle",
+      "approved": true
+    },
+    {
+      "source": "oskar",
+      "type": "member_of",
+      "target": "guild",
+      "approved": true
+    },
+    {
+      "source": "mira",
+      "type": "located_in",
+      "target": "harbor",
+      "approved": true,
+      "description": "Sporządzała mapy szlaków prowadzących do przystani."
+    },
+    {
+      "source": "mira",
+      "type": "located_in",
+      "target": "gardens",
+      "approved": true,
+      "description": "Zebrała opowieści o drogach wiodących przez ogrody."
+    },
+    {
+      "source": "oskar",
+      "type": "located_in",
+      "target": "harbor",
+      "approved": true,
+      "description": "Znany z pomocy podróżnym korzystającym z przeprawy."
+    },
+    {
+      "source": "lea",
+      "type": "located_in",
+      "target": "gardens",
+      "approved": true,
+      "description": "Prowadzi ogród i wymienia się nasionami z mieszkańcami."
+    },
+    {
+      "source": "guild",
+      "type": "located_in",
+      "target": "harbor",
+      "approved": true
+    },
+    {
+      "source": "guild",
+      "type": "document",
+      "target": "letter",
+      "approved": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "atlas",
+      "src": "/assets/branding/atlas.svg",
+      "alt": "Znak demonstracyjnego atlasu",
+      "approved": true
+    },
+    {
+      "id": "portrait-mira",
+      "src": "/assets/branding/mira.svg",
+      "alt": "Schematyczny portret demonstracyjny Miry z atlasem",
+      "approved": true
+    },
+    {
+      "id": "portrait-lea",
+      "src": "/assets/branding/lea.svg",
+      "alt": "Schematyczny portret demonstracyjny Lei z gałązką ziół",
+      "approved": true
+    },
+    {
+      "id": "illustration-harbor",
+      "src": "/assets/branding/harbor.svg",
+      "alt": "Demonstracyjna ilustracja drewnianej przystani nad rzeką",
+      "approved": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+---
+layout: shell.njk
+title: Frakcje i organizacje
+activeSection: characters
+permalink: /organizations/index.html
+---
+<p class="eyebrow">KATALOG WIKI</p><h1>Frakcje i organizacje</h1><p class="lead">Grupy opisane w zatwierdzonych materiałach kampanii.</p><p class="catalog-count">Zatwierdzone wpisy: {{ approvedOrganizations.length }}</p>
+{% if approvedOrganizations.length %}{% set disclosureId = 'all-organizations' %}{% set disclosureTitle = 'Wszystkie frakcje i organizacje' %}{% set disclosureEntries = approvedOrganizations %}{% include 'collapsible-catalog.njk' %}
+{% else %}<div class="empty-state"><h2>Brak zatwierdzonych organizacji</h2><p>W tej części lokalnego podglądu nie ma jeszcze materiałów.</p><a href="/approved/">Zobacz wszystkie wpisy →</a></div>{% endif %}

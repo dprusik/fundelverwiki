@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "entry-c217c245e1b90f6b78f8",
+      "title": "Neverwinter",
+      "category": "maps",
+      "kind": "location",
+      "permalink": "/dnd/wiki/neverwinter/",
+      "legacy_map": {
+        "approved": true,
+        "link_policy": "omit_unresolved"
+      },
+      "source_key": "entry-c217c245e1b90f6b78f8",
+      "sha256": "f21374150148ad4dc0382c315925cc9644afb7ede9b13b901b2602f54b05a1e8",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:33:19.630Z"
+    },
+    {
+      "id": "entry-051af500665ecf26b916",
+      "title": "Gerwazy, Owlbear enjoyer",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/dnd/druzyna/gerwazy-owlbear-enjoyer/",
+      "source_key": "entry-051af500665ecf26b916",
+      "sha256": "d5f30cb52bd26a2ff0268dbd618b20be9727f6e680ca1355efe36885978ba1f5",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:05:23.576Z"
+    },
+    {
+      "id": "entry-18177bdd2e87bb6d9fe0",
+      "title": "Dziennik Tergona - wpis I",
+      "category": "documents",
+      "kind": "article",
+      "permalink": "/dnd/listy-notatki/dziennik-terogona-wpis-i/",
+      "source_key": "entry-18177bdd2e87bb6d9fe0",
+      "sha256": "85ee976c02dd61f944d17e4b442a632b0683efe695ab5e274f3fd64128b1f56e",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:11:14.518Z"
+    },
+    {
+      "id": "entry-6f1238484c8b195e7b6e",
+      "title": "rolling-thunder",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/dnd/magic-items/rolling-thunder/",
+      "source_key": "entry-6f1238484c8b195e7b6e",
+      "sha256": "9a4f1cc65a39a6dc568a72d30e03b059f11704d66d9155865a351c176301aacf",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.383Z"
+    },
+    {
+      "id": "entry-c2b5f200f19af3c64dee",
+      "title": "Lokacje",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/",
+      "source_key": "entry-c2b5f200f19af3c64dee",
+      "sha256": "7153488d4e8bb3f89f42dc8254be370e7dbdc6f7fa1bdf0aa803fb2f94340ecc",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.384Z"
+    },
+    {
+      "id": "entry-ee408a01f9412b679faa",
+      "title": "Bekrit",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/bekrit/",
+      "source_key": "entry-ee408a01f9412b679faa",
+      "sha256": "6b79b2bf0099e4f2b9913405fcfe8b9bab1353990cce7bb46d47a22faf99a452",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.386Z"
+    },
+    {
+      "id": "entry-7c20f9895f66d60c763f",
+      "title": "Bregan d'arthe",
+      "category": "characters",
+      "kind": "faction",
+      "permalink": "/postacie/bregan-d-arthe/",
+      "source_key": "entry-7c20f9895f66d60c763f",
+      "sha256": "1701d0767eeb4876a13edb86045e0cf8198427522f630feba8856cf6ad5bdb1c",
+      "approved": true,
+      "reviewed_at": "2026-10-23T20:27:19.948Z"
+    },
+    {
+      "id": "entry-8adea3ec078e3f31d575",
+      "title": "Dagult Neverember",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/dagult-neverember/",
+      "source_key": "entry-8adea3ec078e3f31d575",
+      "sha256": "b15ca0f9af6ba8fb65218b0d9e061a6c58f4680cfb5da7ba4dc3677be841a274",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.388Z"
+    },
+    {
+      "id": "entry-82084aba41af99beff44",
+      "title": "Elaria Moonsong",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/elaria-moonsong/",
+      "source_key": "entry-82084aba41af99beff44",
+      "sha256": "99a508d8639e674850e9c0dcdb6a07d8dbcb4dc531df78eb53a9fba4dde404d6",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.390Z"
+    },
+    {
+      "id": "entry-1fd9dd3690790937e6dd",
+      "title": "Generał Sabine",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/general-sabine/",
+      "source_key": "entry-1fd9dd3690790937e6dd",
+      "sha256": "01df17af8a433883c671a6f06aae800207e4d60dcefa3be9b14e28db9ff51dc7",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.391Z"
+    },
+    {
+      "id": "entry-5f092e7ab1c176962d92",
+      "title": "Quentin",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/quentin/",
+      "source_key": "entry-5f092e7ab1c176962d92",
+      "sha256": "25056221308e73139d90af7e14de15d82c6df15520e8ab32a215ca08b46bf855",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.392Z"
+    },
+    {
+      "id": "entry-70c0a7219376f7fedd62",
+      "title": "Zaerith Dhalmass",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/zaerith-dhalmass/",
+      "source_key": "entry-70c0a7219376f7fedd62",
+      "sha256": "7bf324920d971c8abf520b5f8eb90b6e4ce15b7bbbeebfaaeba674c105e70c9c",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.394Z"
+    },
+    {
+      "id": "entry-ea1ef23a3438fa49ba3d",
+      "title": "Bekrit's Mask",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/przedmioty/bekrits-mask/",
+      "source_key": "entry-ea1ef23a3438fa49ba3d",
+      "sha256": "576bfb99b6cd1115f66ff606f7ffa630ab220bb5c9b8d948afb0ec12caf6fd6d",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.395Z"
+    },
+    {
+      "id": "entry-c9c352f2aa80b53b4479",
+      "title": "Bracelets of Shared Might",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/przedmioty/bracelets-of-shared-might/",
+      "source_key": "entry-c9c352f2aa80b53b4479",
+      "sha256": "b17070eb7d8cf7e8aaaa168f78f49fe472bbe8dc5cd4e523b20d56c61ba84de5",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.396Z"
+    },
+    {
+      "id": "entry-9bd1be70b78b1eff83f0",
+      "title": "Bracers of the Red Brood",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/przedmioty/bracers-of-the-red-brood/",
+      "source_key": "entry-9bd1be70b78b1eff83f0",
+      "sha256": "cec386949db65592c842053223643262c385f1a3832dbc691b70466cac72ce10",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.397Z"
+    },
+    {
+      "id": "entry-45820f87e4f4cb288a85",
+      "title": "Dragonguard",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/przedmioty/dragonguard/",
+      "source_key": "entry-45820f87e4f4cb288a85",
+      "sha256": "c7500b03604a0e20028f197135dac5e8a04dd385eca1f3c2ce15d45e7e536521",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.398Z"
+    },
+    {
+      "id": "entry-215968637c2d9d748e81",
+      "title": "Staff of War",
+      "category": "items",
+      "kind": "item",
+      "permalink": "/przedmioty/staff-of-war/",
+      "source_key": "entry-215968637c2d9d748e81",
+      "sha256": "8acf641b31a4c6603465fc673932f9c35b4de4029c8d521532a27d65a0bd4786",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:10:33.399Z"
+    },
+    {
+      "id": "entry-14f9b2d936ae79004fed",
+      "title": "Dom Antares",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/dom-antares/",
+      "source_key": "entry-14f9b2d936ae79004fed",
+      "sha256": "4816492837169bcabb3da068bbb4fbaf612be29eb722ed98e8a3002f50fd355c",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.016Z"
+    },
+    {
+      "id": "entry-b3bb21ce51d8137fe4f9",
+      "title": "Dom Wiedzy",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/dom-wiedzy/",
+      "source_key": "entry-b3bb21ce51d8137fe4f9",
+      "sha256": "de1ccd83a64eaef5e975b5dcd771947f8ebd5e480f438992b4f235b53706b0ab",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.018Z"
+    },
+    {
+      "id": "entry-0ec459b2baddd4e13739",
+      "title": "Hol sprawiedliwości",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/hol-sprawiedliwosci/",
+      "source_key": "entry-0ec459b2baddd4e13739",
+      "sha256": "bfa090ff713a276a3b20937930006a2e34c8ea16bc97a2d98b7e9b9f295caf30",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.019Z"
+    },
+    {
+      "id": "entry-9b929109a332a843dcdc",
+      "title": "Koszary straży w dzielnicy Wież",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/koszary-strazy-w-dzielnicy-wiez/",
+      "source_key": "entry-9b929109a332a843dcdc",
+      "sha256": "18899b58db33639249bfbc15d15af5ea9db0f9c8ce1d3bc4dfdaf8d7dc7bcd3b",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.015Z"
+    },
+    {
+      "id": "entry-1839367188f5f87d6982",
+      "title": "Mikstury i zioła Featherfallówi",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/mikstury-i-ziola-featherfallowi/",
+      "source_key": "entry-1839367188f5f87d6982",
+      "sha256": "c15e626c46e6a7a41d3a42d99041a5209992c40bf1daa3900989dbcb9464dc5c",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.021Z"
+    },
+    {
+      "id": "entry-4c067ceb712d7814223d",
+      "title": "Odłamek księżyca",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/odlamek-ksiezyca/",
+      "source_key": "entry-4c067ceb712d7814223d",
+      "sha256": "90e272115bcec54510bd5ebae9eb36d0da66b9788d2fba3f7aced657e3b19e4b",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.025Z"
+    },
+    {
+      "id": "entry-c68f2c775f94404818a1",
+      "title": "Opuszczony posterunek wojskowy",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/opuszczony-posterunek-wojskowy/",
+      "source_key": "entry-c68f2c775f94404818a1",
+      "sha256": "c6b2d1d336b702244bb6b0531b75859ed8b6ba3a23abb402513f623b8616b8af",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.023Z"
+    },
+    {
+      "id": "entry-ac24a15a90a1b83e15d1",
+      "title": "Rozjebany Lewiatan",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/rozjebany-lewiatan/",
+      "source_key": "entry-ac24a15a90a1b83e15d1",
+      "sha256": "1fa6602c767bbc090c293809e17ad5d2a5e4f8bba0a9b1a898d6b81011fd8b88",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.011Z"
+    },
+    {
+      "id": "entry-30991a8ef7f5501a39a8",
+      "title": "Stare kamienice w Bluelake",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/stare-kamienice-w-bluelake/",
+      "source_key": "entry-30991a8ef7f5501a39a8",
+      "sha256": "4fcbc4de0894fbc28e0d277df96752b1ce100947e8bf002405dd970357440037",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.022Z"
+    },
+    {
+      "id": "entry-61d0665bd17b30f20e73",
+      "title": "Wieża Płaszcza",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/wieza-plaszcza/",
+      "source_key": "entry-61d0665bd17b30f20e73",
+      "sha256": "952a5c5497c0d912ec925964b068ef4acab4e051cf43e0a285116a9196110c5b",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.013Z"
+    },
+    {
+      "id": "entry-fcb8be62d93e05d4acf2",
+      "title": "Zamek Never",
+      "category": "locations",
+      "kind": "location",
+      "permalink": "/dnd/wiki/lokacje/neverwinter/zamek-never/",
+      "source_key": "entry-fcb8be62d93e05d4acf2",
+      "sha256": "1b1cdefafa147bbfb6ecaf20a3ad3e66a640895b150c859eeb8f770622c81880",
+      "approved": true,
+      "reviewed_at": "2026-10-23T22:26:15.007Z"
+    }
+  ]
+}
