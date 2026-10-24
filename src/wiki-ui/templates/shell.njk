@@ -7,7 +7,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   {% if publicationPreview or localPreview %}<meta name="robots" content="noindex,nofollow">{% endif %}
   {% if publicationProduction %}<link rel="canonical" href="{{ publicationBaseUrl | escape }}{{ page.url | escape }}">{% endif %}
-  <title>{{ title | escape }} · {% if isDemo %}{{ wiki.campaign.name | escape }} — DEMO{% elif publicationPreview %}Przez Ogień i Burze{% else %}Wiki kampanii{% endif %}</title>
+  <title>{{ title | escape }} · {% if isDemo %}{{ wiki.campaign.name | escape }} — DEMO{% else %}Przez Ogień i Burze{% endif %}</title>
   <link rel="stylesheet" href="/assets/wiki.css">
   <style>:root { {{ appearance.cssTokens | safe }} }</style>
   <script type="module" src="/assets/wiki.js"></script>
@@ -15,7 +15,7 @@
 <body>
 <a class="skip-link" href="#main">Przejdź do treści</a>
 <aside class="rail" id="navigation" aria-label="Nawigacja wiki">
-  <div class="brand"><a href="{{ homeUrl }}" aria-label="{% if isDemo %}Demo{% else %}Wiki kampanii{% endif %} — Start"><span class="brand-mark{% if appearance.decorations.logo %} brand-mark--image{% endif %}" aria-hidden="true">{% if appearance.decorations.logo %}<img src="{{ appearance.decorations.logo | escape }}" alt="" width="48" height="54" decoding="async">{% else %}{{ icon('archive') }}{% endif %}</span><span class="brand-label">{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Wiki kampanii{% endif %}<small>{% if isDemo %}DANE DEMONSTRACYJNE{% elif publicationPreview %}PRZEZ OGIEŃ I BURZE{% else %}BIBLIOTEKA KAMPANII{% endif %}</small></span></a></div>
+  <div class="brand"><a href="{{ homeUrl }}" aria-label="{% if isDemo %}Demo{% else %}Przez Ogień i Burze{% endif %} — Start"><span class="brand-mark{% if appearance.decorations.logo %} brand-mark--image{% endif %}" aria-hidden="true">{% if appearance.decorations.logo %}<img src="{{ appearance.decorations.logo | escape }}" alt="" width="48" height="54" decoding="async">{% else %}{{ icon('archive') }}{% endif %}</span><span class="brand-label">{% if isDemo %}{{ wiki.campaign.name | escape }}{% else %}Przez Ogień i Burze{% endif %}<small>{% if isDemo %}DANE DEMONSTRACYJNE{% elif publicationPreview %}PRZEZ OGIEŃ I BURZE{% else %}BIBLIOTEKA KAMPANII{% endif %}</small></span></a></div>
   <button class="panel-control enhanced" id="panel-toggle" aria-expanded="true" aria-controls="menu-links">Zwiń panel</button>
   <button class="search-launch enhanced" data-search aria-label="{% if isDemo %}Szukaj w demo{% else %}Szukaj w wiki{% endif %}">{{ icon('search') }} <span>{% if isDemo %}Szukaj w demo{% else %}Szukaj w wiki{% endif %}</span><kbd>Ctrl K</kbd></button>
   <nav id="menu-links" aria-label="Menu główne">
@@ -38,7 +38,7 @@
 </aside>
 <button id="backdrop" class="backdrop" aria-label="Zamknij menu" hidden tabindex="-1"></button>
 <div class="workspace" id="workspace">
-  <header class="topbar"><button id="mobile-menu" class="enhanced" aria-controls="navigation" aria-expanded="false">☰ Menu</button><a href="{{ homeUrl }}" class="compact-brand">{% if isDemo %}Wiki · demo{% else %}Wiki kampanii{% endif %}</a><span class="topbar-caption">{% if isDemo %}DEMO INTERFEJSU{% else %}BIBLIOTEKA KAMPANII{% endif %}</span><button data-search class="enhanced top-search">{{ icon('search') }} Szukaj <kbd>Ctrl K</kbd></button></header>
+  <header class="topbar"><button id="mobile-menu" class="enhanced" aria-controls="navigation" aria-expanded="false">☰ Menu</button><a href="{{ homeUrl }}" class="compact-brand">{% if isDemo %}Wiki · demo{% else %}Przez Ogień i Burze{% endif %}</a><span class="topbar-caption">{% if isDemo %}DEMO INTERFEJSU{% else %}BIBLIOTEKA KAMPANII{% endif %}</span><button data-search class="enhanced top-search">{{ icon('search') }} Szukaj <kbd>Ctrl K</kbd></button></header>
   {% if not publicationPreview and not publicationProduction %}<div class="demo-notice"><span class="demo-dot" aria-hidden="true"></span> {% if isDemo %}Prototyp demonstracyjny — przykładowe treści, nie fakty kampanii.{% else %}Lokalny podgląd zatwierdzonych treści kampanii. Ten widok nie publikuje zmian w publicznej wiki.{% endif %}</div>{% endif %}
   <main id="main" tabindex="-1">
     {% if page.url != homeUrl %}{% set bannerPlacement = 'header' %}{% include 'campaign-banner.njk' %}{% endif %}
