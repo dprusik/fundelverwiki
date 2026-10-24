@@ -57,7 +57,9 @@ Ten wynik dotyczy lokalnego artefaktu. Odpowiadający mu zdalny Preview i ochron
 
 ## Deployment Vercel i Node 24 — 2026-10-24
 
-Push commita `f2caa6c0c0035dd63fd13f91de952645f98cf5f4` uruchomił Vercel Preview `Ztxph74Xusge4Uhjo3GutC1SzCvQ`; GitHub status Vercel zmienił się z `pending` na `failure`. Logów nie udało się pobrać, bo lokalny Vercel CLI nie ma uwierzytelnionej sesji. Deklarację `engines.node` podniesiono do `24.x` (Vercel wspiera tę wersję jako domyślną). Po czystym `npm ci` na Node 24.22.0/npm 11.19.1 ponownie przeszły buildy wiki, Preview i Production oraz zestawy wiki (20), organizacji (3), publikacji (75) i oba przeglądarkowe. Wersja Node nie została potwierdzona jako przyczyna poprzedniej awarii; nowy zdalny Preview wymaga deploymentu po wypchnięciu poprawki.
+Push commita `f2caa6c0c0035dd63fd13f91de952645f98cf5f4` uruchomił Vercel Preview `Ztxph74Xusge4Uhjo3GutC1SzCvQ`, który zakończył się błędem `SOURCE_CHANGED` dla zatwierdzonego źródła Rolling Thunder. Po odświeżeniu zatwierdzenia i ponownym imporcie treści błąd został usunięty. Nie był związany z wersją Node. Deklarację `engines.node` podniesiono do `24.x`; commit `0a322e3b951093b3bf8908aced839f9963934648` używający Node 24.22.0/npm 11.19.1 uzyskał Vercel Preview Ready (deployment `HetbNzRatdf8iuu9Vx1gMAgasJ1o`). Preview: https://fundelverwiki-k5tvkqs1x-dprusiks-projects.vercel.app/ . Anonymouszna odpowiedź przekierowuje do ochrony Vercel SSO i zawiera `X-Robots-Tag: noindex`. Nie wykonano wdrożenia Production.
+
+Na aktualnym Preview zalogowana przeglądarka potwierdziła stronę główną z 27 zatwierdzonymi wpisami, katalog 6 postaci, katalog 5 przedmiotów i kanoniczny adres Rolling Thunder. Katalogi renderują miniatury; lokalne testy sprawdzają źródła obrazów i ich kadrowanie. Szczegółową inspekcję atlasu i powiększeń potwierdzają testy przeglądarkowe lokalnego artefaktu. Zdalnego statusu HTTP 404 dla tego nowego deploymentu nie udało się odczytać poza SSO; GET/HEAD 404 jest sprawdzony lokalnie, a zdalny 404 został wcześniej potwierdzony na poprzednim Preview.
 
 ## Location tile images
 

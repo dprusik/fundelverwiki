@@ -1,6 +1,6 @@
 # Wiki Layout 2.0 — przejście na Production
 
-Stan: 2026-10-24. Końcowe poprawki zostały zacommitowane i wypchnięte na `feat/wiki-layout-2` jako `f2caa6c0c0035dd63fd13f91de952645f98cf5f4`. Vercel utworzył deployment, ale oznaczył go jako nieudany; dlatego nie ma jeszcze zaakceptowanego finalnego Preview. Przygotowywana jest aktualizacja deklarowanej wersji Node z 22.x na 24.x.
+Stan: 2026-10-24. Końcowe poprawki są wypchnięte na `feat/wiki-layout-2`. Finalny dotychczasowy kandydat Preview to commit `0a322e3b951093b3bf8908aced839f9963934648` (Node 24.x), deployment `HetbNzRatdf8iuu9Vx1gMAgasJ1o`, URL https://fundelverwiki-k5tvkqs1x-dprusiks-projects.vercel.app/ , status Ready. Nie wykonano merge do `main` ani promocji do Production.
 
 ## Co zostało przygotowane
 
@@ -59,9 +59,9 @@ Nie używaj legacy `npm run build` do tego wydania. Jego zabezpieczenie pozostaj
 
 ## Instrukcja wydania — istniejący projekt Vercel
 
-Poniższe czynności są instrukcją na później, nie zostały wykonane w tej iteracji. Najpierw potrzebna jest zgoda DM na commit/push końcowych poprawek, a przed krokiem 4 osobna zgoda na Production.
+Poniższe czynności są instrukcją na później. Przed krokiem 4 potrzebna jest akceptacja DM dla Preview i osobna decyzja o wdrożeniu Production.
 
-1. **Zapisz poprawki i uruchom finalne Preview.** Zacommituj wyłącznie pliki końcowych poprawek i dokumentacji, bez nieśledzonego `.codex/` oraz ignorowanych artefaktów. Wypchnij `feat/wiki-layout-2`. W istniejącym projekcie `dprusiks-projects/fundelverwiki` poczekaj na Preview ze statusem Ready dla nowego SHA. Nie wybieraj starego `5e5e3ca` jako końcowego wydania — nie ma tych poprawek.
+1. **Przygotuj zaakceptowany kandydat.** Końcowy kandydat wskazany powyżej jest już wypchnięty na `feat/wiki-layout-2`. Przed produkcją DM powinien zaakceptować ten konkretny Preview i sprawdzić, czy nie pojawił się nowszy commit/deployment.
 2. **Sprawdź ten konkretny deployment.** Potwierdź stopkę, opis atlasu, wyszukiwanie, jeden portret z oryginałem, mapę i stronę 404. Preview musi nadal mieć `noindex,nofollow` i `robots.txt` z `Disallow: /`. Zapisz SHA, URL/ID finalnego Preview oraz raport. Lokalny manifest SHA-256 jest tworzony przez generator poza katalogiem strony, w `.publication-build/`; nie kopiuj go do publicznego outputu.
 3. **Sprawdź ustawienia istniejącego projektu.** Repo: `dprusik/fundelverwiki`; Production Branch: `main`; Root Directory: pusty (`./`); Node: 24.x (deklaracja `engines.node` w `package.json` ma pierwszeństwo dla nowych deploymentów). Repozytoryjny `vercel.json` ma `installCommand: npm ci`, `buildCommand: npm run publication:build`, `outputDirectory: .publication-build/production`. `PUBLICATION_SITE_URL` powinno być nieustawione lub równe `https://fundelverwiki.vercel.app`. Nie ustawiaj go na adres Preview i nie nadpisuj ręcznie `VERCEL_ENV`. Zachowaj istniejące domeny oraz ochronę Preview. Zapisz ID dotychczasowego deploymentu Production.
 4. **Po akceptacji DM scal finalną gałąź do `main`.** Otwórz PR `feat/wiki-layout-2` → `main`, sprawdź finalny diff i zgodność źródeł z zaakceptowanym Preview. Scal PR. To uruchamia nowy build **Production** w tym samym projekcie i podmienia przypisane domeny po udanym wdrożeniu. Nie twórz nowego projektu Vercel, nie zmieniaj DNS i nie kopiuj lokalnego outputu na hosting.
