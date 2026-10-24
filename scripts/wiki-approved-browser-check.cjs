@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { organizeApprovedCatalog } = require('../src/wiki-ui/catalog.cjs');
+const { applyCatalogVisibility } = require('../src/wiki-ui/catalog-visibility.cjs');
 const { organizeLocationNavigation } = require('../src/wiki-ui/location-navigation.cjs');
 const { prepareLocalArticles } = require('../src/helpers/wiki/local-articles.cjs');
 const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
@@ -10,7 +11,7 @@ const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
 // Read only active public metadata; never visit pending source paths.
 (async () => {
   const entries = JSON.parse(fs.readFileSync('src/wiki/public-entries.json', 'utf8')).entries;
-  const catalog = organizeApprovedCatalog(entries.map(entry => ({ ...entry, url: entry.permalink })));
+  const catalog = applyCatalogVisibility(organizeApprovedCatalog(entries.map(entry => ({ ...entry, url: entry.permalink }))));
   const local = prepareLocalArticles(process.cwd());
   const navigation = organizeLocationNavigation(catalog.entries, local.catalog, require('../src/wiki-ui/location-navigation.json'));
   const atlas = buildAtlasViews(local.maps, require('../src/wiki-ui/atlas-navigation.json'), local.catalog.map(entry => entry.url));
@@ -28,7 +29,7 @@ const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
         { url: '/', count: null },
         { url: '/approved/', count: catalog.total },
         { url: '/organizations/', count: catalog.organizations.length },
-        ...catalog.sections.map(section => ({ url: `/catalog/${section.id}/`, count: section.id === 'maps' ? 0 : section.id === 'locations' ? navigation.ungrouped.length : section.count, locationGroups: section.id === 'locations' ? navigation.groups : null, atlasMaps: section.id === 'maps' ? atlas : null }))
+        ...catalog.sections.map(section => ({ url: `/catalog/${section.id}/`, count: section.id === 'maps' ? 0 : section.id === 'locations' ? navigation.ungrouped.length : section.id === 'items' ? section.catalogCount : section.count, locationGroups: section.id === 'locations' ? navigation.groups : null, atlasMaps: section.id === 'maps' ? atlas : null }))
       ];
       for (const route of routes) {
         assert.equal((await page.goto('http://127.0.0.1:8081' + route.url)).status(), 200);

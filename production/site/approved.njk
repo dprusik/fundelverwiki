@@ -1,0 +1,8 @@
+---
+permalink: /approved/index.html
+layout: shell.njk
+title: Wszystkie wpisy
+---
+<p class="eyebrow">BIBLIOTEKA KAMPANII</p><h1>Wszystkie wpisy</h1><p class="lead">Zatwierdzone materiały uporządkowane według tematu.</p><p class="catalog-count">Liczba wpisów: {{ approvedCatalog.length }}</p>
+<nav class="catalog-jump" aria-label="Kategorie wpisów">{% for group in approvedGroups %}<a href="#group-{{ group.id }}">{{ group.label | escape }} <span>({{ group.count }})</span></a>{% endfor %}</nav>
+{% for group in approvedGroups %}<section class="approved-group" aria-labelledby="group-{{ group.id }}"><div class="section-heading"><h2 id="group-{{ group.id }}">{{ group.label | escape }}</h2><span>Wpisy: {{ group.count }}</span></div><div class="entry-grid">{% for entry in group.entries %}{% include 'approved-card.njk' %}{% else %}<p class="empty-state">Brak zatwierdzonych materiałów w tej kategorii.</p>{% endfor %}</div></section>{% endfor %}

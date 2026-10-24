@@ -342,4 +342,49 @@ Późniejsze decyzje DM oznaczają pięć notatek jako `denied`; historia wcześ
 
 Wyniki: `wiki:build` PASS (58 stron), `wiki:test` PASS (18/18), `publication:test` PASS (60/60), test organizacji PASS (3/3). Wszystkie 11 regresji przeglądarkowych przeszło na Playwright 1.64.1 i Edge headless, w tym mobile/desktop, Dark Archive/DragonBanner, wyszukiwanie, encje, mapa, nawigacja i sticky header. `publication:validate` BLOCKED zgodnie z projektem: 65 `UNAPPROVED_INPUT`, 5 `DENIED_INPUT`.
 
-Integracja Wiki Layout 2.0 i Dark Archive została ukończona lokalnie na gałęzi `feat/wiki-layout-2`. Produkcyjny build pozostaje zablokowany; nie wykonano pushu ani deploymentu. Oryginalny vault i `.obsidian` nie były modyfikowane. Następna iteracja: zaplanowanie bezpiecznego produkcyjnego buildu opartego o jeden zatwierdzony model danych, po odrębnej certyfikacji wszystkich kanałów.
+Integracja Wiki Layout 2.0 i Dark Archive została ukończona lokalnie na gałęzi `feat/wiki-layout-2`. Produkcyjny build pozostaje zablokowany; nie wykonano pushu ani deploymentu. Oryginalny vault i `.obsidian` nie były modyfikowane. Następny etap implementacji podglądu publikacyjnego opisuje sekcja poniżej.
+
+## Kontrolowany build z zatwierdzonego modelu — 2026-10-24
+
+Dodano `npm run publication:build-preview`, oddzielny generator stron, katalogów, wyszukiwarki, grafu jawnych relacji, sitemap, feedu i zatwierdzonych rastrowych assetów. Renderowanie korzysta z `prepareLocalArticles()` i nowych szablonów `production/site/`; demo oraz surowe wejściowe drzewo Eleventy nie są kopiowane. Katalog wyjściowy przechodzi dokładną kontrolę dozwolonych plików i tras, odnośników, zakresów kanałów oraz hashy assetów i runtime. Manifest hashy jest przechowywany poza katalogiem strony.
+
+Build tworzy wyłącznie lokalny, nieindeksowalny preview pod ignorowanym `.publication-build/preview-*`. Ma `noindex,nofollow` oraz `Disallow: /`. Nie jest podłączony do Vercel ani `dist`. Dotychczasowy `npm run build` i `assertProductionBuildAllowed()` pozostały bez zmian. Pięć denied i niezatwierdzone materiały nie wchodzą do projekcji. Nie zatwierdzano żadnych nowych treści ani assetów.
+
+Wynik bieżący: preview 65 plików, 38 tras, 28 rekordów wyszukiwarki, 28 węzłów grafu, 17 zatwierdzonych assetów, 0 elementów RSS. `wiki:test` 19/19 PASS, `publication:test` 65/65 PASS, test wyjściowego katalogu 5/5 PASS, smoke test Edge desktop/mobile PASS. Pełna `publication:validate` pozostaje BLOCKED: 65 `UNAPPROVED_INPUT`, 5 `DENIED_INPUT`. Banner DragonBanner i maska Bekrita są pominięte: nie mają aktywnych rekordów w rejestrze zatwierdzonych assetów. `PUBLICATION_SITE_URL` akceptuje HTTPS, ale wymaga jeszcze allowlisty hosta przed jakimkolwiek release.
+
+Szczegóły i pozostałe wymagania przed release: [PRODUCTION_BUILD.md](PRODUCTION_BUILD.md). Produkcyjny build pozostaje zablokowany. Nie wykonano pushu ani deploymentu dla tej iteracji.
+
+## Widoczność maski w katalogu przedmiotów — 2026-10-24
+
+Na prośbę DM Bekrit’s Mask została ukryta wyłącznie z listy `/catalog/items/` w preview prototypu i kontrolowanym preview publikacyjnym. Jej zatwierdzony artykuł, permalink `/przedmioty/bekrits-mask/`, wyszukiwarka i pełny spis zatwierdzonych wpisów pozostają bez zmian. Nie zmieniono notatki ani rejestru zgód. `wiki:test` 19/19 PASS; oba buildy preview PASS; kontrola HTML potwierdziła ukrycie na liście i zachowanie artykułu/search. Lokalny podgląd: http://127.0.0.1:8086/.
+
+## Przygotowanie wydania Vercel — 2026-10-24
+
+Przeprowadzono audyt nowego generatora i Vercel: [VERCEL_RELEASE_AUDIT.md](VERCEL_RELEASE_AUDIT.md). Wynik to **NO-GO dla wdrożenia**. `vercel.json` nadal uruchamia zablokowany legacy build do `dist`; generator tworzy wyłącznie lokalny preview z `noindex,nofollow` i `Disallow: /`. Nie zmieniono `assertProductionBuildAllowed()`, nie wykonano pushu ani deploymentu.
+
+DragonBanner jest używany w Dark Archive jako banner i logo menu. Maska Bekrita nie jest używana przez aktywny motyw. Oba bajtowo zgodne pliki są teraz osobnymi materiałami `pending` w istniejącym review DM: `asset-1256c741d3f2a0c7d642` (DragonBanner) oraz `asset-7a71166caed13c72f914` (maska). Nie dopisano zgód. Generator pokaże DragonBanner po zatwierdzeniu jego dokładnego assetu; maska pozostaje poza wyglądem motywu.
+
+Wzmocniono walidację outputu: kontrola origin sitemap/feed, referencji HTML `srcset` i CSS `url()`, oraz jawny host `https://fundelverwiki.vercel.app`. Build preview PASS (65 plików; 38 tras; 28 search i 28 graph; 17 zatwierdzonych assetów); dwie nowe grafiki pending nie wystąpiły w artefakcie ani referencjach. `publication:test` 70/70, `wiki:test` 19/19. Pełna walidacja nadal BLOCKED: 67 `UNAPPROVED_INPUT`, 5 `DENIED_INPUT`.
+
+Zależności są obecne (`npm ls --depth=0` bez braków), lecz sprawdzone środowisko to Node 24.22.0/npm 11.19.1, a projekt wymaga Node 22.x; czyste `npm ci` na Node 22 pozostaje niezweryfikowane. Nie ma jeszcze osobnej konfiguracji release, stagingowego hosta ani reguł cache Vercel. Plan testowania, akceptacji dokładnego manifestu, stagingu, wydania i bezpiecznego rollbacku znajduje się w raporcie audytu.
+## Decyzja DM — DragonBanner i maska Bekrita — 2026-10-24
+
+DM jawnie zatwierdził dwa zasoby przez lokalny przegląd i import z potwierdzonym diffem. Aktywne wpisy mają status `approved`: DragonBanner `asset-1256c741d3f2a0c7d642` (SHA-256 `428745c881c0de3e3ea48e1ada4b03db6091971545936b05e499b3b30632c5e3`) oraz maska Bekrita `asset-7a71166caed13c72f914` (SHA-256 `64304fec70a322c86efdf23e1747dac9969a673833b0def3a206b824b6bd1973`). Zgody zachowały się w prywatnej historii, a importer zapisał receipt transakcji. Pozostałe materiały nie otrzymały zgody.
+
+Po imporcie `publication:status` wykazuje 47 approved, 65 pending i 5 denied; pięć odmów pozostało bez zmian. `publication:build-preview` PASS: 67 plików, 38 tras, 28 wpisów wyszukiwania i węzłów grafu, 19 zatwierdzonych assetów, 0 elementów RSS; obie grafiki znajdują się w artefakcie. `publication:test` 70/70 i `wiki:test` 19/19 PASS. `publication:validate` pozostaje BLOCKED z 65 `UNAPPROVED_INPUT` i 5 `DENIED_INPUT`. Ocena wdrożenia nadal NO-GO; produkcyjna blokada pozostała aktywna.
+
+## Produkcyjny build Wiki Layout 2.0 — 2026-10-24
+
+Dodano `npm run publication:build` jako produkcyjny tryb tego samego generatora i modelu zatwierdzonych DTO, którego używa `publication:build-preview`. Preview pozostał nieindeksowalny. Build produkcyjny zapisuje zwalidowany katalog do `.publication-build/production`; `vercel.json` używa `npm ci`, `npm run publication:build` i tego katalogu. Zachowano dotychczasowy projekt/domenę Vercel, stare `npm run build` i `assertProductionBuildAllowed()`.
+
+Build PASS: 67 plików, 38 tras w sitemapie, 39 plików HTML z canonical, 28 wpisów wyszukiwania, 28 węzłów grafu, 19 zatwierdzonych assetów, jeden atlas Neverwinter z 11 znacznikami, 0 wpisów RSS. HTML nie ma `noindex,nofollow`; `robots.txt` zezwala na indeksowanie i wskazuje sitemapę. Walidator sprawdza pełny zestaw plików, trasy, relacje, referencje, canonical, sitemap, RSS oraz hashe assetów/runtime. Canary pending/denied nie występują.
+
+`publication:test` 72/72 i `wiki:test` 19/19 PASS; `publication:build-preview` również PASS. Pełne `publication:validate` nadal zgłasza 65 `UNAPPROVED_INPUT` i 5 `DENIED_INPUT`; produkcyjny generator publikuje wyłącznie zweryfikowany zatwierdzony model i nie wymaga zmian pozostałych decyzji DM. Lokalny build był uruchomiony na Node 24.22.0, a Vercel powinien użyć Node 22.x wskazanego w `package.json`; Node 22 nie był dostępny w tej sesji do lokalnego sprawdzenia. Nie wykonano pushu ani deploymentu.
+
+## Przygotowanie Vercel Preview — 2026-10-24
+
+`npm ci` wykonano z lockfile pod Node 22.23.4; `package-lock.json` pozostał bez zmian. `npm run publication:build` PASS: 67 plików, 38 tras, 28 rekordów wyszukiwania i grafu oraz 19 zatwierdzonych assetów. Build uruchomiony z `VERCEL_ENV=preview` korzysta z tego samego generatora, lecz tworzy wariant `noindex,nofollow` i `robots.txt` z `Disallow: /`; kontrola 39 stron HTML potwierdziła brak canonical i obecność noindex. Produkcyjny tryb nadal generuje indeksowalne strony z canonical i sitemapą. Stary `assertProductionBuildAllowed()` pozostał nietknięty.
+
+`publication:test` PASS 72/72, `wiki:test` PASS 19/19. Bezpośrednie `npm test` nie jest poprawnym runnerem dla obecnego zestawu: Vitest znajduje pliki używające `node:test`, a także prywatne kopie worktree; wywołanie kończy się „No test suite found” i nie jest wynikiem regresji projektu. `npm ci` zgłosiło 16 podatności w zależnościach (2 moderate, 13 high, 1 critical); zależności nie były aktualizowane w tej iteracji.
+
+`vercel.json` jawnie ustawia install/build/output, a Vercel dokumentuje, że `buildCommand` i `outputDirectory` z pliku nadpisują te wartości z ustawień projektu. `package.json` wskazuje Node `22.x`. Nie ma lokalnego linku `.vercel` ani CLI/sesji konta, więc nie potwierdzono Production Branch, Root Directory ani ustawień deploymentu istniejącego projektu. Przed uruchomieniem Preview trzeba w panelu sprawdzić, że `feat/wiki-layout-2` nie jest Production Branch; Vercel przypisuje Preview/Production według tej konfiguracji. Nie wykonano pushu ani deploymentu.

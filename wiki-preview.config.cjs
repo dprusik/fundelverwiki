@@ -4,6 +4,7 @@ const MarkdownIt = require('markdown-it');
 const fs = require('node:fs');
 const { prepareLocalArticles } = require('./src/helpers/wiki/local-articles.cjs');
 const { organizeApprovedCatalog } = require('./src/wiki-ui/catalog.cjs');
+const { applyCatalogVisibility } = require('./src/wiki-ui/catalog-visibility.cjs');
 const { projectApprovedSearch } = require('./src/helpers/wiki/approved-search.cjs');
 const { organizeLocationNavigation, locationDirectoryView } = require('./src/wiki-ui/location-navigation.cjs');
 const { atlasRouteReservations, buildAtlasViews, atlasLinksForArticle } = require('./src/wiki-ui/atlas.cjs');
@@ -13,9 +14,10 @@ const { characterPortraitView } = require('./src/wiki-ui/character-portrait.cjs'
 // Deliberately separate from .eleventy.js: only the approval adapter may read real content.
 module.exports = function (config) {
   const demo = loadDemo();
+  config.addGlobalData('localPreview', true);
   const local = prepareLocalArticles(process.cwd(), ['/', '/approved/', '/organizations/', '/404.html', '/demo-search.json', '/approved-search.json', ...atlasRouteReservations(atlasConfig)]);
   config.addGlobalData('approvedSearch', projectApprovedSearch(local));
-  const catalog = organizeApprovedCatalog(local.catalog);
+  const catalog = applyCatalogVisibility(organizeApprovedCatalog(local.catalog));
   const locationNavigation = organizeLocationNavigation(catalog.entries, [...local.articles, ...local.maps.map(map => map.entry)], require('./src/wiki-ui/location-navigation.json'));
   for (const article of [...local.articles, ...local.maps.map(map => map.entry)]) Object.assign(article, catalog.entries.find(entry => entry.id === article.id));
   for (const group of locationNavigation.groups) {

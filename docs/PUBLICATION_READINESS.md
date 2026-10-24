@@ -2,6 +2,12 @@
 
 Data: 2026-10-22. Gałąź: `feat/wiki-layout-2`, baza `994d1c3b1826f8a0909240ffa886c04ab0e03ae9`. Zmiany lokalne bez commita. Interfejs prototypu, nawigacja, tokeny i widoki postaci/lokacji bez zmian. Nie połączono nowego shellu z produkcyjnymi layoutami.
 
+## Aktualizacja po integracji i generatorze preview — 2026-10-24
+
+Powyższy audyt M1A.2 jest historyczny. Aktualny stan opisują [PROJECT_STATUS.md](PROJECT_STATUS.md) oraz [PRODUCTION_BUILD.md](PRODUCTION_BUILD.md). Powstał osobny renderer kontrolnego preview z dokładną allowlistą końcowych plików i tras. Wyszukiwarka, graf, sitemap, feed i HTML są tworzone z zatwierdzonej projekcji. Lokalny output ma `noindex,nofollow` i `Disallow: /`.
+
+Renderer nie zastąpił ani nie odblokował legacy produkcyjnego buildu. Preview przeszedł bieżące testy, ale audit techniczny runtime, szablonów, zależności i hostingu nadal jest wymagany. Obecne artefakty są lokalne i nie mogą być wdrożone na Vercel.
+
 Aktualizacja 2026-10-23: [zatwierdzone artykuły w lokalnym prototypie](LOCAL_APPROVED_ARTICLES.md). Aktywne zgody obejmują 17 notatek i 17 załączników; 70 wejść pozostaje pending. Nowy adapter renderuje 16 artykułów i mapę pod kanonicznymi adresami. Poniższe wyniki M1A.2 są historyczną podstawą; nie stanowią aktualnej liczby zgód ani deklaracji bezpieczeństwa produkcji. Produkcyjna bramka pozostaje zablokowana.
 
 Wcześniejsze etapy: [lokalny przegląd, historia i potwierdzony import](PUBLICATION_WORKFLOW.md), [zweryfikowane porównanie online](ONLINE_COMPARISON.md), [adapter istniejącej mapy](LEGACY_MAP_MIGRATION.md).

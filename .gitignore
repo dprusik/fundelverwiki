@@ -13,6 +13,7 @@ _site/
 **/.DS_Store
 .wiki-preview/
 .publication-prepared/
+.publication-build/
 .publication-review/
 src/wiki/.publication-import.lock
 src/wiki/.publication-import.pending

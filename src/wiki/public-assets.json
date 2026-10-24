@@ -153,6 +153,24 @@
       "sha256": "6f86025001a63f9bcf226c31da6691e9d65a4cf9ecf7a274b825477231b16778",
       "approved": true,
       "reviewed_at": "2026-10-22T20:23:53.676Z"
+    },
+    {
+      "id": "asset-7a71166caed13c72f914",
+      "alt": "Ciemna metalowa maska z czerwonymi, świecącymi oczami",
+      "url": "/img/user/lorekeeper/dark-archive-bekrit-mask.png",
+      "source_key": "asset-7a71166caed13c72f914",
+      "sha256": "64304fec70a322c86efdf23e1747dac9969a673833b0def3a206b824b6bd1973",
+      "approved": true,
+      "reviewed_at": "2026-10-24T03:17:01.986Z"
+    },
+    {
+      "id": "asset-1256c741d3f2a0c7d642",
+      "alt": "Sztandar z czerwonym i niebieskim płótnem oraz metalowym mieczem",
+      "url": "/img/user/lorekeeper/dark-archive-dragon-banner.png",
+      "source_key": "asset-1256c741d3f2a0c7d642",
+      "sha256": "428745c881c0de3e3ea48e1ada4b03db6091971545936b05e499b3b30632c5e3",
+      "approved": true,
+      "reviewed_at": "2026-10-24T03:15:50.663Z"
     }
   ]
 }

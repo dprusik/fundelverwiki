@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const { parse } = require('node-html-parser');
 const { organizeApprovedCatalog } = require('../../src/wiki-ui/catalog.cjs');
+const { applyCatalogVisibility } = require('../../src/wiki-ui/catalog-visibility.cjs');
 const { prepareLocalArticles } = require('../../src/helpers/wiki/local-articles.cjs');
 const { projectApprovedSearch } = require('../../src/helpers/wiki/approved-search.cjs');
 const { organizeLocationNavigation, locationDirectoryView } = require('../../src/wiki-ui/location-navigation.cjs');
@@ -40,7 +41,7 @@ test('catalog uses public fields only and preserves empty sections without inven
 
 test('built primary catalogs contain approved records and demo is confined to separate routes', () => {
   const local = prepareLocalArticles(process.cwd());
-  const data = organizeApprovedCatalog(local.catalog);
+  const data = applyCatalogVisibility(organizeApprovedCatalog(local.catalog));
   const navigation = organizeLocationNavigation(data.entries, local.catalog, locationConfig);
   const atlas = buildAtlasViews(local.maps, atlasConfig, local.catalog.map(entry => entry.url));
   const read = url => parse(fs.readFileSync('.wiki-preview' + url + 'index.html', 'utf8'));
@@ -50,7 +51,7 @@ test('built primary catalogs contain approved records and demo is confined to se
   for (const section of data.sections) {
     const page = read(`/catalog/${section.id}/`);
     const shown = page.querySelectorAll('main [data-approved-id]').map(node => node.getAttribute('data-approved-id'));
-    const expected = section.id === 'maps' ? [] : section.id === 'locations' ? navigation.ungrouped : [...section.entries, ...section.organizations];
+    const expected = section.id === 'maps' ? [] : section.id === 'locations' ? navigation.ungrouped : section.id === 'items' ? section.catalogEntries : [...section.entries, ...section.organizations];
     assert.deepEqual(shown.slice().sort(), expected.map(entry => entry.id).sort());
     if (section.id === 'locations') {
       assert.deepEqual(page.querySelectorAll('[data-location-group]').map(node => node.getAttribute('href')), navigation.groups.map(group => group.url));
@@ -160,4 +161,18 @@ test('built approved index matches validated rendered articles and remains separ
     assert.deepEqual(Object.keys(entry).sort(), ['id', 'url', 'title', 'category', 'aliases', 'body', 'summary'].sort());
     assert.ok(!entry.body.includes('<code class='));
   }
+});
+
+test('Bekrit’s Mask is hidden only from the items catalog, not from approved content or its route', () => {
+  const local = prepareLocalArticles(process.cwd());
+  const catalog = applyCatalogVisibility(organizeApprovedCatalog(local.catalog));
+  const mask = catalog.entries.find(item => item.id === 'entry-ea1ef23a3438fa49ba3d');
+  const items = catalog.sections.find(section => section.id === 'items');
+  const allItems = catalog.groups.find(group => group.id === 'items');
+  assert.ok(mask);
+  assert.ok(items.entries.some(item => item.id === mask.id));
+  assert.ok(!items.catalogEntries.some(item => item.id === mask.id));
+  assert.equal(items.catalogCount, items.count - 1);
+  assert.ok(allItems.entries.some(item => item.id === mask.id));
+  assert.equal(mask.url, '/przedmioty/bekrits-mask/');
 });

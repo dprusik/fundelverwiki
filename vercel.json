@@ -1,8 +1,20 @@
 {
-    "outputDirectory": "dist",
-    "installCommand": "npm install",
-    "buildCommand": "npm run build",
-    "devCommand": "npm run start",
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "outputDirectory": ".publication-build/production",
+    "installCommand": "npm ci",
+    "buildCommand": "npm run publication:build",
+    "trailingSlash": true,
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+                { "key": "X-Content-Type-Options", "value": "nosniff" },
+                { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+                { "key": "X-Frame-Options", "value": "DENY" }
+            ]
+        }
+    ],
     "routes": [
         { "handle": "filesystem" },
         { "src": "/(.*)", "status": 404, "dest": "/404" }

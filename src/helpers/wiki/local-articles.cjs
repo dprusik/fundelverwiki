@@ -72,6 +72,7 @@ function prepareLocalArticles(root, reservedUrls = []) {
     const html = renderApprovedMarkdown(parsedMap ? parsedMap.markdown : byKey.get(entry.source_key).parsed.content, visible, verified.assets, verified.records);
     const result = { id: entry.id, url, title: entry.title, category: entry.category, kind: entry.kind, html, aliases: (entry.aliases || []).slice() };
     if (entry.summary) result.summary = entry.summary;
+    if (entry.published_at) result.published_at = entry.published_at;
     for (const [field, output] of [['portrait_asset_id', 'portrait'], ['illustration_asset_id', 'illustration']]) {
       if (!entry[field]) continue;
       const asset = verified.assets.find(asset => asset.id === entry[field]);
@@ -96,7 +97,7 @@ function prepareLocalArticles(root, reservedUrls = []) {
     if (!rasterBytes(bytes, record.extension)) fail('UNSUPPORTED_PREVIEW_ASSET');
     return { url: asset.url, bytes };
   });
-  return { articles, maps, catalog: [...articles, ...maps.map(item => item.entry)], files };
+  return { articles, maps, catalog: [...articles, ...maps.map(item => item.entry)], files, relations: verified.relations };
 }
 function resetPreviewOutput(root) {
   const output = path.resolve(root, '.wiki-preview');

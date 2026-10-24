@@ -1,0 +1,16 @@
+---
+pagination:
+  data: activeMaps
+  size: 1
+  alias: activeMap
+permalink: "{{ activeMap.atlasUrl }}index.html"
+layout: shell.njk
+eleventyComputed:
+  title: "{{ activeMap.title | safe }}"
+  activeSection: maps
+  breadcrumbLabel: Mapy
+  breadcrumbUrl: /catalog/maps/
+---
+<p class="eyebrow">ATLAS</p><h1 id="title">{{ activeMap.title | escape }}</h1><a class="text-link" data-map-article href="{{ activeMap.entry.url | escape }}">Artykuł: {{ activeMap.entry.title | escape }} →</a>
+<p id="status" role="status" class="map-status">Wczytywanie zatwierdzonej mapy…</p><div id="content" class="wiki-map-layout" hidden><section class="wiki-map-panel" aria-label="Interaktywna mapa"><div class="wiki-map-controls"><button id="zoom-in" aria-label="Przybliż mapę">+</button><button id="zoom-out" aria-label="Oddal mapę">−</button><button id="reset">Cała mapa</button></div><p class="map-help">Przeciągnij, aby przesunąć mapę. Kółko myszy lub dwa palce zmieniają powiększenie. Klawiatura: strzałki, +/−, Home.</p><svg id="map" class="wiki-map-canvas" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Mapa kampanii" tabindex="0"></svg><p id="coordinates" class="map-coordinates" aria-live="polite"></p></section><aside class="wiki-map-details"><section id="popup" class="wiki-map-popup" aria-live="polite" hidden><h2 id="marker-name"></h2><p id="marker-description"></p><p id="marker-link"></p></section><div class="wiki-map-marker-frame"><h2 id="markers-heading">Znaczniki <span id="count"></span></h2><ul id="markers" class="wiki-map-markers" tabindex="0" aria-labelledby="markers-heading"></ul></div></aside></div>
+<script id="map-data" type="application/json">{{ activeMap.viewerData | safeJson | safe }}</script><script defer src="/assets/map-viewer.js"></script><noscript><p class="empty-state">Włącz JavaScript, aby wyświetlić mapę. Opisy miejsc znajdziesz w <a href="{{ activeMap.entry.url | escape }}">artykule {{ activeMap.entry.title | escape }}</a>.</p></noscript>

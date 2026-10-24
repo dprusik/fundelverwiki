@@ -10,7 +10,7 @@ eleventyComputed:
   activeSection: "{{ section.id }}"
 ---
 <p class="eyebrow">KATALOG WIKI</p><h1>{{ section.label | escape }}</h1><p class="lead">{{ section.description | escape }}</p>
-<p class="catalog-count">Zatwierdzone wpisy: {{ section.count }}</p>
+<p class="catalog-count">Zatwierdzone wpisy: {% if section.id == 'items' %}{{ section.catalogCount }}{% else %}{{ section.count }}{% endif %}</p>
 {% if section.id == 'maps' %}<div class="entry-grid">
 {% for mapView in activeMaps %}<a class="entry-card" data-map-view-id="{{ mapView.map.id | escape }}" href="{{ mapView.atlasUrl | escape }}"><p class="eyebrow">MAPA</p><h2>{{ mapView.entry.title | escape }}</h2><span class="text-link">Otwórz mapę →</span></a>{% else %}<p class="empty-state">Brak zatwierdzonych map.</p>{% endfor %}
 </div>
@@ -22,6 +22,8 @@ eleventyComputed:
 {% if not locationNavigation.groups.length and not locationNavigation.ungrouped.length %}<p class="empty-state">Brak zatwierdzonych lokacji.</p>{% endif %}
 {% elif section.id == 'characters' and section.entries.length %}
 {% set disclosureId = 'all-characters' %}{% set disclosureTitle = 'Wszystkie postacie' %}{% set disclosureEntries = section.entries %}{% include 'collapsible-catalog.njk' %}
+{% elif section.id == 'items' %}
+<div class="entry-grid">{% for entry in section.catalogEntries %}{% include 'approved-card.njk' %}{% else %}<div class="empty-state"><h2>Brak widocznych przedmiotów</h2><p>Nie ma obecnie przedmiotów w tym katalogu.</p></div>{% endfor %}</div>
 {% else %}
 <div class="entry-grid">{% for entry in section.entries %}{% include 'approved-card.njk' %}{% else %}<div class="empty-state"><h2>Ta część biblioteki czeka na wpisy</h2><p>W lokalnym podglądzie nie ma jeszcze zatwierdzonych materiałów z tej kategorii.</p><a href="/approved/">Zobacz wszystkie wpisy →</a></div>{% endfor %}</div>
 {% endif %}
