@@ -400,3 +400,23 @@ Odczytano istniejący panel Vercel: projekt `fundelverwiki` jest połączony z `
 Ponowne `publication:test` 72/72 i `wiki:test` 19/19 PASS. Powtórny build z `VERCEL_ENV=preview` wykrył kolizję stałego `production.manifest.json` przy zapisie z `wx`. Generator używa teraz unikalnego UUID dla manifestów stałego katalogu wyjściowego i jawnie oznacza manifest Vercel Preview jako `vercel-preview`; zachowuje wcześniejsze manifesty poza katalogiem strony. Dwa kolejne buildy Preview po poprawce PASS: po 67 plików, 38 tras, 28 rekordów search/graph i 19 assetów; walidator trybu preview sprawdził noindex i blokadę robots. Testowane w tej sesji na Node 24.22.0; poprzedni test Node 22 pozostaje odrębnym dowodem historycznym.
 
 Nie wykonano commita, pushu ani deploymentu. Poprawka manifestu i dokumentacja czekają na zgodę na commit oraz wysłanie gałęzi Preview. Nie promować do Production.
+
+## Vercel Preview uruchomiony — 2026-10-24
+
+Po jawnej zgodzie DM utworzono commit `4110b41` (poprawka manifestów i dokumentacja) i wypchnięto `feat/wiki-layout-2` do `origin`. Nie dodawano nieśledzonego `.codex/`. Automatyczny deployment Vercel `HFmutfniuVYr2sDgzy4fisYCNZet` zakończył się statusem **Ready** jako **Preview**, dla SHA `4110b41a9b2b0c97d9551763914241c30c4359ad` (21 s).
+
+Adres: https://fundelverwiki-m2y9k4khz-dprusiks-projects.vercel.app/ . W zalogowanym Vivaldi potwierdzono stronę główną i branding, wyszukiwanie Neverwinter (14 wyników), przejście do kanonicznego artykułu, osobny atlas oraz listę 11 znaczników. Wdrożony `robots.txt` zawiera `User-agent: *` i `Disallow: /`. Anonimowy HTTP zwraca 302 do Vercel Authentication i `X-Robots-Tag: noindex`; ochrony nie zmieniano. Nie wykonano pełnej regresji przeglądarkowej na zdalnym Preview ani testów fizycznego telefonu.
+
+Production w panelu nadal wskazuje poprzednie wdrożenie `e65fcc0` z `main`; nie scalano gałęzi ani nie promowano Preview. Ten wpis wynikowy jest lokalną aktualizacją dokumentacji po wdrożeniu.
+
+## Korekta formatowania dziennika Tergona — przygotowana lokalnie, 2026-10-24
+
+DM zgłosił ramkę i inny krój pisma w akapicie po zdaniu o uklęknięciu przy chorym. Przyczyną był pojedynczy tabulator na początku kolejnego akapitu: Markdown renderował go jako `pre/code`. Usunięto dokładnie jeden bajt tabulatora w repozytoryjnej kopii `Dziennik Terogona - wpis I.md`, zachowując pozostałe bajty, CRLF, treść, permalink i oryginalny vault. Nie zmieniano globalnego renderera ani stylów bloków kodu.
+
+Sprawdzenie przy użyciu `renderApprovedMarkdown` PASS: poprzedni HTML zawierał blok kodu, nowy zwykły akapit; pełny widoczny tekst artykułu jest identyczny. Porównanie bajtów z HEAD potwierdza usunięcie wyłącznie jednego tabulatora. `git -c core.whitespace=cr-at-eol diff --check` PASS. Rejestru zgody nie zmieniano: hash źródła wymaga teraz celowanego ponownego zatwierdzenia i importu przed następnym buildem. Nie wykonano commita ani pushu korekty; zdalny Preview nadal zawiera poprzednią wersję.
+
+### Zgoda DM i weryfikacja przed publikacją korekty
+
+DM jawnie polecił opublikować przygotowaną korektę. Przez istniejący `createReview` zapisano ponowny przegląd jednego źródła; eksport ograniczono do tego wpisu, sprawdzono diff i zastosowano `publication:import` z potwierdzeniem konkretnego planu. Import zmienił wyłącznie SHA-256 i `reviewed_at` artykułu, zachowując pozostałe metadane, ID, URL, relacje i zgodę obrazu. Transakcja: `ccee550c-8e53-414a-a2e0-6c85c036b8c6`.
+
+Build w trybie `VERCEL_ENV=preview` PASS (67 plików, 38 tras, 28 search/graph, 19 assetów). Kontrola końcowego HTML dziennika potwierdziła zwykły akapit zamiast `pre/code`. `publication:test` 72/72 i `wiki:test` 19/19 PASS. Zakres publikacji: gałąź `feat/wiki-layout-2` i Vercel Preview; bez scalenia do `main` i promocji Production.
