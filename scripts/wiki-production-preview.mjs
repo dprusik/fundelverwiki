@@ -6,6 +6,7 @@ import { createRequire } from 'node:module';
 import * as sass from 'sass';
 import localArticles from '../src/helpers/wiki/local-articles.cjs';
 import outputGuard from '../src/helpers/wiki/production-output.cjs';
+import imageVariants from '../src/helpers/wiki/image-variants.cjs';
 import { organizeApprovedCatalog } from '../src/wiki-ui/catalog.cjs';
 import { projectApprovedSearch } from '../src/helpers/wiki/approved-search.cjs';
 
@@ -37,6 +38,12 @@ const atlasReservations = require('../src/wiki-ui/atlas.cjs').atlasRouteReservat
 const reserved = ['/', '/approved/', '/organizations/', '/404.html', '/approved-search.json', '/graph.json', '/sitemap.xml', '/feed.xml', '/robots.txt',
   '/catalog/documents/', '/catalog/characters/', '/catalog/locations/', '/catalog/items/', '/catalog/maps/', '/catalog/chronicle/', ...atlasReservations];
 const local = localArticles.prepareLocalArticles(root, reserved);
+const variants = await imageVariants.buildImageVariants(local, ['/img/user/lorekeeper/dark-archive-dragon-banner.png']);
+for (const file of variants.files) {
+  const target = join(output, outputGuard.assetFile(file.url));
+  mkdirSync(join(target, '..'), { recursive: true });
+  writeFileSync(target, file.bytes, { flag: 'wx' });
+}
 const catalog = organizeApprovedCatalog(local.catalog);
 const siteUrl = new URL(process.env.PUBLICATION_SITE_URL || 'https://fundelverwiki.vercel.app');
 if (siteUrl.origin !== 'https://fundelverwiki.vercel.app' || siteUrl.pathname !== '/' || siteUrl.search || siteUrl.hash || siteUrl.username || siteUrl.password) throw Error('PUBLICATION_SITE_ORIGIN_NOT_ALLOWLISTED');
@@ -44,7 +51,7 @@ const model = {
   sections: catalog.sections,
   catalog: catalog.entries.map(entry => ({ ...entry, ...(local.catalog.find(item => item.id === entry.id)?.published_at ? { published_at: local.catalog.find(item => item.id === entry.id).published_at } : {}) })),
   maps: [],
-  assets: local.files.map(file => ({ url: file.url, sha256: createHash('sha256').update(file.bytes).digest('hex') })),
+  assets: [...local.files, ...variants.files].map(file => ({ url: file.url, sha256: createHash('sha256').update(file.bytes).digest('hex') })),
   relations: [],
   siteOrigin: siteUrl.origin
 };
@@ -61,7 +68,7 @@ model.runtimeHashes = {
   'assets/search.mjs': createHash('sha256').update(readFileSync('src/wiki-ui/search.mjs')).digest('hex'),
   ...(maps.length ? { 'assets/map-viewer.js': createHash('sha256').update(readFileSync('tools/publication-review/map.js')).digest('hex') } : {})
 };
-const env = { ...process.env, WIKI_PUBLICATION_OUTPUT: output, WIKI_PUBLICATION_MODE: production ? 'production' : 'preview' };
+const env = { ...process.env, WIKI_PUBLICATION_OUTPUT: output, WIKI_PUBLICATION_MODE: production ? 'production' : 'preview', WIKI_PUBLICATION_IMAGE_VARIANTS: JSON.stringify(variants.sources) };
 delete env.ELEVENTY_ENV;
 const result = spawnSync(process.execPath, ['node_modules/@11ty/eleventy/cmd.cjs', '--config=wiki-production.config.cjs', '--quiet'], { cwd: root, env, stdio: 'inherit' });
 if (result.error) throw result.error;
@@ -101,4 +108,4 @@ const manifest = outputGuard.listOutputFiles(output).sort().map(file => ({ path:
 const manifestMode = vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview';
 const manifestName = fixedOutput ? `${manifestMode}-${randomUUID()}.manifest.json` : `${output.split(/[\\/]/).at(-1)}.manifest.json`;
 writeFileSync(join(stagingRoot, manifestName), JSON.stringify({ mode: manifestMode, generated_at: new Date().toISOString(), summary: report, files: manifest }, null, 2), { flag: 'wx' });
-console.log(JSON.stringify({ status: 'PASS', mode: vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview', output: output.slice(root.length + 1), approvedAssets: model.assets.length, ...report, legacyProductionGate: 'unchanged', deployable: production }, null, 2));
+console.log(JSON.stringify({ status: 'PASS', mode: vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview', output: output.slice(root.length + 1), approvedAssets: local.files.length, optimizedImages: variants.files.length, ...report, legacyProductionGate: 'unchanged', deployable: production }, null, 2));

@@ -128,8 +128,8 @@ let debounce;
 term?.addEventListener('input', () => { searchVersion++; clearTimeout(debounce); debounce = setTimeout(runSearch, 200); });
 
 document.querySelectorAll('[data-image-viewer]').forEach(trigger => trigger.addEventListener('click', event => {
-  const image = trigger.querySelector('img'), source = image?.getAttribute('src');
-  if (!imageDialog || !source || trigger.getAttribute('href') !== source || !source.startsWith('/') || source.startsWith('//') || new URL(source, location.href).origin !== location.origin) return;
+  const image = trigger.querySelector('img'), source = trigger.getAttribute('href');
+  if (!imageDialog || !image || !source || !source.startsWith('/') || source.startsWith('//') || new URL(source, location.href).origin !== location.origin) return;
   event.preventDefault();
   imageTrigger = trigger;
   document.querySelector('#image-dialog-image').src = source;

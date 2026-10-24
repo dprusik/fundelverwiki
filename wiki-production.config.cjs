@@ -9,6 +9,7 @@ const { organizationViews } = require('./src/wiki-ui/organization-view.cjs');
 const { organizeLocationNavigation, locationDirectoryView } = require('./src/wiki-ui/location-navigation.cjs');
 const { atlasRouteReservations, buildAtlasViews, atlasLinksForArticle } = require('./src/wiki-ui/atlas.cjs');
 const { characterPortraitView } = require('./src/wiki-ui/character-portrait.cjs');
+const { optimizeImageHtml } = require('./src/helpers/wiki/image-variants.cjs');
 const atlasConfig = require('./src/wiki-ui/atlas-navigation.json');
 const { loadAppearance } = require('./src/wiki-ui/theme.cjs');
 
@@ -52,6 +53,10 @@ module.exports = function (config) {
     logo: '/img/user/lorekeeper/dark-archive-dragon-banner.png'
   };
   const approvedAssetUrls = new Set(local.files.map(file => file.url));
+  const imageVariants = JSON.parse(process.env.WIKI_PUBLICATION_IMAGE_VARIANTS || '{}');
+  config.addTransform('approved-image-variants', function (html) {
+    return this.page.outputPath?.endsWith('.html') ? optimizeImageHtml(html, imageVariants, approvedAssetUrls) : html;
+  });
   const approvedDecorations = Object.fromEntries(Object.entries(themeAssets).map(([name, url]) => [name, approvedAssetUrls.has(url) ? url : null]));
   config.addGlobalData('appearance', { ...loadAppearance(), decorations: { ...loadAppearance().decorations, ...approvedDecorations } });
   config.addGlobalData('wiki', { sections: catalog.sections });
