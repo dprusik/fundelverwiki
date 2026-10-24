@@ -1,18 +1,18 @@
 # Wiki Layout 2.0 — przejście na Production
 
-Stan: 2026-10-24. Zmiany końcowe są przygotowane lokalnie na `feat/wiki-layout-2`, względem `5e5e3ca`. Nie wykonano ich commita, pushu ani deploymentu. Działający zdalny Preview `5e5e3ca` nie zawiera jeszcze końcowych poprawek tekstów i testów opisanych poniżej.
+Stan: 2026-10-24. Końcowe poprawki zostały zacommitowane i wypchnięte na `feat/wiki-layout-2` jako `f2caa6c0c0035dd63fd13f91de952645f98cf5f4`. Vercel utworzył deployment, ale oznaczył go jako nieudany; dlatego nie ma jeszcze zaakceptowanego finalnego Preview. Przygotowywana jest aktualizacja deklarowanej wersji Node z 22.x na 24.x.
 
 ## Co zostało przygotowane
 
-- Stopka Preview: „Zatwierdzone treści · wersja podglądowa”. Stopka Production nadal wskazuje wydanie publiczne.
+- Stopka Preview i opis marki używają zatwierdzonego tekstu „Przez Ogień i Burze”. Stopka Production nadal wskazuje wydanie publiczne.
 - Atlas: „Zatwierdzona mapa · 11 znaczników.”, bez nieaktualnego komunikatu o zablokowanym buildzie. Walidacja mapy i nieaktywnych odnośników nie została zmieniona.
 - `npm run publication:test:browser` uruchamia stały zestaw na wygenerowanym artefakcie: artykuły i katalogi, wyszukiwanie publikacyjne, atlas/lokacje, mobilną mapę i zoptymalizowane ilustracje. Korzysta ze zwykłej zależności dev `playwright` (1.64.1 z lockfile), bez `.integration-checks` i `.publication-review`.
 - Wyszukiwanie publikacyjne ma osobny tryb `--publication`: rzeczywisty indeks zatwierdzonych wpisów, brakujące strony z HTTP 404 dla GET/HEAD i działające szukanie na 404. Nie potrzebuje `/demo/`. Tryb prototypu zachowuje dotychczasowy test izolacji demo.
-- Zachowano 28 wpisów z kanonicznymi URL, 19 oryginalnych zasobów bajt po bajcie, 38 zoptymalizowanych grafik, 6 kadrów przedmiotów oraz atlas z 11 znacznikami. Notatki, rejestry zgód/odmów, relacje, oryginalny vault i mechanizmy bezpieczeństwa nie były zmieniane.
+- Po zaakceptowanych zmianach Bekrita i Rolling Thunder oraz wycofaniu Gerwazego kandydat zawiera 27 wpisów z kanonicznymi URL, 18 oryginalnych publicznych zasobów bajt po bajcie, 33 zoptymalizowane grafiki, 6 kadrów przedmiotów oraz atlas z 11 znacznikami. Zmieniono wyłącznie wymagane rejestry zgód; relacje, oryginalny vault i mechanizmy bezpieczeństwa nie były zmieniane.
 
-## Wyniki odbioru
+## Wyniki wcześniejszego odbioru (przed wycofaniem Gerwazego)
 
-Sprawdzono buildy Preview i Production oraz testy wiki i publikacji. Końcową kontrolę wykonano również na Node 22.23.4, zgodnym z `package.json` i Vercel. Przeglądarka: Edge headless, Playwright 1.64.1. Wyniki końcowego uruchomienia są zapisane także w `PROJECT_STATUS.md`.
+Sprawdzono buildy Preview i Production oraz testy wiki i publikacji. Wcześniejszy pełny przebieg wykonano na Node 22.23.4. Ostatni pełny lokalny przebieg wykonano na Node 24.22.0/npm 11.19.1. Przeglądarka: Edge headless, Playwright 1.64.1.
 
 | Kontrola | Wynik |
 |---|---|
@@ -32,7 +32,7 @@ Podczas instalacji zależności npm nadal zgłaszał wcześniej odnotowane 16 po
 
 ## Powtórzenie testów
 
-W repozytorium `fundelverwiki`, na Node 22.x, po `npm ci`:
+W repozytorium `fundelverwiki`, na Node 24.x, po `npm ci`:
 
 ```powershell
 npm run wiki:build
@@ -63,7 +63,7 @@ Poniższe czynności są instrukcją na później, nie zostały wykonane w tej i
 
 1. **Zapisz poprawki i uruchom finalne Preview.** Zacommituj wyłącznie pliki końcowych poprawek i dokumentacji, bez nieśledzonego `.codex/` oraz ignorowanych artefaktów. Wypchnij `feat/wiki-layout-2`. W istniejącym projekcie `dprusiks-projects/fundelverwiki` poczekaj na Preview ze statusem Ready dla nowego SHA. Nie wybieraj starego `5e5e3ca` jako końcowego wydania — nie ma tych poprawek.
 2. **Sprawdź ten konkretny deployment.** Potwierdź stopkę, opis atlasu, wyszukiwanie, jeden portret z oryginałem, mapę i stronę 404. Preview musi nadal mieć `noindex,nofollow` i `robots.txt` z `Disallow: /`. Zapisz SHA, URL/ID finalnego Preview oraz raport. Lokalny manifest SHA-256 jest tworzony przez generator poza katalogiem strony, w `.publication-build/`; nie kopiuj go do publicznego outputu.
-3. **Sprawdź ustawienia istniejącego projektu.** Repo: `dprusik/fundelverwiki`; Production Branch: `main`; Root Directory: pusty (`./`); Node: 22.x. Repozytoryjny `vercel.json` ma `installCommand: npm ci`, `buildCommand: npm run publication:build`, `outputDirectory: .publication-build/production`. `PUBLICATION_SITE_URL` powinno być nieustawione lub równe `https://fundelverwiki.vercel.app`. Nie ustawiaj go na adres Preview i nie nadpisuj ręcznie `VERCEL_ENV`. Zachowaj istniejące domeny oraz ochronę Preview. Zapisz ID dotychczasowego deploymentu Production.
+3. **Sprawdź ustawienia istniejącego projektu.** Repo: `dprusik/fundelverwiki`; Production Branch: `main`; Root Directory: pusty (`./`); Node: 24.x (deklaracja `engines.node` w `package.json` ma pierwszeństwo dla nowych deploymentów). Repozytoryjny `vercel.json` ma `installCommand: npm ci`, `buildCommand: npm run publication:build`, `outputDirectory: .publication-build/production`. `PUBLICATION_SITE_URL` powinno być nieustawione lub równe `https://fundelverwiki.vercel.app`. Nie ustawiaj go na adres Preview i nie nadpisuj ręcznie `VERCEL_ENV`. Zachowaj istniejące domeny oraz ochronę Preview. Zapisz ID dotychczasowego deploymentu Production.
 4. **Po akceptacji DM scal finalną gałąź do `main`.** Otwórz PR `feat/wiki-layout-2` → `main`, sprawdź finalny diff i zgodność źródeł z zaakceptowanym Preview. Scal PR. To uruchamia nowy build **Production** w tym samym projekcie i podmienia przypisane domeny po udanym wdrożeniu. Nie twórz nowego projektu Vercel, nie zmieniaj DNS i nie kopiuj lokalnego outputu na hosting.
 5. **Sprawdź nowy produkcyjny build.** Deployment musi mieć środowisko Production, właściwy commit z `main` i status Ready/Current. W logu oczekuj `mode: production-candidate`, 27 rekordów search/graph, 18 oryginalnych assetów, 33 warianty obrazów, 6 kadrów przedmiotów i 37 tras. Bieżący lokalny output ma 105 plików. Liczby odzwierciedlają wycofanie Gerwazego i jego nieużywanego portretu. Nie zastępuj tej komendy legacy buildem, jeżeli coś zawiedzie.
 6. **Sprawdź domenę produkcyjną.** Na `https://fundelverwiki.vercel.app/`: strona główna, wyszukiwanie, portret/powiększenie, dziennik Tergona, atlas i przejście do lokacji. Potwierdź canonical dla kanonicznych tras, brak `noindex,nofollow`, `robots.txt` z `Allow: /` i sitemapą. Nieistniejący adres musi zwracać HTTP 404 i szablon wiki. Przykładowe żądania bez logowania:

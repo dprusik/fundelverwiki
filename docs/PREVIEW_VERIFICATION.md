@@ -55,6 +55,10 @@ Ponowna lokalna weryfikacja: `wiki:build` PASS; wiki i organizacje 23/23; `publi
 
 Ten wynik dotyczy lokalnego artefaktu. Odpowiadający mu zdalny Preview i ochrona `noindex`/robots wymagają potwierdzenia po pushu końcowego commita.
 
+## Deployment Vercel i Node 24 — 2026-10-24
+
+Push commita `f2caa6c0c0035dd63fd13f91de952645f98cf5f4` uruchomił Vercel Preview `Ztxph74Xusge4Uhjo3GutC1SzCvQ`; GitHub status Vercel zmienił się z `pending` na `failure`. Logów nie udało się pobrać, bo lokalny Vercel CLI nie ma uwierzytelnionej sesji. Deklarację `engines.node` podniesiono do `24.x` (Vercel wspiera tę wersję jako domyślną). Po czystym `npm ci` na Node 24.22.0/npm 11.19.1 ponownie przeszły buildy wiki, Preview i Production oraz zestawy wiki (20), organizacji (3), publikacji (75) i oba przeglądarkowe. Wersja Node nie została potwierdzona jako przyczyna poprzedniej awarii; nowy zdalny Preview wymaga deploymentu po wypchnięciu poprawki.
+
 ## Location tile images
 
 `src/wiki-ui/templates/approved-card.njk` reuses the same approved illustration as a thumbnail on location tiles. Parent location directory tiles use that illustration too. The current approved publication data contains no location illustration asset, so there are currently 0 location thumbnails; unapproved or inferred images are not used.
