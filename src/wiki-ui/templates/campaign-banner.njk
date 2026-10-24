@@ -1,0 +1,2 @@
+{# Decorative campaign asset, omitted entirely when unset. #}
+{% if appearance.decorations.banner %}<div class="campaign-banner campaign-banner--{{ bannerPlacement }}" aria-hidden="true"><img src="{{ appearance.decorations.banner | escape }}" alt="" decoding="async" loading="lazy"></div>{% endif %}

@@ -4,21 +4,37 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "prebuild": "rimraf dist",
-        "dev": "npm-run-all get-theme build:sass --parallel watch:*",
-        "watch:sass": "sass --watch src/site/styles:dist/styles",
+        "prebuild": "node scripts/publication.cjs legacy && rimraf dist",
+        "dev": "node scripts/publication.cjs legacy && npm-run-all get-theme build:sass --parallel watch:*",
+        "watch:sass": "node scripts/publication.cjs legacy && sass --watch src/site/styles:dist/styles",
         "watch:eleventy": "cross-env ELEVENTY_ENV=dev eleventy --serve",
         "build:eleventy": "cross-env ELEVENTY_ENV=prod UV_THREADPOOL_SIZE=16 NODE_OPTIONS=--max-old-space-size=2048 eleventy",
-        "build:sass": "sass src/site/styles:dist/styles --style compressed",
-        "get-theme": "node src/site/get-theme.js",
+        "build:sass": "node scripts/publication.cjs legacy && sass src/site/styles:dist/styles --style compressed",
+        "get-theme": "node scripts/publication.cjs legacy && node src/site/get-theme.js",
         "build": "npm-run-all get-theme build:*",
-        "test": "vitest run"
+        "test": "vitest run",
+        "wiki:build": "node scripts/wiki-preview.mjs",
+        "wiki:dev": "node scripts/wiki-preview.mjs --serve",
+        "wiki:test": "node --test tests/wiki/demo.test.mjs tests/wiki/catalog.test.cjs tests/wiki/catalog-thumbnails.test.cjs",
+        "publication:inventory": "node scripts/publication.cjs inventory",
+        "publication:validate": "node scripts/publication.cjs validate",
+        "publication:data": "node scripts/publication.cjs data",
+        "publication:build-preview": "node scripts/wiki-production-preview.mjs",
+        "publication:build": "node scripts/wiki-production-preview.mjs --production",
+        "publication:serve-preview": "node scripts/serve-publication-preview.cjs",
+        "publication:test": "node --test tests/security/*.test.cjs",
+        "publication:test:browser": "node scripts/publication-browser-check.cjs",
+        "publication:review": "node scripts/publication-review.cjs",
+        "publication:compare": "node scripts/compare-publication.cjs",
+        "publication:import": "node scripts/publication-import.cjs",
+        "publication:status": "node scripts/publication-import.cjs status",
+        "publication:map-check": "node scripts/map-browser-check.cjs"
     },
     "keywords": [],
     "author": "",
     "license": "MIT",
     "engines": {
-        "node": "22.x"
+        "node": "24.x"
     },
     "devDependencies": {
         "@11ty/eleventy": "^3.1.2",
@@ -26,6 +42,8 @@
         "cross-env": "^10.1.0",
         "html-minifier-terser": "^7.2.0",
         "node-html-parser": "^7.0.2",
+        "playwright": "1.64.1",
+        "sharp": "^0.33.2",
         "sass": "^1.49.9",
         "vitest": "^4.1.0"
     },

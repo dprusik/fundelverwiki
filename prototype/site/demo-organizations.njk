@@ -1,0 +1,7 @@
+---
+layout: shell.njk
+title: Organizacje
+activeSection: characters
+permalink: /demo/organizations/index.html
+---
+<p class="eyebrow">ENCJE ŚWIATA · DEMO</p><h1>Organizacje</h1><p class="lead">Wspólne cele, znajome twarze i miejsca spotkań.</p><div class="entry-grid">{% for entry in wiki.entries %}{% if entry.kind == 'organization' %}<a class="entry-card" href="{{ entry.url }}"><h2>{{ entry.title }}</h2><p>{{ entry.summary }}</p><span class="text-link">Poznaj organizację →</span></a>{% endif %}{% endfor %}</div>

@@ -1,0 +1,21 @@
+---
+pagination:
+  data: activeMaps
+  size: 1
+  alias: mapArticle
+permalink: "{{ mapArticle.entry.url }}index.html"
+layout: shell.njk
+localArticlePreview: true
+eleventyComputed:
+  title: "{{ mapArticle.entry.title | safe }}"
+  activeSection: "{% if mapArticle.entry.locationDirectory %}locations{% else %}{{ mapArticle.entry.section }}{% endif %}"
+  breadcrumbLabel: "{% if mapArticle.entry.locationDirectory %}Lokacje{% else %}{{ mapArticle.entry.sectionLabel }}{% endif %}"
+  breadcrumbUrl: "{% if mapArticle.entry.locationDirectory %}/catalog/locations/{% else %}{{ mapArticle.entry.sectionUrl }}{% endif %}"
+---
+{% set profile = mapArticle.entry %}{% set profileDemo = false %}{% include 'entity-header.njk' %}
+{% set article = mapArticle.entry %}{% include 'article-map-links.njk' %}
+{% if mapArticle.directoryView %}
+{% if mapArticle.directoryView.beforeHtml %}<article class="prose approved-prose">{{ mapArticle.directoryView.beforeHtml | safe }}</article>{% endif %}
+{% set disclosureId = 'locations-' + mapArticle.entry.id %}{% set disclosureTitle = mapArticle.directoryView.title %}{% set disclosureEntries = mapArticle.directoryView.entries %}{% include 'collapsible-catalog.njk' %}
+{% if mapArticle.directoryView.afterHtml %}<article class="prose approved-prose">{{ mapArticle.directoryView.afterHtml | safe }}</article>{% endif %}
+{% elif mapArticle.articleHtml %}<article class="prose approved-prose">{{ mapArticle.articleHtml | safe }}</article>{% endif %}

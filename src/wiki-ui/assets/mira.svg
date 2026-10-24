@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-labelledby="title">
+<title id="title">Schematyczny portret demonstracyjny Miry</title>
+<rect width="400" height="480" rx="16" fill="#edf2ef"/>
+<circle cx="200" cy="190" r="122" fill="#dce2df"/>
+<path d="M60 480v-67c0-86 56-143 140-143s140 57 140 143v67" fill="#41696b"/>
+<path d="m152 282 48 93 48-93" fill="#f5f4ef"/>
+<path d="M125 175c-10-93 153-118 158 3l-8 116-34-30-82 4-41 26Z" fill="#354a4d"/>
+<ellipse cx="200" cy="197" rx="65" ry="80" fill="#c7ab91"/>
+<path d="M132 181c-2-71 128-105 139 3-36-6-63-36-71-53-15 29-42 45-68 50Z" fill="#354a4d"/>
+<path d="M170 199h13m34 0h13m-41 39q12 7 24 0" fill="none" stroke="#354a4d" stroke-width="4" stroke-linecap="round"/>
+<path d="m89 401 79-31 34 69-79 31Zm79-31 77-13 34 69-77 13" fill="#e5dfd1" stroke="#b4afa2" stroke-width="2"/>
+<path d="m124 415 27-12m-16 32 24-12m48-24 25-7" stroke="#7d928c" stroke-width="3" stroke-linecap="round"/>
+</svg>

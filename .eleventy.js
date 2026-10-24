@@ -1,3 +1,7 @@
+// M1A.2: legacy output channels have no certified public-only projection yet.
+// Fail before imports, dotenv, favicon/cache writes, collections or asset copying.
+require("./src/helpers/wiki/publication.cjs").assertProductionBuildAllowed();
+
 const slugify = require("@sindresorhus/slugify");
 const markdownIt = require("markdown-it");
 const fs = require("fs");

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/dnd/listy-notatki/dziennik-terogona-wpis-i/"}
+{"dg-publish":true,"permalink":"/dnd/listy-notatki/dziennik-terogona-wpis-i/","title":"Dziennik Tergona - wpis I"}
 ---
 
 Wpis I - Złote oczy i Platyna dla chorego
@@ -26,7 +26,7 @@ Ich przywódca zażądał, abym odszedł. Mogłem ich wytłuc, większe grupy ju
 
 Zamiast tego uklęknąłem przy chorym.
 
-	Gorączka nie pochodziła od klątwy ani jadu. Widziałem podobną przypadłość wśród dzieci uchodźców spod Luskanu. Oczyściłem jego płuca, podałem wodę z solą i gorzkimi liśćmi, a potem modliłem się, choć nie wiedziałem, czy Bahamut zechce wysłuchać modlitwy wypowiedzianej nad stworzeniem, które ukradło Jego wizerunek. Czułem ciepło i pogłębiający się oddech na klatce młodego gdy nalożyłem na niego ręce.
+Gorączka nie pochodziła od klątwy ani jadu. Widziałem podobną przypadłość wśród dzieci uchodźców spod Luskanu. Oczyściłem jego płuca, podałem wodę z solą i gorzkimi liśćmi, a potem modliłem się, choć nie wiedziałem, czy Bahamut zechce wysłuchać modlitwy wypowiedzianej nad stworzeniem, które ukradło Jego wizerunek. Czułem ciepło i pogłębiający się oddech na klatce młodego gdy nalożyłem na niego ręce.
 
 Młodzieniec przeżyje, czuje to
 

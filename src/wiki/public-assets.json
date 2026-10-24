@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "asset-c63b942632aef2ba8632",
+      "alt": "Neverwinter",
+      "url": "/img/user/DND/Lokacje/Phandalin/NeverwinterMapClean.jpg",
+      "source_key": "asset-c63b942632aef2ba8632",
+      "sha256": "689e6259520015210c7d73f0631af2cecc8b870c5fce9719be80e1145564bcdc",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.656Z"
+    },
+    {
+      "id": "asset-ac7b82f238d0a9e4ee6c",
+      "alt": "Liora",
+      "url": "/img/user/DND/Dump/Pasted%20image%2020250205222748.png",
+      "source_key": "asset-ac7b82f238d0a9e4ee6c",
+      "sha256": "a00b79f9b6be58e048e8bfd5a7eaa4d26bfb2b84b4c56728b9b7f9ccf64f2ce4",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.650Z"
+    },
+    {
+      "id": "asset-f20855e6278130fc2464",
+      "alt": "Dagult Neverember",
+      "url": "/img/user/Pasted%20image%2020260723011800.png",
+      "source_key": "asset-f20855e6278130fc2464",
+      "sha256": "a6fb7be3a5a8bc9ab68ab5bfadc96eb7d31273b54c14f7fe4270e6874c97cec3",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.660Z"
+    },
+    {
+      "id": "asset-780961ef985efe76a980",
+      "alt": "Quentin Xolarrin",
+      "url": "/img/user/Pasted%20image%2020260723012157.png",
+      "source_key": "asset-780961ef985efe76a980",
+      "sha256": "5b876ff417269d86344e64d27c806fc9f88c811316a50fb9ac1f2bfeb42071fa",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.665Z"
+    },
+    {
+      "id": "asset-1cd7e0ba7b55f0384731",
+      "alt": "Bekrit",
+      "url": "/img/user/Pasted%20image%2020260809220247.png",
+      "source_key": "asset-1cd7e0ba7b55f0384731",
+      "sha256": "23d6ee987a7a266e4b2e7e4bf4c8036a9bc7885cbd6f5dcad460c934f9497895",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.658Z"
+    },
+    {
+      "id": "asset-4e989b4f3acf990ed206",
+      "alt": "Aurestia, ilustr. 963",
+      "url": "/img/user/Pasted%20image%2020260810012001.png",
+      "source_key": "asset-4e989b4f3acf990ed206",
+      "sha256": "a42a453a878849e594c6bdfa6e18559466f810621957a2ebe71e0de304c107a9",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.652Z"
+    },
+    {
+      "id": "asset-bcfd26e274e28347dd24",
+      "alt": "Zaerith Dhalmass",
+      "url": "/img/user/Pasted%20image%2020260810032111.png",
+      "source_key": "asset-bcfd26e274e28347dd24",
+      "sha256": "a24a3b529756d2d35e41728eb071856cbb4f21f8b0692cda2dfcac5aca5a4b16",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.667Z"
+    },
+    {
+      "id": "asset-228f3c358da4fb9d231d",
+      "alt": "Generał Sabine",
+      "url": "/img/user/Pasted%20image%2020260810032236.png",
+      "source_key": "asset-228f3c358da4fb9d231d",
+      "sha256": "24056aa871f3b5af9e934909319e42c973958057f8ea67edcfa50bd705a69f37",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.664Z"
+    },
+    {
+      "id": "asset-027d74ff4fd710a80302",
+      "alt": "Elaria Moonsong",
+      "url": "/img/user/Pasted%20image%2020260810032313.png",
+      "source_key": "asset-027d74ff4fd710a80302",
+      "sha256": "4330093419c53b1e4e0d007347e9282e40a26de831c94ea3a4735641dd513689",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.662Z"
+    },
+    {
+      "id": "asset-390944d2af955debbd11",
+      "alt": "Artistry of war",
+      "url": "/img/user/lorekeeper/artistry-of-war-spell-card.png",
+      "source_key": "asset-390944d2af955debbd11",
+      "sha256": "98551687812bf94062af87f1fab64ee39cec841a103b19a051db290a1470ca20",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.674Z"
+    },
+    {
+      "id": "asset-31108fa71d71e7c5962f",
+      "alt": "Bekrit's Mask",
+      "url": "/img/user/lorekeeper/bekrits-mask-card.png",
+      "source_key": "asset-31108fa71d71e7c5962f",
+      "sha256": "0fa908040dce7384acc5648ba8fb76731fea2c882ed739d1cc8dce02157be1df",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.668Z"
+    },
+    {
+      "id": "asset-4d98d2661edaa1c54af4",
+      "alt": "Braclets of Shared Might",
+      "url": "/img/user/lorekeeper/bracelets-of-shared-might-card.png",
+      "source_key": "asset-4d98d2661edaa1c54af4",
+      "sha256": "56029c29255cd685a4a191a40d8242e2540613711781c7081694394d5df61d17",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.670Z"
+    },
+    {
+      "id": "asset-b628a562e2535c7a4ed8",
+      "alt": "Bracers of The red brood",
+      "url": "/img/user/lorekeeper/bracers-of-the-red-brood-card.png",
+      "source_key": "asset-b628a562e2535c7a4ed8",
+      "sha256": "1ce3f8d149f5fe0fa3875328837b98cbe0b619e2563a41cded3b32c0f7e62379",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.671Z"
+    },
+    {
+      "id": "asset-a68b3230fd13b04fd5cb",
+      "alt": "Dragonguard",
+      "url": "/img/user/lorekeeper/dragonguard-card.png",
+      "source_key": "asset-a68b3230fd13b04fd5cb",
+      "sha256": "6dc1ab7dcc6e98dd113ecdacc491fefd75683ed63af26176ed6052a14bce47cd",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.673Z"
+    },
+    {
+      "id": "asset-eac0cf6303b6792a4ccd",
+      "alt": "Rolling Thunder",
+      "url": "/img/user/lorekeeper/rolling-thunder-card.png",
+      "source_key": "asset-eac0cf6303b6792a4ccd",
+      "sha256": "87e2d7af91a6e6090cedc8e682f8b56d994b17711b1e4b53eb23e46772c61b12",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.653Z"
+    },
+    {
+      "id": "asset-9cab0be19d604c5d90df",
+      "alt": "Staff of War",
+      "url": "/img/user/lorekeeper/staff-of-war-card.png",
+      "source_key": "asset-9cab0be19d604c5d90df",
+      "sha256": "6f86025001a63f9bcf226c31da6691e9d65a4cf9ecf7a274b825477231b16778",
+      "approved": true,
+      "reviewed_at": "2026-10-22T20:23:53.676Z"
+    },
+    {
+      "id": "asset-7a71166caed13c72f914",
+      "alt": "Ciemna metalowa maska z czerwonymi, świecącymi oczami",
+      "url": "/img/user/lorekeeper/dark-archive-bekrit-mask.png",
+      "source_key": "asset-7a71166caed13c72f914",
+      "sha256": "64304fec70a322c86efdf23e1747dac9969a673833b0def3a206b824b6bd1973",
+      "approved": true,
+      "reviewed_at": "2026-10-24T03:17:01.986Z"
+    },
+    {
+      "id": "asset-1256c741d3f2a0c7d642",
+      "alt": "Sztandar z czerwonym i niebieskim płótnem oraz metalowym mieczem",
+      "url": "/img/user/lorekeeper/dark-archive-dragon-banner.png",
+      "source_key": "asset-1256c741d3f2a0c7d642",
+      "sha256": "428745c881c0de3e3ea48e1ada4b03db6091971545936b05e499b3b30632c5e3",
+      "approved": true,
+      "reviewed_at": "2026-10-24T03:15:50.663Z"
+    }
+  ]
+}

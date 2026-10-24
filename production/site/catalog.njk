@@ -1,0 +1,19 @@
+---
+pagination:
+  data: approvedSections
+  size: 1
+  alias: section
+permalink: "/catalog/{{ section.id }}/index.html"
+layout: shell.njk
+eleventyComputed:
+  title: "{{ section.label }}"
+  activeSection: "{{ section.id }}"
+---
+<p class="eyebrow">KATALOG WIKI</p><h1>{{ section.label | escape }}</h1><p class="lead">{{ section.description | escape }}</p><p class="catalog-count">Zatwierdzone wpisy: {% if section.id == 'items' %}{{ section.catalogCount }}{% else %}{{ section.count }}{% endif %}</p>
+{% if section.id == 'maps' %}<div class="entry-grid">{% for mapView in activeMaps %}<a class="entry-card" data-map-view-id="{{ mapView.map.id | escape }}" href="{{ mapView.atlasUrl | escape }}"><p class="eyebrow">MAPA</p><h2>{{ mapView.entry.title | escape }}</h2><span class="text-link">Otwórz mapę →</span></a>{% else %}<p class="empty-state">Brak zatwierdzonych map.</p>{% endfor %}</div>
+{% elif section.id == 'locations' %}{% if locationNavigation.groups.length %}<section aria-labelledby="place-directories-heading"><div class="section-heading"><h2 id="place-directories-heading">Miejsca i ich lokacje</h2></div><div class="entry-grid">{% for group in locationNavigation.groups %}<a class="entry-card" data-location-group="{{ group.id | escape }}" href="{{ group.url | escape }}">{% if group.thumbnail %}<img class="entry-card-thumb entry-card-thumb--location" src="{{ group.thumbnail.src | escape }}" alt="" loading="lazy" decoding="async">{% endif %}<p class="eyebrow">KATALOG MIEJSCA</p><h2>{{ group.title | escape }}</h2><p>Powiązane lokacje: {{ group.count }}</p><span class="text-link">Przeglądaj lokacje →</span></a>{% endfor %}</div></section>{% endif %}
+{% if locationNavigation.ungrouped.length %}<section aria-labelledby="other-locations-heading"><div class="section-heading"><h2 id="other-locations-heading">Pozostałe wpisy</h2></div><div class="entry-grid">{% for entry in locationNavigation.ungrouped %}{% include 'approved-card.njk' %}{% endfor %}</div></section>{% endif %}{% if not locationNavigation.groups.length and not locationNavigation.ungrouped.length %}<p class="empty-state">Brak zatwierdzonych lokacji.</p>{% endif %}
+{% elif section.id == 'characters' and section.entries.length %}{% set disclosureId = 'all-characters' %}{% set disclosureTitle = 'Wszystkie postacie' %}{% set disclosureEntries = section.entries %}{% include 'collapsible-catalog.njk' %}
+{% elif section.id == 'items' %}<div class="entry-grid">{% for entry in section.catalogEntries %}{% include 'approved-card.njk' %}{% else %}<div class="empty-state"><h2>Brak widocznych przedmiotów</h2><p>Nie ma obecnie przedmiotów w tym katalogu.</p></div>{% endfor %}</div>
+{% else %}<div class="entry-grid">{% for entry in section.entries %}{% include 'approved-card.njk' %}{% else %}<div class="empty-state"><h2>Ta część biblioteki czeka na wpisy</h2><p>Nie ma zatwierdzonych materiałów w tej kategorii.</p><a href="/approved/">Zobacz wszystkie wpisy →</a></div>{% endfor %}</div>{% endif %}
+{% if section.id == 'characters' %}{% if section.organizations.length %}{% set disclosureId = 'character-organizations' %}{% set disclosureTitle = 'Frakcje i organizacje' %}{% set disclosureEntries = section.organizations %}{% include 'collapsible-catalog.njk' %}<a class="text-link" href="/organizations/">Osobny katalog organizacji →</a>{% else %}<section class="approved-group"><h2>Frakcje i organizacje</h2><p class="empty-state">Brak zatwierdzonych organizacji.</p></section>{% endif %}{% endif %}

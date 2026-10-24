@@ -1,0 +1,18 @@
+{% from 'icons.njk' import icon %}
+{% set characterProfile = profile.kind == 'character' %}
+{% set profileImage = profile.illustration %}{% if characterProfile %}{% set profileImage = profile.portrait %}{% endif %}
+<header class="entity-profile {% if characterProfile %}entity-profile--character character-profile has-portrait{% else %}entity-profile--location{% endif %}">
+  <div class="profile-intro">
+    <p class="eyebrow">{% if characterProfile %}POSTAĆ{% else %}LOKACJA{% endif %}{% if profileDemo %} · DEMO{% endif %}</p>
+    <h1>{{ profile.title | escape }}</h1>
+    {% if characterProfile and profile.publicStatus %}<p class="character-status"><span class="status-label">Publicznie znany status</span><strong>{{ profile.publicStatus | escape }}</strong></p>{% endif %}
+    {% if profile.summary %}<p class="lead">{{ profile.summary | escape }}</p>{% endif %}
+  </div>
+  <figure class="entity-media {% if characterProfile %}profile-portrait{% else %}location-illustration{% endif %}">
+    <div class="entity-media-visual">
+    {% if profileImage %}<a class="entity-image-trigger{% if profileImage.fromArticle %} portrait-from-article{% endif %}" href="{{ profileImage.src | escape }}" data-image-viewer data-image-label="{{ profile.title | escape }}" aria-label="Powiększ ilustrację: {{ profile.title | escape }}"><img src="{{ profileImage.src | escape }}" alt="{{ profileImage.alt | escape }}"{% if characterProfile %} width="400" height="480"{% else %} width="1000" height="400"{% endif %} decoding="async"><span class="image-expand-hint" aria-hidden="true">Powiększ ↗</span></a>
+    {% else %}<div class="entity-image-placeholder" role="img" aria-label="{% if characterProfile %}Brak portretu postaci{% else %}Brak ilustracji lokacji{% endif %}">{{ icon('characters' if characterProfile else 'locations') }}<span>{% if characterProfile %}Brak portretu{% else %}Brak ilustracji{% endif %}</span></div>{% endif %}
+    </div>
+    {% if profileDemo and profileImage %}<figcaption>Ilustracja demonstracyjna</figcaption>{% endif %}
+  </figure>
+</header>

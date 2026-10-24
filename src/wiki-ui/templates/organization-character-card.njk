@@ -1,0 +1,17 @@
+<article class="entry-card organization-character" data-organization-character="{{ character.id | escape }}">
+  <div class="organization-character-top">
+    {% if character.portrait %}<img class="organization-character-image" src="{{ character.portrait.src | escape }}" alt="" width="96" height="116" loading="lazy">
+    {% elif character.illustration %}<img class="organization-character-image" src="{{ character.illustration.src | escape }}" alt="" loading="lazy">
+    {% else %}<span class="organization-character-fallback" aria-hidden="true">{{ character.title | first }}</span>{% endif %}
+    <div class="organization-character-intro"><p class="eyebrow">Postać</p><h3><a href="{{ character.url | escape }}">{{ character.title | escape }} <span aria-hidden="true">↗</span></a></h3>
+    {% if character.publicStatus %}<p class="organization-character-status"><span>Publicznie znany status</span> <strong>{{ character.publicStatus | escape }}</strong></p>{% endif %}
+    {% if character.summary %}<p class="organization-character-summary">{{ character.summary | escape }}</p>{% endif %}
+    {% if character.mentionLabel %}<p class="relation-context">We wpisie: {{ character.mentionLabel | escape }}</p>{% endif %}
+    </div>
+  </div>
+  {% if membershipDescription %}<p class="organization-character-context">{{ membershipDescription | escape }}</p>{% endif %}
+  {% if showCharacterLocations %}{% set hasLocations = false %}
+  {% for characterEdge in character.id | relationsFrom %}{% if characterEdge.type == 'located_in' %}{% set hasLocations = true %}{% endif %}{% endfor %}
+  {% if hasLocations %}<div class="organization-character-locations"><p>Powiązane lokacje</p><div class="chips">{% for characterEdge in character.id | relationsFrom %}{% if characterEdge.type == 'located_in' %}{% set linkedLocation = characterEdge.target | entry %}<a href="{{ linkedLocation.url | escape }}">{{ linkedLocation.title | escape }}</a>{% endif %}{% endfor %}</div></div>{% endif %}
+  {% endif %}
+</article>
