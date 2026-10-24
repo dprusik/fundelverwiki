@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, lstatSync, existsSync, rmSync } from 'node:fs';
 import { resolve, join, sep } from 'node:path';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
 import * as sass from 'sass';
 import localArticles from '../src/helpers/wiki/local-articles.cjs';
@@ -98,6 +98,7 @@ write('robots.txt', production
 
 const report = outputGuard.validateOutputDirectory(output, model, { mode: production ? 'production' : 'preview' });
 const manifest = outputGuard.listOutputFiles(output).sort().map(file => ({ path: file, sha256: createHash('sha256').update(readFileSync(join(output, file))).digest('hex') }));
-const manifestName = production ? `production-${Date.now()}.manifest.json` : `${output.split(/[\\/]/).at(-1)}.manifest.json`;
-writeFileSync(join(stagingRoot, manifestName), JSON.stringify({ mode: production ? 'production-candidate' : 'local-non-deployable-preview', generated_at: new Date().toISOString(), summary: report, files: manifest }, null, 2), { flag: 'wx' });
+const manifestMode = vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview';
+const manifestName = fixedOutput ? `${manifestMode}-${randomUUID()}.manifest.json` : `${output.split(/[\\/]/).at(-1)}.manifest.json`;
+writeFileSync(join(stagingRoot, manifestName), JSON.stringify({ mode: manifestMode, generated_at: new Date().toISOString(), summary: report, files: manifest }, null, 2), { flag: 'wx' });
 console.log(JSON.stringify({ status: 'PASS', mode: vercelPreview ? 'vercel-preview' : production ? 'production-candidate' : 'local-non-deployable-preview', output: output.slice(root.length + 1), approvedAssets: model.assets.length, ...report, legacyProductionGate: 'unchanged', deployable: production }, null, 2));

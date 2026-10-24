@@ -388,3 +388,15 @@ Build PASS: 67 plików, 38 tras w sitemapie, 39 plików HTML z canonical, 28 wpi
 `publication:test` PASS 72/72, `wiki:test` PASS 19/19. Bezpośrednie `npm test` nie jest poprawnym runnerem dla obecnego zestawu: Vitest znajduje pliki używające `node:test`, a także prywatne kopie worktree; wywołanie kończy się „No test suite found” i nie jest wynikiem regresji projektu. `npm ci` zgłosiło 16 podatności w zależnościach (2 moderate, 13 high, 1 critical); zależności nie były aktualizowane w tej iteracji.
 
 `vercel.json` jawnie ustawia install/build/output, a Vercel dokumentuje, że `buildCommand` i `outputDirectory` z pliku nadpisują te wartości z ustawień projektu. `package.json` wskazuje Node `22.x`. Nie ma lokalnego linku `.vercel` ani CLI/sesji konta, więc nie potwierdzono Production Branch, Root Directory ani ustawień deploymentu istniejącego projektu. Przed uruchomieniem Preview trzeba w panelu sprawdzić, że `feat/wiki-layout-2` nie jest Production Branch; Vercel przypisuje Preview/Production według tej konfiguracji. Nie wykonano pushu ani deploymentu.
+
+## Punkt wznowienia — Vercel Preview
+
+Pracę wznowić od lokalnego commita `e6d7289` na `feat/wiki-layout-2`. Nie wykonano pushu ani deploymentu. Przed uruchomieniem Preview sprawdzić w istniejącym projekcie Vercel, czy Production Branch nie jest `feat/wiki-layout-2` i czy Root Directory wskazuje repozytorium `fundelverwiki`; następnie wypchnąć commit na gałąź preview i zweryfikować wynik buildu oraz `noindex,nofollow`. Nie promować do Production. Osobno: podczas poprzednich testów ekran użytkownika na chwilę gasł; przyczyna nie została ustalona.
+
+## Weryfikacja projektu Vercel i powtarzalnego Preview — 2026-10-24
+
+Odczytano istniejący panel Vercel: projekt `fundelverwiki` jest połączony z `dprusik/fundelverwiki`, Production śledzi `main`, Root Directory jest pusty (główny katalog repozytorium). Ustawień nie zmieniano. `git ls-remote` potwierdził zdalny `main` na `e65fcc0a` i brak gałęzi `feat/wiki-layout-2`.
+
+Ponowne `publication:test` 72/72 i `wiki:test` 19/19 PASS. Powtórny build z `VERCEL_ENV=preview` wykrył kolizję stałego `production.manifest.json` przy zapisie z `wx`. Generator używa teraz unikalnego UUID dla manifestów stałego katalogu wyjściowego i jawnie oznacza manifest Vercel Preview jako `vercel-preview`; zachowuje wcześniejsze manifesty poza katalogiem strony. Dwa kolejne buildy Preview po poprawce PASS: po 67 plików, 38 tras, 28 rekordów search/graph i 19 assetów; walidator trybu preview sprawdził noindex i blokadę robots. Testowane w tej sesji na Node 24.22.0; poprzedni test Node 22 pozostaje odrębnym dowodem historycznym.
+
+Nie wykonano commita, pushu ani deploymentu. Poprawka manifestu i dokumentacja czekają na zgodę na commit oraz wysłanie gałęzi Preview. Nie promować do Production.
