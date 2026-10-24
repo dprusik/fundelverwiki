@@ -29,14 +29,14 @@
     },
     {
       "id": "entry-6f1238484c8b195e7b6e",
-      "title": "rolling-thunder",
+      "title": "Rolling Thunder",
       "category": "items",
       "kind": "item",
       "permalink": "/dnd/magic-items/rolling-thunder/",
       "source_key": "entry-6f1238484c8b195e7b6e",
-      "sha256": "9a4f1cc65a39a6dc568a72d30e03b059f11704d66d9155865a351c176301aacf",
+      "sha256": "20a998bc1554822fc75ca6e757db4e894a2a8d6d7cd7c8c14e03f6fb37c70fde",
       "approved": true,
-      "reviewed_at": "2026-10-22T20:10:33.383Z"
+      "reviewed_at": "2026-10-24T16:33:25.729Z"
     },
     {
       "id": "entry-c2b5f200f19af3c64dee",
@@ -56,9 +56,9 @@
       "kind": "character",
       "permalink": "/postacie/bekrit/",
       "source_key": "entry-ee408a01f9412b679faa",
-      "sha256": "aa37ab8cae7dddf38e5314f5da92e802d5c158d83c7f0d3f70169cafc5b42e77",
+      "sha256": "1ad515c38d2ab9e62e14cd83746ebf2e4d09b0d1fa0593b28d69ea086e3bb1bf",
       "approved": true,
-      "reviewed_at": "2026-10-24T15:46:21.030Z"
+      "reviewed_at": "2026-10-24T16:34:42.633Z"
     },
     {
       "id": "entry-7c20f9895f66d60c763f",

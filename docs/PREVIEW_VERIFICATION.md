@@ -47,6 +47,14 @@ Lokalnie podmieniono róże wiatrów w menu bocznym na zoptymalizowany asset na 
 
 Build kandydata produkcyjnego PASS: 112 plików, 38 tras, 28 rekordów search/graph, 19 oryginałów, 38 wcześniejszych wariantów, 6 kadrów katalogowych i 11 znaczników. Testy: wiki/org 22/22, publikacja 74/74 oraz przeglądarka PASS. Zmiany nie zostały jeszcze wysłane do Preview.
 
+## Końcowe sprawdzenie kandydata — 2026-10-24
+
+Po wycofaniu z publikacji wpisu Gerwazego i jego portretu oraz zatwierdzeniu poprawionej pisowni „Fulmareth” aktualny kandydat ma 27 wpisów i 18 oryginalnych zasobów publicznych. Źródłowe `rosedim.png` i jawnie dopuszczony pochodny `rosedim.webp` są śledzone w repozytorium; generator emituje wyłącznie pochodny WebP. Mechanizmy bramki produkcyjnej pozostały bez zmian.
+
+Ponowna lokalna weryfikacja: `wiki:build` PASS; wiki i organizacje 23/23; `publication:test` 75/75. Build Preview i Production PASS (105 plików, 37 tras, 27 rekordów wyszukiwania/grafu, 18 oryginalnych zasobów, 33 warianty zoptymalizowane, 6 miniaturek przedmiotów, 11 znaczników). `publication:test:browser` PASS dla obu trybów: 108 kontroli stron, wyszukiwanie i GET/HEAD 404, 44 przejścia atlas–lokacja, widoki mobilne, miniatury i powiększenia. Pierwsza próba bez wskazania przeglądarki zakończyła się błędem uruchomienia scenariusza; ponowienie w Edge headless PASS.
+
+Ten wynik dotyczy lokalnego artefaktu. Odpowiadający mu zdalny Preview i ochrona `noindex`/robots wymagają potwierdzenia po pushu końcowego commita.
+
 ## Location tile images
 
 `src/wiki-ui/templates/approved-card.njk` reuses the same approved illustration as a thumbnail on location tiles. Parent location directory tiles use that illustration too. The current approved publication data contains no location illustration asset, so there are currently 0 location thumbnails; unapproved or inferred images are not used.

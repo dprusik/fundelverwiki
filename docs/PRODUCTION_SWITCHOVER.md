@@ -65,7 +65,7 @@ Poniższe czynności są instrukcją na później, nie zostały wykonane w tej i
 2. **Sprawdź ten konkretny deployment.** Potwierdź stopkę, opis atlasu, wyszukiwanie, jeden portret z oryginałem, mapę i stronę 404. Preview musi nadal mieć `noindex,nofollow` i `robots.txt` z `Disallow: /`. Zapisz SHA, URL/ID finalnego Preview oraz raport. Lokalny manifest SHA-256 jest tworzony przez generator poza katalogiem strony, w `.publication-build/`; nie kopiuj go do publicznego outputu.
 3. **Sprawdź ustawienia istniejącego projektu.** Repo: `dprusik/fundelverwiki`; Production Branch: `main`; Root Directory: pusty (`./`); Node: 22.x. Repozytoryjny `vercel.json` ma `installCommand: npm ci`, `buildCommand: npm run publication:build`, `outputDirectory: .publication-build/production`. `PUBLICATION_SITE_URL` powinno być nieustawione lub równe `https://fundelverwiki.vercel.app`. Nie ustawiaj go na adres Preview i nie nadpisuj ręcznie `VERCEL_ENV`. Zachowaj istniejące domeny oraz ochronę Preview. Zapisz ID dotychczasowego deploymentu Production.
 4. **Po akceptacji DM scal finalną gałąź do `main`.** Otwórz PR `feat/wiki-layout-2` → `main`, sprawdź finalny diff i zgodność źródeł z zaakceptowanym Preview. Scal PR. To uruchamia nowy build **Production** w tym samym projekcie i podmienia przypisane domeny po udanym wdrożeniu. Nie twórz nowego projektu Vercel, nie zmieniaj DNS i nie kopiuj lokalnego outputu na hosting.
-5. **Sprawdź nowy produkcyjny build.** Deployment musi mieć środowisko Production, właściwy commit z `main` i status Ready/Current. W logu oczekuj `mode: production-candidate`, 28 rekordów search/graph, 19 oryginalnych assetów, 38 wariantów obrazów, 6 kadrów przedmiotów i 38 tras. Aktualny lokalny output ma 112 plików. Nie zastępuj tej komendy legacy buildem, jeżeli coś zawiedzie.
+5. **Sprawdź nowy produkcyjny build.** Deployment musi mieć środowisko Production, właściwy commit z `main` i status Ready/Current. W logu oczekuj `mode: production-candidate`, 27 rekordów search/graph, 18 oryginalnych assetów, 33 warianty obrazów, 6 kadrów przedmiotów i 37 tras. Bieżący lokalny output ma 105 plików. Liczby odzwierciedlają wycofanie Gerwazego i jego nieużywanego portretu. Nie zastępuj tej komendy legacy buildem, jeżeli coś zawiedzie.
 6. **Sprawdź domenę produkcyjną.** Na `https://fundelverwiki.vercel.app/`: strona główna, wyszukiwanie, portret/powiększenie, dziennik Tergona, atlas i przejście do lokacji. Potwierdź canonical dla kanonicznych tras, brak `noindex,nofollow`, `robots.txt` z `Allow: /` i sitemapą. Nieistniejący adres musi zwracać HTTP 404 i szablon wiki. Przykładowe żądania bez logowania:
 
    ```powershell
@@ -85,7 +85,7 @@ Jeżeli build się nie powiedzie, nie obchodź walidacji — popraw problem na g
 
 Menu boczne używa grafiki `rosedim.png` jako róży wiatrów. Do builda trafia zoptymalizowany WebP 320 px (37 612 B); róża SVG w hero pozostaje bez zmian. Kafle katalogu postaci pokazują zatwierdzone portrety. Sześć zatwierdzonych wpisów przedmiotów otrzymało osobne kadry samej ilustracji, bez tekstu karty. Oryginalne obrazy artykułów pozostają bez zmian.
 
-Aktualny lokalny build: 112 plików, 38 tras, 28 rekordów search/graph, 19 oryginałów, 38 dotychczasowych wariantów, 6 kadrów katalogowych i 11 znaczników. Zmiany nie zostały wysłane do Preview.
+Aktualny lokalny build: 105 plików, 37 tras, 27 rekordów search/graph, 18 oryginałów, 33 warianty zoptymalizowane, 6 kadrów katalogowych i 11 znaczników. Zmiany wymagają końcowego pushu i weryfikacji nowego Preview.
 
 ## Location tile images
 
