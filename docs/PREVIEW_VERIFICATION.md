@@ -62,3 +62,9 @@ The visible section labels are Polish. Their section URLs remain `/catalog/<id>/
 ## Final sidebar copy
 
 Updated the sidebar rail note to the requested campaign line: "To kiedy level up?". This is included in the follow-up commit for the final Preview.
+
+## Aktualizacja kandydata Preview — 2026-10-24
+
+Po końcowym odbiorze zaktualizowano wpis Bekrita (ten sam permalink i zatwierdzony portret). Na polecenie DM wycofano z publicznej projekcji wpis Gerwazego oraz jego nieużywany gdzie indziej portret; notatka źródłowa i plik obrazu pozostały w repozytorium. Wynikowy kandydat zawiera 27 artykułów, 18 oryginalnych publicznych zasobów, 33 zoptymalizowane warianty, 6 miniatur przedmiotów i 11 znaczników atlasu. Bramka legacy nie została zmieniona.
+
+Weryfikacja lokalna bieżącego kandydata: `wiki:build` PASS, `wiki:test` 20/20 PASS, `publication:build` PASS (105 plików, 37 tras), `publication:test` 75/75 PASS i `publication:test:browser` PASS (108 kontroli artykułów, wyszukiwanie na 3 viewportach, 44 przejścia atlasu, widoki mobilne, obrazy). Te wyniki dotyczą lokalnego artefaktu; zdalny Preview wymaga potwierdzenia po utworzeniu deploymentu z finalnego commita.
