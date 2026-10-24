@@ -102,3 +102,8 @@ The visible section labels are Polish. Their section URLs remain `/catalog/<id>/
 ## Dependency advisory snapshot
 
 `npm audit` checked against the npm registry on 2026-10-24: 16 findings (2 moderate, 13 high, 1 critical), with no dependency changes made. Main groups: critical `shell-quote` via `npm-run-all`; high `axios`/`follow-redirects`, `brace-expansion`, `js-yaml`, `markdown-it`, `sharp`, `image-size`, `picomatch`, `source-map-js`, `nanoid`, and Vite; moderate `@vitest/mocker`. The static Vercel build command invokes the publication generator directly and does not run `npm-run-all`, the legacy `axios` theme-fetch script, Vite, or Vitest. `markdown-it`, `js-yaml`, and `sharp` do execute in the build on approved content/assets, so malformed or hostile reviewed inputs could affect build availability. The generated site is static; these findings do not imply those package code paths run for visitor requests. npm reported no available fix for the current sharp/libvips advisory set. Full auto-fix was intentionally not run.
+
+
+## Final sidebar copy
+
+Updated the sidebar rail note to the requested campaign line: "To kiedy level up?". This is included in the follow-up commit for the final Preview.

@@ -57,6 +57,7 @@ const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
           for (const image of await page.locator('.entry-card-thumb--location').all()) { await image.evaluate(element => element.decode()); assert.ok(await image.evaluate(element => element.naturalWidth > 0)); }
         }
         if (route.url === '/') {
+          assert.equal((await page.locator('.rail-note').textContent()).trim(), 'To kiedy level up?');
           assert.match(await page.locator('.rail-note').evaluate(element => getComputedStyle(element, '::after').backgroundImage), /rosedim\.webp/);
           assert.equal((await context.request.get('http://127.0.0.1:8081/assets/rosedim.webp')).status(), 200);
         }
