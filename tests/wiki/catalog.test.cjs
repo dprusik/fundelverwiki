@@ -10,7 +10,7 @@ const { organizeLocationNavigation, locationDirectoryView } = require('../../src
 const locationConfig = require('../../src/wiki-ui/location-navigation.json');
 const { atlasRouteReservations, buildAtlasViews, atlasLinksForArticle } = require('../../src/wiki-ui/atlas.cjs');
 const atlasConfig = require('../../src/wiki-ui/atlas-navigation.json');
-const { characterPortraitView } = require('../../src/wiki-ui/character-portrait.cjs');
+const { characterPortraitView, entityImageView } = require('../../src/wiki-ui/character-portrait.cjs');
 const entry = (id, category, kind, title) => ({ id, category, kind, title, url: `/canonical/${id}/` });
 
 test('catalog separates organizations from characters and keeps each approved entry in one group', () => {
@@ -120,6 +120,30 @@ test('character portraits reuse only approved article images and retain narrativ
   assert.ok(narrative.html.includes('Wspomnienie') && narrative.html.includes('zachowane.'));
   const explicit = { ...original, portrait: { src: '/img/second.png', alt: 'Zatwierdzony portret' } };
   assert.deepEqual(characterPortraitView(explicit, files).portrait, explicit.portrait);
+});
+
+test('location headers reuse approved illustrations without duplicating standalone images or altering source prose', () => {
+  const original = { id: 'place', title: 'Karczma', kind: 'location', html: '<p>Położenie: port.</p><p><img src="/img/ship.webp" alt="Widok karczmy"></p><p>Opis [[miejsca]].</p><p><img src="/img/detail.png"></p>' };
+  const before = structuredClone(original);
+  const files = [{ url: '/img/ship.webp' }, { url: '/img/detail.png' }];
+  const view = entityImageView(original, files);
+  assert.deepEqual(view.illustration, { src: '/img/ship.webp', alt: 'Widok karczmy' });
+  assert.equal(view.html, '<p>Położenie: port.</p><p>Opis [[miejsca]].</p><p><img src="/img/detail.png"></p>');
+  assert.deepEqual(original, before);
+  assert.equal(entityImageView(original, []), original);
+  const empty = { ...original, html: '<p>Bez ilustracji.</p>' };
+  assert.equal(entityImageView(empty, files), empty);
+  const explicit = { ...original, illustration: { src: '/img/detail.png', alt: 'Wybrana ilustracja' } };
+  assert.deepEqual(entityImageView(explicit, files).illustration, explicit.illustration);
+  assert.ok(entityImageView(explicit, files).html.includes('/img/ship.webp'));
+  const blocked = { ...original, illustration: { src: '/img/private.png', alt: 'Private' } };
+  assert.equal(entityImageView(blocked, files), blocked);
+  const narrative = { ...original, html: '<p>Wspomnienie <img src="/img/ship.webp"> zachowane.</p>' };
+  assert.equal(entityImageView(narrative, files).html, narrative.html);
+  const document = { ...original, kind: 'article' };
+  assert.equal(entityImageView(document, files), document);
+  const character = { ...original, kind: 'character' };
+  assert.deepEqual(entityImageView(character, files), characterPortraitView(character, files));
 });
 
 test('atlas views keep canonical articles and only serialize the approved viewer projection', () => {

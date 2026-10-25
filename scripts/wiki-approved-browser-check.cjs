@@ -7,6 +7,8 @@ const { applyCatalogVisibility } = require('../src/wiki-ui/catalog-visibility.cj
 const { organizeLocationNavigation } = require('../src/wiki-ui/location-navigation.cjs');
 const { prepareLocalArticles } = require('../src/helpers/wiki/local-articles.cjs');
 const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
+const { entityImageView } = require('../src/wiki-ui/character-portrait.cjs');
+const { parse } = require('node-html-parser');
 
 // Read only active public metadata; never visit pending source paths.
 (async () => {
@@ -85,6 +87,16 @@ const { buildAtlasViews } = require('../src/wiki-ui/atlas.cjs');
         assert.equal(response.status(), 200, 'Approved route must resolve');
         await page.waitForSelector('body.js');
         assert.ok((await page.locator('main').textContent()).includes(entry.title));
+        if (entry.kind === 'location' && !entry.legacy_map) {
+          const original = local.articles.find(article => article.id === entry.id);
+          const view = entityImageView(original, local.files);
+          const media = page.locator('.location-illustration');
+          if (view.illustration) {
+            assert.equal(await media.locator('[data-image-viewer]').getAttribute('href'), view.illustration.src);
+            assert.equal(await media.locator('.entity-image-placeholder').count(), 0);
+            assert.equal(await page.locator('.approved-prose img').count(), parse(view.html).querySelectorAll('img').length, 'Header illustration must not be duplicated in article prose');
+          } else assert.equal(await media.locator('.entity-image-placeholder').count(), 1);
+        }
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Article ${index} must fit viewport ${viewport.width}`);
         for (const image of await page.locator('main img').all()) {
           await image.scrollIntoViewIfNeeded();

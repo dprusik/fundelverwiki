@@ -8,7 +8,7 @@ const { applyCatalogVisibility } = require('./src/wiki-ui/catalog-visibility.cjs
 const { organizationViews } = require('./src/wiki-ui/organization-view.cjs');
 const { organizeLocationNavigation, locationDirectoryView } = require('./src/wiki-ui/location-navigation.cjs');
 const { atlasRouteReservations, buildAtlasViews, atlasLinksForArticle } = require('./src/wiki-ui/atlas.cjs');
-const { characterPortraitView } = require('./src/wiki-ui/character-portrait.cjs');
+const { entityImageView } = require('./src/wiki-ui/character-portrait.cjs');
 const { optimizeImageHtml } = require('./src/helpers/wiki/image-variants.cjs');
 const atlasConfig = require('./src/wiki-ui/atlas-navigation.json');
 const { loadAppearance } = require('./src/wiki-ui/theme.cjs');
@@ -64,7 +64,7 @@ module.exports = function (config) {
   config.addGlobalData('appearance', { ...loadAppearance(), decorations: { ...loadAppearance().decorations, ...approvedDecorations } });
   config.addGlobalData('wiki', { sections: catalog.sections });
   config.addGlobalData('activeMaps', maps);
-  config.addGlobalData('approvedArticles', local.articles.map(article => characterPortraitView(article, local.files)));
+  config.addGlobalData('approvedArticles', local.articles.map(article => entityImageView(article, local.files)));
   config.addGlobalData('approvedCatalog', catalog.entries);
   config.addGlobalData('approvedSections', catalog.sections.map(section => section.id === 'maps' ? { ...section, count: maps.length } : section));
   config.addGlobalData('approvedGroups', catalog.groups);

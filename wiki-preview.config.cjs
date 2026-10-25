@@ -9,7 +9,7 @@ const { projectApprovedSearch } = require('./src/helpers/wiki/approved-search.cj
 const { organizeLocationNavigation, locationDirectoryView } = require('./src/wiki-ui/location-navigation.cjs');
 const { atlasRouteReservations, buildAtlasViews, atlasLinksForArticle } = require('./src/wiki-ui/atlas.cjs');
 const atlasConfig = require('./src/wiki-ui/atlas-navigation.json');
-const { characterPortraitView } = require('./src/wiki-ui/character-portrait.cjs');
+const { entityImageView } = require('./src/wiki-ui/character-portrait.cjs');
 
 // Deliberately separate from .eleventy.js: only the approval adapter may read real content.
 module.exports = function (config) {
@@ -32,7 +32,7 @@ module.exports = function (config) {
   for (const article of [...local.articles, ...local.maps.map(map => map.entry)]) article.atlasLinks = atlasLinksForArticle(article, activeMaps);
   config.addGlobalData('wiki', demo);
   config.addGlobalData('activeMaps', activeMaps);
-  config.addGlobalData('approvedArticles', local.articles.map(article => characterPortraitView(article, local.files)));
+  config.addGlobalData('approvedArticles', local.articles.map(article => entityImageView(article, local.files)));
   config.addGlobalData('approvedCatalog', catalog.entries);
   config.addGlobalData('approvedSections', catalog.sections.map(section => section.id === 'maps' ? { ...section, count: activeMaps.length } : section));
   config.addGlobalData('approvedGroups', catalog.groups);

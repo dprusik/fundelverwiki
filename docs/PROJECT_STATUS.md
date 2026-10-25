@@ -1,5 +1,11 @@
 # Fundelver Wiki — stan M1A.1 / M1A.2
 
+## Ilustracja lokacji w nagłówku — 2026-10-25
+
+Naprawiono brak ilustracji w nagłówku Rozjebanego Lewiatana: lokacje, podobnie jak postacie, wykorzystują pierwszy obraz już zatwierdzonego artykułu, jeśli nie mają jawnie wybranej ilustracji. Jawny wybór ma pierwszeństwo. Samodzielny akapit obrazu jest pomijany wyłącznie w prezentacji, aby nie powielać grafiki; opis, kolejne ilustracje, Markdown źródłowy i zgody pozostają bez zmian. Ujednolicono zachowanie Preview i Production.
+
+Weryfikacja: wiki:build i publication:build PASS, wiki:test 21/21, publication:test 86/86. Testy przeglądarkowe kontrolują ilustracje w nagłówkach, brak powielenia w treści, placeholdery oraz regresję artykułów, wyszukiwania, atlasu i powiększeń na desktop/mobile. Zakres publikacji pozostaje 27 artykułów, 19 oryginalnych zasobów i 11 znaczników.
+
 ## Harrag i Rozjebany Lewiatan — kandydat publikacyjny, 2026-10-25
 
 Na zgodę DM dodano artykuł Harraga pod /postacie/harrag/ i uzupełniono istniejący artykuł Rozjebanego Lewiatana, zachowując jego permalink oraz zatwierdzony opis znacznika atlasu. Dodano dwa jawnie zatwierdzone obrazy i wzajemne linki. Publiczne artykuły pomijają robocze sekcje oraz prywatne metadane szkiców; źródłowe szkice pozostały bez zmian.

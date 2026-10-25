@@ -1,18 +1,28 @@
 const { parse } = require('node-html-parser');
 
-// DM requested using the existing article illustration as its portrait.
+// DM requested reusing approved article images in character/location headers.
 // Only already approved, copied assets may be reused; source notes stay intact.
 function characterPortraitView(article, files) {
   if (article.kind !== 'character') return article;
+  return articleImageView(article, files, 'portrait', 'Portret');
+}
+
+function entityImageView(article, files) {
+  if (article.kind === 'character') return characterPortraitView(article, files);
+  if (article.kind === 'location') return articleImageView(article, files, 'illustration', 'Ilustracja');
+  return article;
+}
+
+function articleImageView(article, files, field, label) {
   const document = parse(article.html);
   const image = document.querySelector('img');
-  const src = article.portrait?.src || image?.getAttribute('src');
+  const src = article[field]?.src || image?.getAttribute('src');
   if (!src || !files.some(file => file.url === src)) return article;
-  const portrait = article.portrait || { src, alt: `Portret: ${article.title}`, fromArticle: true };
+  const media = article[field] || { src, alt: (field === 'illustration' && image?.getAttribute('alt')) || `${label}: ${article.title}`, ...(field === 'portrait' ? { fromArticle: true } : {}) };
   if (image?.getAttribute('src') === src) {
     const paragraph = image.parentNode;
     if (paragraph.tagName === 'P' && paragraph.childNodes.every(node => node === image || node.nodeType === 3 && !node.textContent.trim())) paragraph.remove();
   }
-  return { ...article, portrait, html: document.toString().trim() };
+  return { ...article, [field]: media, html: document.toString().trim() };
 }
-module.exports = { characterPortraitView };
+module.exports = { characterPortraitView, entityImageView };
