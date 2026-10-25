@@ -37,3 +37,26 @@ test('variants use approved bytes only, preserve aspect ratio, exclude cards/map
   assert.ok(bytes.equals(local.files[0].bytes));
   assert.deepEqual(await buildImageVariants({ ...local, files: [] }, ['/img/known.png']), { files: [], sources: {} });
 });
+
+test('approved WebP location images receive responsive variants, catalog thumbnails and original enlargement links', async () => {
+  const sharp = require('sharp');
+  const { buildCatalogThumbnails } = require('../../src/helpers/wiki/catalog-thumbnails.cjs');
+  const bytes = await sharp({ create: { width: 640, height: 400, channels: 3, background: '#c0a070' } }).webp().toBuffer();
+  const original = Buffer.from(bytes);
+  const url = '/img/location.webp';
+  const article = { id: 'public-location', category: 'locations', kind: 'location', html: `<p><img src="${url}" alt="Location"></p><img src="/img/unapproved.webp">` };
+  const local = { articles: [article], maps: [], files: [{ url, bytes }] };
+  const variants = await buildImageVariants(local);
+  assert.deepEqual(Object.keys(variants.sources), [url]);
+  const thumbnail = variants.sources[url].find(variant => variant.width === 320);
+  assert.ok(thumbnail);
+  assert.equal(thumbnail.height, 200);
+  const catalogs = await buildCatalogThumbnails(local, variants.sources);
+  assert.equal(catalogs.byId[article.id].src, thumbnail.url);
+  const html = optimizeImageHtml(`<article class="approved-prose">${article.html}</article>`, variants.sources, new Set([url]));
+  const document = parse(html);
+  assert.equal(document.querySelector('[data-image-viewer]').getAttribute('href'), url);
+  assert.ok(document.querySelector('[data-image-viewer] img').hasAttribute('srcset'));
+  assert.equal(document.querySelector('img[src="/img/unapproved.webp"]').hasAttribute('srcset'), false);
+  assert.deepEqual(bytes, original);
+});

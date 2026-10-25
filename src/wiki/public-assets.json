@@ -153,6 +153,24 @@
       "sha256": "428745c881c0de3e3ea48e1ada4b03db6091971545936b05e499b3b30632c5e3",
       "approved": true,
       "reviewed_at": "2026-10-24T03:15:50.663Z"
+    },
+    {
+      "id": "asset-beached-leviathan",
+      "alt": "Ilustracja karczmy Rozjebany Lewiatan",
+      "url": "/img/user/lorekeeper/beached-leviathan.webp",
+      "source_key": "asset-6f6af8a2b108594a2c49",
+      "sha256": "8ce8e421e264799bffcf7fba8683547e8a1be49b687f180e50ab3b9c6a9dd03e",
+      "approved": true,
+      "reviewed_at": "2026-10-25T00:29:49.364Z"
+    },
+    {
+      "id": "asset-harrag-portrait",
+      "alt": "Portret Harraga",
+      "url": "/img/user/lorekeeper/harrag.png",
+      "source_key": "asset-d31ff206dff0757116de",
+      "sha256": "c2fae5ebd340d562ae175030d296083b6b5bd772fd3cf2ca8250ffaf40b978bd",
+      "approved": true,
+      "reviewed_at": "2026-10-25T00:29:49.363Z"
     }
   ]
 }

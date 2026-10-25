@@ -1,5 +1,13 @@
 # Fundelver Wiki — stan M1A.1 / M1A.2
 
+## Harrag i Rozjebany Lewiatan — kandydat publikacyjny, 2026-10-25
+
+Na zgodę DM dodano artykuł Harraga pod /postacie/harrag/ i uzupełniono istniejący artykuł Rozjebanego Lewiatana, zachowując jego permalink oraz zatwierdzony opis znacznika atlasu. Dodano dwa jawnie zatwierdzone obrazy i wzajemne linki. Publiczne artykuły pomijają robocze sekcje oraz prywatne metadane szkiców; źródłowe szkice pozostały bez zmian.
+
+Zgody zaktualizowano przez istniejący review/import wyłącznie dla dwóch artykułów i dwóch zasobów. Kandydat zawiera 27 artykułów, 19 oryginalnych zasobów i 11 znaczników. Pozostałe zgody, decyzje odmowne i wycofania nie zmieniły się. Rozszerzono istniejące generowanie wariantów obrazów o WebP, aby ilustracja lokacji otrzymała miniatury i powiększenie oryginału.
+
+Kontrole lokalne: publication:test 86/86, wiki:test 20/20, wiki:build PASS i publication:build PASS (112 plików, 37 tras). Testy przeglądarkowe obejmują pełną regresję publikacji oraz oba artykuły, wzajemne linki, miniatury i powiększenia na desktop/mobile. Przygotowano lokalny commit; push i deployment nie zostały wykonane.
+
 ## Zakończenie odbioru manualnego UI — 2026-10-24
 
 Użytkownik zgłosił wykonanie testów manualnych i przekazanie uwag po pozytywnej ocenie ostatniej iteracji portretów. Odbiór bieżącego układu uznajemy za zakończony w tym zakresie; nie rozszerzamy tego na pełny audyt dostępności ani produkcyjne bezpieczeństwo publikacji. Uaktualniono WIKI_LAYOUT_STATUS_AND_NEXT_STEPS.md, którego wcześniejszy raport nadal wymieniał brak opisu frakcji i niedokończony odbiór wizualny; oznaczono go jako historyczny.

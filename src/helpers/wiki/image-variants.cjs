@@ -15,7 +15,7 @@ async function buildImageVariants(local, decorationUrls = []) {
   }
   const files = [], sources = {};
   for (const file of local.files) {
-    if (!selected.has(file.url) || excluded.has(file.url) || !/\.(png|jpe?g)$/i.test(file.url)) continue;
+    if (!selected.has(file.url) || excluded.has(file.url) || !/\.(png|jpe?g|webp)$/i.test(file.url)) continue;
     const stats = await Image(file.bytes, {
       widths: [96, 320, 640, 960, 1440], formats: ['webp'], dryRun: true, useCache: false,
       sharpWebpOptions: { quality: 82 },

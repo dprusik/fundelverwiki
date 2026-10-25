@@ -254,9 +254,9 @@
       "kind": "location",
       "permalink": "/dnd/wiki/lokacje/neverwinter/rozjebany-lewiatan/",
       "source_key": "entry-ac24a15a90a1b83e15d1",
-      "sha256": "1fa6602c767bbc090c293809e17ad5d2a5e4f8bba0a9b1a898d6b81011fd8b88",
+      "sha256": "1947b516e31e9c2dbd0693e3015b59412fb1c87a37bd4b69f7ad8797225f97a8",
       "approved": true,
-      "reviewed_at": "2026-10-23T22:26:15.011Z"
+      "reviewed_at": "2026-10-25T00:31:34.219Z"
     },
     {
       "id": "entry-30991a8ef7f5501a39a8",
@@ -290,6 +290,17 @@
       "sha256": "1b1cdefafa147bbfb6ecaf20a3ad3e66a640895b150c859eeb8f770622c81880",
       "approved": true,
       "reviewed_at": "2026-10-23T22:26:15.007Z"
+    },
+    {
+      "id": "entry-6500ee925ef3ea776d4a",
+      "title": "Harrag",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/harrag/",
+      "source_key": "entry-6500ee925ef3ea776d4a",
+      "sha256": "d11e2ec8ccaecd92509955944090cb1397c5df5f8bc904d296ca3b827fea85c0",
+      "approved": true,
+      "reviewed_at": "2026-10-25T00:29:49.359Z"
     }
   ]
 }
