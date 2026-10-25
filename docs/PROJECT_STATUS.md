@@ -1,5 +1,11 @@
 # Fundelver Wiki — stan M1A.1 / M1A.2
 
+## Kompaktowy podgląd lokacji i dopasowana ramka — 2026-10-25
+
+Po doprecyzowaniu DM przywrócono wcześniejszą skalę ilustracji lokacji: wysokość do min(320 px, 40% szerokości sekcji), z zachowaniem naturalnych proporcji. Wyśrodkowana ramka dopasowuje obie osie do obrazu, zamiast rozciągać ilustrację do szerokości artykułu. Zastępuje to opis poprzedniej iteracji proporcji poniżej; źródła, zgody i zasoby nie zmieniły się.
+
+Weryfikacja: wiki:build, publication:build i wiki:test 21/21 PASS; 108 kontroli artykułów w przeglądarce PASS. Sprawdzono limit wysokości, obie krawędzie ramki i proporcje dla grafik poziomych/kwadratowych/pionowych na desktop/mobile; powiększenie Lewiatana jest większe od podglądu przy obu szerokościach. Obejrzano mobilny zrzut strony.
+
 ## Proporcje ilustracji lokacji — 2026-10-25
 
 Ramka lokacji z obrazem dopasowuje wysokość do jego naturalnych proporcji zamiast wymuszać 5:2 i limit 320 px. Szablon nie deklaruje już fikcyjnych wymiarów 1000×400; generator optymalizacji wpisuje rzeczywiste wymiary wariantu. Placeholder bez obrazu oraz portrety postaci zachowują dotychczasowe zachowanie. Bez zmian treści, zasobów, zgód ani permalinków.

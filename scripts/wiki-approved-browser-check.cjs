@@ -100,6 +100,9 @@ const { parse } = require('node-html-parser');
             assert.ok(Math.abs(dimensions.width / dimensions.height - dimensions.ratio) < 0.01, 'Location illustration must preserve its natural aspect ratio');
             const frame = await media.locator('.entity-media-visual').boundingBox();
             assert.ok(Math.abs(frame.height - dimensions.height - 2) < 2, 'Location frame must fit the illustration without empty bands');
+            assert.ok(Math.abs(frame.width - dimensions.width - 2) < 2, 'Location frame must fit the illustration horizontally');
+            const available = await media.boundingBox();
+            assert.ok(dimensions.height <= Math.min(320, available.width * 0.4) + 1, 'Location preview must retain its compact height limit');
             assert.equal(await page.locator('.approved-prose img').count(), parse(view.html).querySelectorAll('img').length, 'Header illustration must not be duplicated in article prose');
           } else assert.equal(await media.locator('.entity-image-placeholder').count(), 1);
         }
