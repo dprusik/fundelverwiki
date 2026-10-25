@@ -94,6 +94,12 @@ const { parse } = require('node-html-parser');
           if (view.illustration) {
             assert.equal(await media.locator('[data-image-viewer]').getAttribute('href'), view.illustration.src);
             assert.equal(await media.locator('.entity-image-placeholder').count(), 0);
+            const image = media.locator('img');
+            await image.evaluate(element => element.decode());
+            const dimensions = await image.evaluate(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height, ratio: element.naturalWidth / element.naturalHeight }));
+            assert.ok(Math.abs(dimensions.width / dimensions.height - dimensions.ratio) < 0.01, 'Location illustration must preserve its natural aspect ratio');
+            const frame = await media.locator('.entity-media-visual').boundingBox();
+            assert.ok(Math.abs(frame.height - dimensions.height - 2) < 2, 'Location frame must fit the illustration without empty bands');
             assert.equal(await page.locator('.approved-prose img').count(), parse(view.html).querySelectorAll('img').length, 'Header illustration must not be duplicated in article prose');
           } else assert.equal(await media.locator('.entity-image-placeholder').count(), 1);
         }

@@ -1,5 +1,11 @@
 # Fundelver Wiki — stan M1A.1 / M1A.2
 
+## Proporcje ilustracji lokacji — 2026-10-25
+
+Ramka lokacji z obrazem dopasowuje wysokość do jego naturalnych proporcji zamiast wymuszać 5:2 i limit 320 px. Szablon nie deklaruje już fikcyjnych wymiarów 1000×400; generator optymalizacji wpisuje rzeczywiste wymiary wariantu. Placeholder bez obrazu oraz portrety postaci zachowują dotychczasowe zachowanie. Bez zmian treści, zasobów, zgód ani permalinków.
+
+Weryfikacja: wiki:build, publication:build i wiki:test 21/21 PASS; regresja przeglądarkowa artykułów 108 kontroli PASS; miniatury, powiększenia i linki obu artykułów PASS. Dodatkowo sprawdzono dopasowanie ramki do poziomych, kwadratowych i pionowych ilustracji przy szerokościach 1440/390 px oraz obejrzano mobilny zrzut Lewiatana.
+
 ## Ilustracja lokacji w nagłówku — 2026-10-25
 
 Naprawiono brak ilustracji w nagłówku Rozjebanego Lewiatana: lokacje, podobnie jak postacie, wykorzystują pierwszy obraz już zatwierdzonego artykułu, jeśli nie mają jawnie wybranej ilustracji. Jawny wybór ma pierwszeństwo. Samodzielny akapit obrazu jest pomijany wyłącznie w prezentacji, aby nie powielać grafiki; opis, kolejne ilustracje, Markdown źródłowy i zgody pozostają bez zmian. Ujednolicono zachowanie Preview i Production.
