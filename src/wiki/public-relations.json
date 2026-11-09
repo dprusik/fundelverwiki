@@ -1,4 +1,13 @@
 {
   "schema_version": 1,
-  "relations": []
+  "relations": [
+    {
+      "id": "eshmun-dom-wiedzy",
+      "source_id": "entry-74b9154269042c3f18b2",
+      "target_id": "entry-b3bb21ce51d8137fe4f9",
+      "type": "associated_with_location",
+      "description": "Obecnie przebywa głównie w Domu Wiedzy.",
+      "approved": true
+    }
+  ]
 }

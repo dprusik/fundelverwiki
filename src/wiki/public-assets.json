@@ -171,6 +171,15 @@
       "sha256": "c2fae5ebd340d562ae175030d296083b6b5bd772fd3cf2ca8250ffaf40b978bd",
       "approved": true,
       "reviewed_at": "2026-10-25T00:29:49.363Z"
+    },
+    {
+      "id": "asset-17714e0cc630c0e9c9b5",
+      "alt": "Portret Eshmuna",
+      "url": "/img/user/lorekeeper/eshmun.png",
+      "source_key": "asset-17714e0cc630c0e9c9b5",
+      "sha256": "d4eaeeb4cba6e346929fddf5abecaa723795eb4637672458ccb0d2fd857574fb",
+      "approved": true,
+      "reviewed_at": "2026-11-09T22:06:46.770Z"
     }
   ]
 }

@@ -188,9 +188,9 @@
       "kind": "location",
       "permalink": "/dnd/wiki/lokacje/neverwinter/dom-wiedzy/",
       "source_key": "entry-b3bb21ce51d8137fe4f9",
-      "sha256": "de1ccd83a64eaef5e975b5dcd771947f8ebd5e480f438992b4f235b53706b0ab",
+      "sha256": "128fbc726b323d6afbf1f991aa68f346c1e6b89084b3582f41cd40b3031a584d",
       "approved": true,
-      "reviewed_at": "2026-10-23T22:26:15.018Z"
+      "reviewed_at": "2026-11-09T22:12:10.299Z"
     },
     {
       "id": "entry-0ec459b2baddd4e13739",
@@ -301,6 +301,18 @@
       "sha256": "d11e2ec8ccaecd92509955944090cb1397c5df5f8bc904d296ca3b827fea85c0",
       "approved": true,
       "reviewed_at": "2026-10-25T00:29:49.359Z"
+    },
+    {
+      "id": "entry-74b9154269042c3f18b2",
+      "title": "Eshmun",
+      "category": "characters",
+      "kind": "character",
+      "permalink": "/postacie/eshmun/",
+      "source_key": "entry-74b9154269042c3f18b2",
+      "sha256": "20dda811d0460e075e7c62176daad3497893e6e2161661b85bb39dcfc54e414a",
+      "approved": true,
+      "reviewed_at": "2026-11-09T22:06:46.766Z",
+      "portrait_asset_id": "asset-17714e0cc630c0e9c9b5"
     }
   ]
 }
